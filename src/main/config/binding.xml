@@ -1,0 +1,857 @@
+<?xml version='1.0' ?>
+<binding direction='output' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../doc/binding.xsd'>
+    <namespace default='elements' uri='http://www.isotc211.org/2005/gmd' prefix='gmd'/>
+    <namespace uri='http://www.isotc211.org/2005/gco' prefix='gco' />
+    <namespace uri='http://www.opengis.net/gml' prefix='gml' />
+    <namespace uri='http://www.isotc211.org/2005/gts' prefix='gts' />
+    <namespace uri='http://www.isotc211.org/2005/gsr' prefix='gsr' />
+    <namespace uri='http://www.isotc211.org/2005/gss' prefix='gss' />
+    <namespace uri='http://www.isotc211.org/2005/gmx' prefix='gmx' />
+    <namespace uri='http://www.w3.org/2001/XMLSchema-instance' prefix='xsi' />
+    <namespace uri='http://www.w3.org/1999/xlink' prefix='xlink' />
+	<mapping name='MD_Metadata' class='au.gov.vic.delwp.Dataset'>
+		<value style='attribute' name='schemaLocation' ns='http://www.w3.org/2001/XMLSchema-instance' constant='http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd http://www.opengis.net/gml http://www.isotc211.org/2005/gml/gml.xsd http://www.w3.org/1999/xlink http://www.isotc211.org/2005/xlink/xlinks.xsd' />
+		<structure name='fileIdentifier'>
+			<value name='CharacterString' field='UUID' ns='http://www.isotc211.org/2005/gco' />
+		</structure>
+		<structure name='language'>
+			<value name='CharacterString' constant='eng' ns='http://www.isotc211.org/2005/gco' />
+		</structure>
+		<structure name='hierarchyLevel'>
+			<structure name='MD_ScopeCode' value-style='attribute'>
+				<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode'/>
+				<value name='codeListValue' get-method='getHierarchyLevel' />
+			</structure>
+		</structure>
+		<structure name='hierarchyLevelName'>
+			<value name='CharacterString' get-method='getHierarchyLevelName' ns='http://www.isotc211.org/2005/gco' />
+		</structure>
+		<!-- contact is [1..*] according to ISO 19115 -->
+		<structure name='contact' get-method='getMetadataContact' />
+		<structure name='dateStamp'>
+			<value name='Date' get-method='getDateStamp' ns='http://www.isotc211.org/2005/gco'/>
+		</structure>
+		<structure name='metadataStandardName' >
+			<value constant='ANZLIC Metadata Profile'  name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+		</structure>
+		<structure name='metadataStandardVersion' >
+			<value constant='1.1'  name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+		</structure>
+		<structure name='referenceSystemInfo' usage='optional' test-method='isRefSysNotNull' >
+			<structure name='MD_ReferenceSystem' >
+				<structure name='referenceSystemIdentifier' >
+					<structure name='RS_Identifier' >
+						<structure name='authority'>
+							<structure name='CI_Citation'>
+								<structure name='title'>
+									<value name='CharacterString' constant='EPSG Geodetic Parameter' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='date'>
+									<structure name='CI_Date'>
+										<structure name='date'>
+											<value name='Date' constant='2007-07-16' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='dateType'>
+											<structure name='CI_DateTypeCode' value-style='attribute'>
+												<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode'/>
+												<value name='codeListValue' constant='revision' />
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='edition'>
+									<value name='CharacterString' constant='Version 6.13' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+						<structure name='code' >
+							<value get-method='getReferenceSystemID' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+					</structure>
+				</structure>
+			</structure>
+		</structure>
+		<structure name='identificationInfo'>
+			<structure name='MD_DataIdentification'>
+				<structure name='citation'>
+					<structure name='CI_Citation' >
+						<structure name='title'>
+							<value get-method='getTitle' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+						<structure name='date'>
+							<structure name='CI_Date'>
+								<structure name='date'>
+									<value name='Date' get-method='getDateStamp' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='dateType'>
+									<structure name='CI_DateTypeCode' value-style='attribute'>
+										<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode' />
+										<value name='codeListValue' constant='revision' />
+									</structure>
+								</structure>
+							</structure>
+						</structure>
+						<structure name='identifier'>
+							<structure name='MD_Identifier'>
+								<structure name='authority'>
+									<structure name='CI_Citation'>
+										<structure name='title'>
+											<value name='CharacterString' constant='ANZLIC Dataset Identifier'  ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='date'>
+											<structure name='CI_Date'>
+												<structure name='date'>
+													<value name='Date' constant='2001-02'  ns='http://www.isotc211.org/2005/gco' />
+												</structure>
+												<structure name='dateType'>
+													<structure name='CI_DateTypeCode' value-style='attribute'>
+														<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode' />
+														<value name='codeListValue' constant='revision' />
+													</structure>
+												</structure>
+											</structure>
+										</structure>
+										<structure name='citedResponsibleParty'>
+											<structure name='CI_ResponsibleParty'>
+												<structure name='organisationName'>
+													<value name='CharacterString' constant='ANZLIC - the Spatial Information Council'  ns='http://www.isotc211.org/2005/gco' />
+												</structure>
+												<structure name='role'>
+													<structure name='CI_RoleCode' value-style='attribute'>
+														<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode' />
+														<value name='codeListValue' constant='custodian' />
+													</structure>
+												</structure>
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='code'>
+									<value name='CharacterString' field='ANZLIC_ID' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+						<structure name='citedResponsibleParty'>
+							<structure name='CI_ResponsibleParty' usage='optional' test-method='hasOtherResponsibleParties'>
+								<structure name='organisationName' >
+									<structure field='DatasetOrganisation' >
+										<value field='Text' name='CharacterString'  ns='http://www.isotc211.org/2005/gco' />
+									</structure>
+								</structure>
+								<structure name='role'>
+									<structure name='CI_RoleCode' value-style='attribute'>
+										<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode' />
+										<value name='codeListValue' constant='owner' />
+									</structure>
+								</structure>
+							</structure>
+						</structure>
+						<collection get-method='getOtherResponsibleParties' item-type='au.gov.vic.delwp.DatasetContact' >
+							<structure name='citedResponsibleParty' />
+						</collection>
+					</structure>
+				</structure>
+				<structure name='abstract'>
+					<value name='CharacterString' field='Abstract' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+				<structure name='purpose' usage='optional' test-method='isPurposeNotNull' >
+					<value name='CharacterString' field='Purpose' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+				<structure name='status' usage='optional' test-method='isProgressCodeNotNull'>
+					<structure name='MD_ProgressCode' value-style='attribute'>
+						<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode' />
+						<value name='codeListValue' get-method='getProgressCode' />
+					</structure>
+				</structure>
+
+				<!-- Want:
+					<pointOfContact>
+						<CI_ResponsibleParty>
+							...
+						</CI_ResponsibleParty>
+					</pointOfContact>
+					<pointOfContact>
+						<CI_ResponsibleParty>
+							...
+						</CI_ResponsibleParty>
+					</pointOfContact>
+					...
+				-->
+				<structure name='pointOfContact' get-method='getResourcePOC'>
+					<!-- Special handling of Dataset Contact for this element which includes -->
+					<!-- online resource url and contact instructions -->
+					<structure name='CI_ResponsibleParty' >
+						<structure field='contact' >
+							<structure name='individualName' usage='optional' test-method='isNameNotNull' >
+								<value get-method='getName' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+							</structure>
+							<structure name='organisationName' >
+								<structure field='Organisation' >
+									<value field='Text' name='CharacterString'  ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+							<structure name='positionName' usage='optional' test-method='isPositionNotNull'>
+								<value get-method='getPosition' name='CharacterString'  ns='http://www.isotc211.org/2005/gco' />
+							</structure>
+							<structure name='contactInfo' >
+								<structure name='CI_Contact' >
+									<structure name='phone' usage='optional' test-method='isPhoneNotNull' >
+										<structure name='CI_Telephone'>
+											<structure name='voice' usage='optional' test-method='isVoiceNotNull' >
+												<value get-method='getPhone' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+											<structure name='facsimile' usage='optional' test-method='isFaxNotNull' >
+												<value get-method='getFax' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+										</structure>
+									</structure>
+									<structure name='address' usage='optional' test-method='isAddressNotNull' >
+										<structure name='CI_Address'>
+											<structure name='deliveryPoint' usage='optional' test-method='isPostNotNull' >
+												<value get-method='getPostalAddress' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+											<structure name='city' usage='optional' test-method='isCityNotNull' >
+												<value get-method='getCity' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+											<structure name='administrativeArea' usage='optional' test-method='isStateNotNull' >
+												<value get-method='getState' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+											<structure name='postalCode' usage='optional' test-method='isPostCodeNotNull' >
+												<value get-method='getPostCode' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+											<structure name='country' usage='optional' test-method='isCountryNotNull' >
+												<value get-method='getCountry' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+											<structure name='electronicMailAddress' usage='optional' test-method='isEmailNotNull'>
+												<value get-method='getEmail' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+										</structure>
+									</structure>
+									<!-- Contstant Linkage as specified by client? -->
+									<structure name='onlineResource' >
+										<structure name='CI_OnlineResource' >
+											<structure name='linkage' >
+												<value name='URL' constant='http://www.land.vic.gov.au/spatial' />
+											</structure>
+											<structure name='description'>
+												<value name='CharacterString' constant='Web page listing describing spatial information in Department of Sustainability and Environment and Department of Primary Industries (DSE/DPI)' ns='http://www.isotc211.org/2005/gco' />
+											</structure>
+										</structure>
+									</structure>
+									<structure name='contactInstructions' >
+										<value constant='Please consult the above link for a list of Data Distributors from whom this resource may be purchased' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+									</structure>
+								</structure>
+							</structure>
+						</structure>
+						<structure name='role' field='role'>
+							<structure name='CI_RoleCode' value-style='attribute'>
+								<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode' />
+								<value name='codeListValue' get-method='getRole' />
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+
+				<structure name='resourceMaintenance' usage='optional' test-method='isMaintenanceFrequencyNotNull'>
+					<structure name='MD_MaintenanceInformation'>
+						<structure name='maintenanceAndUpdateFrequency'>
+							<structure name='MD_MaintenanceFrequencyCode' value-style='attribute'>
+								<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode' />
+								<value name='codeListValue' get-method='getMaintenanceFrequency' />
+							</structure>
+						</structure>
+
+						<!-- Commented to remove maintainance note from resource maintainance dated 28th Aug. 08-->
+						<!--<structure name='maintenanceNote'>
+							<value get-method='getMaintenanceNote' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+						</structure> -->
+
+					</structure>
+				</structure>
+
+				<structure name='resourceFormat'>
+					<structure name='MD_Format'>
+						<structure name='name'>
+							<value field='StoredDataFormat' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+						<structure name='version'>
+							<value name='CharacterString' constant='Unknown' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+					</structure>
+				</structure>
+
+				<structure name='descriptiveKeywords'>
+					<structure name='MD_Keywords'>
+						<collection get-method='getKeywords' item-type='java.lang.String' >
+							<structure name='keyword'>
+								<value name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+							</structure>
+						</collection>
+						<structure name='type'>
+							<structure name='MD_KeywordTypeCode' value-style='attribute'>
+								<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode' />
+								<value name='codeListValue' constant='theme' />
+								<value constant='theme' style='text' />
+							</structure>
+						</structure>
+						<structure name='thesaurusName'>
+							<structure name='CI_Citation'>
+								<structure name='title'>
+									<value name='CharacterString' constant='ANZLIC Search Words' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='date'>
+									<structure name='CI_Date'>
+										<structure name='date'>
+											<value name='Date' constant='2006-10-10' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='dateType'>
+											<structure name='CI_DateTypeCode' value-style='attribute'>
+												<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode'/>
+												<value name='codeListValue' constant='revision' />
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='edition'>
+									<value name='CharacterString' constant='Version 2' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='editionDate'>
+									<value name='Date' constant='2006-10-10' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='identifier'>
+									<structure name='MD_Identifier'>
+										<structure name='code'>
+											<value name='CharacterString' constant='http://www.ga.gov.au/anzmeta/anzlic-theme.lst' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+									</structure>
+								</structure>
+								<structure name='citedResponsibleParty'>
+									<structure name='CI_ResponsibleParty'>
+										<structure name='organisationName'>
+											<value name='CharacterString' constant='ANZLIC the Spatial Information Council' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='role'>
+											<structure name='CI_RoleCode' value-style='attribute'>
+												<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode'/>
+												<value name='codeListValue' constant='custodian' />
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+
+				<structure name='resourceConstraints'>
+					<structure name='MD_SecurityConstraints'>
+						<structure name='useLimitation'>
+							<value name='CharacterString' get-method='getUseLimitation' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+						<structure name='classification'>
+							<structure name='MD_ClassificationCode' value-style='attribute'>
+								<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ClassificationCode' />
+								<value name='codeListValue' get-method='getResourceConstraint'/>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+
+				<structure name='spatialRepresentationType'>
+					<structure name='MD_SpatialRepresentationTypeCode' value-style='attribute'>
+						<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode' />
+						<value name='codeListValue' get-method='getDataType' />
+					</structure>
+				</structure>
+
+				<structure name='spatialResolution' test-method='isScaleNotNull' usage='optional' >
+					<structure name='MD_Resolution' >
+						<structure name='distance' >
+							<structure name='Distance' ns='http://www.isotc211.org/2005/gco' >
+								<!-- TODO: Does "UOM" have a codelist? -->
+								<value name='uom' constant='meters'  style='attribute' />
+								<value get-method='getEquivalentScale' style='text' />
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+
+				<structure name='language'>
+					<value name='CharacterString' constant='eng' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+
+				<collection get-method='getTopicCategories' item-type='java.lang.String' >
+					<structure name='topicCategory'>
+						<value name='MD_TopicCategoryCode' />
+					</structure>
+				</collection>
+
+				<structure name='extent'>
+					<structure name='EX_Extent'>
+						<structure name='description' usage='optional' test-method='isExtentDescriptionNotNull'>
+							<value name='CharacterString' get-method='getExtentDescription' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+						<collection get-method='getExtents' item-type='au.gov.vic.delwp.Extent' >
+							<structure name='geographicElement' />
+						</collection>
+					</structure>
+				</structure>		
+				<structure name='extent'>
+					<structure name='EX_Extent'>
+						<structure name='temporalElement'>
+							<structure name='EX_TemporalExtent'>
+								<structure name='extent'>
+									<structure name='TimePeriod' ns='http://www.opengis.net/gml'>
+										<value name='id' constant='temporalExtent' style='attribute' ns='http://www.opengis.net/gml'/>
+										<structure name='beginPosition' ns='http://www.opengis.net/gml'>
+											<value name='indeterminatePosition' get-method='getIndeterminateBeginning' style='attribute' usage='optional' />
+											<value get-method='getBeginningDate' style='text' usage='optional' />
+										</structure>
+										<structure name='endPosition' ns='http://www.opengis.net/gml'>
+											<value name='indeterminatePosition' get-method='getIndeterminateEnding' style='attribute' usage='optional' />
+											<value get-method='getEndingDate' style='text' usage='optional' />
+										</structure>
+									</structure>
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+
+				<structure name='supplementalInformation'>
+					<value name='CharacterString' get-method='getSupplementalInformation' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+			</structure>
+		</structure>
+
+		<structure name='distributionInfo'>
+			<structure name='MD_Distribution'>
+				<!-- Cannot remove 'distributionFormat' if DataFormat is null because then we'll -->
+				<!-- fail ANZLIC Scematron validaiton. Hence instead a default value will be provided -->
+				<!-- in this situation. -->
+				<structure name='distributionFormat' >
+					<structure name='MD_Format'>
+						<structure name='name'>
+							<value name='CharacterString' get-method='getDataFormat' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+						<structure name='version'>
+							<value name='CharacterString' constant='none' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+					</structure>
+				</structure>
+				<structure name='transferOptions'>
+					<structure name='MD_DigitalTransferOptions'>
+						<structure name='onLine'>
+							<structure name='CI_OnlineResource'>
+								<structure name='linkage'>
+									<value name='URL' constant='http://www.land.vic.gov.au/spatial' />
+								</structure>
+								<structure name='description'>
+									<value name='CharacterString' constant='Web page listing describing spatial information in Department of Sustainability and Environment and Department of Primary Industries (DSE/DPI)' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+			</structure>
+		</structure>
+
+		<!--<structure name='dataQualityInfo' usage='optional' test-method='isDataQualityInfoNotNull'>-->
+		<structure name='dataQualityInfo'>
+			<structure name='DQ_DataQuality'>
+				<structure name='scope'>
+					<structure name='DQ_Scope'>
+						<structure name='level'>
+							<structure name='MD_ScopeCode' value-style='attribute'>
+								<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode'/>
+								<value name='codeListValue' constant='dataset' />
+								<value name='codeSpace' constant='domainCode' />
+								<value constant='dataset' style='text' />
+								<!-- This is more correct but is causing schematron validation issues when -->
+								<!-- heirarchyLevel is not 'dataset' or 'series' - the DQ_Scope.levelDescription -->
+								<!-- becomes required if this is the case.  -->
+								<!-- <value name='codeListValue' get-method='getHierarchyLevel' /> -->
+							</structure>
+						</structure>
+						<structure name='levelDescription'>
+							<structure name='MD_ScopeDescription'>
+								<structure name='dataset'>
+							        	<value name='CharacterString' field='Title' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+				<structure name='report'>
+					<structure name='DQ_NonQuantitativeAttributeAccuracy'>
+						<structure name='result'>
+							<structure name='DQ_ConformanceResult'>
+								<structure name='specification'>
+									<structure name='CI_Citation'>
+										<structure name='title'>
+											<value name='CharacterString' constant='Unknown' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='date'>
+											<structure name="CI_Date">
+												<structure name='date' value-style='attribute'>
+													<value name='nilReason' constant='UnknownDate' ns='http://www.isotc211.org/2005/gco' />
+												</structure>
+												<structure name='dateType' value-style='attribute'>
+													<structure name='CI_DateTypeCode' value-style='attribute'>
+														<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode'/>
+														<value name='codeListValue' constant='creation' />
+													</structure>
+												</structure>
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='explanation'>
+									<value field='AttributeAccuracy' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='pass'>
+									<value name='Boolean' constant='1' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+				<structure name='report'>
+					<structure name='DQ_AbsoluteExternalPositionalAccuracy'>
+						<structure name='result'>
+							<structure name='DQ_ConformanceResult'>
+								<structure name='specification'>
+									<structure name='CI_Citation'>
+										<structure name='title'>
+											<value name='CharacterString' constant='Unknown' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='date'>
+											<structure name="CI_Date">
+												<structure name='date' value-style='attribute'>
+													<value name='nilReason' constant='UnknownDate' ns='http://www.isotc211.org/2005/gco' />
+												</structure>
+												<structure name='dateType' value-style='attribute'>
+													<structure name='CI_DateTypeCode' value-style='attribute'>
+														<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode'/>
+														<value name='codeListValue' constant='creation' />
+													</structure>
+												</structure>
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='explanation'>
+									<value field='PositionalAccuracy' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='pass'>
+									<value name='Boolean' constant='1' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+				<structure name='report'>
+					<structure name='DQ_ConceptualConsistency'>
+						<structure name='result'>
+							<structure name='DQ_ConformanceResult'>
+								<structure name='specification'>
+									<structure name='CI_Citation'>
+										<structure name='title'>
+											<value name='CharacterString' constant='Unknown' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='date'>
+											<structure name="CI_Date">
+												<structure name='date' value-style='attribute'>
+													<value name='nilReason' constant='UnknownDate' ns='http://www.isotc211.org/2005/gco' />
+												</structure>
+												<structure name='dateType' value-style='attribute'>
+													<structure name='CI_DateTypeCode' value-style='attribute'>
+														<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode'/>
+														<value name='codeListValue' constant='creation' />
+													</structure>
+												</structure>
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='explanation'>
+									<value field='LogicalConsistency' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='pass'>
+									<value name='Boolean' constant='1' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+				<structure name='report'>
+					<structure name='DQ_CompletenessOmission'>
+						<structure name='result'>
+							<structure name='DQ_ConformanceResult'>
+								<structure name='specification'>
+									<structure name='CI_Citation'>
+										<structure name='title'>
+											<value name='CharacterString' constant='Unknown' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='date'>
+											<structure name="CI_Date">
+												<structure name='date' value-style='attribute'>
+													<value name='nilReason' constant='UnknownDate' ns='http://www.isotc211.org/2005/gco' />
+												</structure>
+												<structure name='dateType' value-style='attribute'>
+													<structure name='CI_DateTypeCode' value-style='attribute'>
+														<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode'/>
+														<value name='codeListValue' constant='creation' />
+													</structure>
+												</structure>
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='explanation'>
+									<value get-method='getCompletenessOmission' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='pass'>
+									<value name='Boolean' constant='1' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+				<structure name='report' usage='optional' test-method='isCompletenessClassificationNotNull'>
+					<structure name='DQ_CompletenessCommission'>
+						<structure name='result'>
+							<structure name='DQ_ConformanceResult'>
+								<structure name='specification'>
+									<structure name='CI_Citation'>
+										<structure name='title'>
+											<value name='CharacterString' constant='Unknown' ns='http://www.isotc211.org/2005/gco' />
+										</structure>
+										<structure name='date'>
+											<structure name="CI_Date">
+												<structure name='date' value-style='attribute'>
+													<value name='nilReason' constant='UnknownDate' ns='http://www.isotc211.org/2005/gco' />
+												</structure>
+												<structure name='dateType' value-style='attribute'>
+													<structure name='CI_DateTypeCode' value-style='attribute'>
+														<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode'/>
+														<value name='codeListValue' constant='creation' />
+													</structure>
+												</structure>
+											</structure>
+										</structure>
+									</structure>
+								</structure>
+								<structure name='explanation'>
+									<value field='CompletenessClassification' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='pass'>
+									<value name='Boolean' constant='1' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+				</structure>
+				<structure name='lineage' usage='optional' test-method='isSourceDataNotNull' >
+					<structure name='LI_Lineage'>
+						<structure name='statement'>
+							<value get-method='getSourceData' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+						</structure>
+
+						<structure name='processStep' usage='optional' test-method='isProcessingStepsNotNull'>
+							<structure name='LI_ProcessStep'>
+								<structure name='description'>
+									<value field='ProcessingSteps' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+
+						<structure name='source' usage='optional' test-method='isCollectionMethodNotNull'>
+							<structure name='LI_Source'>
+								<structure name='description'>
+									<value get-method='getCollectionMethod' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+
+
+						<collection get-method='getCitations' item-type='au.gov.vic.delwp.Citation' >
+							<structure name='source' />
+						</collection>
+					</structure>
+				</structure>
+			</structure>
+		</structure>
+
+		<structure name='metadataConstraints'>
+			<structure name='MD_SecurityConstraints'>
+				<structure name='useLimitation'>
+					<value name='CharacterString' get-method='getUseLimitation' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+				<structure name='classification'>
+					<structure name='MD_ClassificationCode' value-style='attribute'>
+						<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ClassificationCode' />
+						<value name='codeListValue' get-method='getMetadataAccessClassification'/>
+					</structure>
+				</structure>
+			</structure>
+		</structure>
+
+		<structure name='metadataMaintenance'>
+			<structure name='MD_MaintenanceInformation'>
+				<structure name='maintenanceAndUpdateFrequency'>
+					<structure name='MD_MaintenanceFrequencyCode' value-style='attribute'>
+						<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode' />
+						<value name='codeListValue' constant='unknown' />
+					</structure>
+				</structure>
+				<structure name='maintenanceNote'>
+					<value get-method='getMaintenanceNote' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+			</structure>
+		</structure>
+		
+
+	</mapping>
+
+	<mapping class='au.gov.vic.delwp.Extent' abstract='true'>
+		<structure name='EX_GeographicBoundingBox'>
+			<structure name='extentTypeCode'>
+				<value name='Boolean' constant='1' ns='http://www.isotc211.org/2005/gco' />
+              		</structure>
+			<structure name='westBoundLongitude'>
+				<value name='Decimal' get-method='getWestLong' ns='http://www.isotc211.org/2005/gco'/>
+			</structure>
+			<structure name='eastBoundLongitude'>
+				<value name='Decimal' get-method='getEastLong' ns='http://www.isotc211.org/2005/gco'/>
+			</structure>
+			<structure name='southBoundLatitude'>
+				<value name='Decimal' get-method='getSouthLat' ns='http://www.isotc211.org/2005/gco'/>
+			</structure>
+			<structure name='northBoundLatitude'>
+				<value name='Decimal' get-method='getNorthLat' ns='http://www.isotc211.org/2005/gco'/>
+			</structure>
+		</structure>
+	</mapping>
+
+	<mapping class='au.gov.vic.delwp.Citation' abstract='true'>
+		<structure name='LI_Source'>
+			<structure name="description">
+				<value name='CharacterString' constant="Source description not available" ns='http://www.isotc211.org/2005/gco' />
+			</structure>
+			<structure name='sourceCitation'>
+				<structure name='CI_Citation'>
+					<structure name='title' usage='optional' test-method='isTitleNotNull'>
+						<value field='Title' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+					</structure>
+					<structure name='date' usage='optional' test-method='isYearPublishedNotNull'>
+						<structure name='CI_Date'>
+							<structure name='date'>
+								<value name='Date' field='YearPublished'  ns='http://www.isotc211.org/2005/gco' />
+							</structure>
+							<structure name='dateType'>
+								<structure name='CI_DateTypeCode' value-style='attribute'>
+									<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode' />
+									<value name='codeListValue' constant='publication' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+					<structure name='citedResponsibleParty'>
+						<structure name='CI_ResponsibleParty'>
+							<structure name='organisationName'>
+								<value get-method='getCorporateAuthor' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+							</structure>
+							<structure name='role'>
+								<structure name='CI_RoleCode' value-style='attribute'>
+									<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode' />
+									<value name='codeListValue' constant='publisher' />
+								</structure>
+							</structure>
+						</structure>
+					</structure>
+					<structure name='otherCitationDetails' usage='optional' test-method='isAuthorNotNull'>
+						<value get-method='getOtherCitationDetails' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+					</structure>
+					<structure name='ISBN' usage='optional' test-method='isIsbnNotNull'>
+						<value field='Isbn' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+					</structure>
+				</structure>
+			</structure>
+		</structure>
+	</mapping>
+
+	<mapping class='au.gov.vic.delwp.DatasetContact' abstract='true'>
+		<structure name='CI_ResponsibleParty' >
+			<structure field='contact'>
+				<structure name='individualName' usage='optional' test-method='isNameNotNull' >
+					<value get-method='getName' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+				<structure name='organisationName' >
+					<structure field='Organisation' >
+						<value field='Text' name='CharacterString'  ns='http://www.isotc211.org/2005/gco' />
+					</structure>
+				</structure>
+				<structure name='positionName' usage='optional' test-method='isPositionNotNull'>
+					<value get-method='getPosition' name='CharacterString'  ns='http://www.isotc211.org/2005/gco' />
+				</structure>
+				<structure name='contactInfo' usage='optional' test-method='isContactInfoNotNull' >
+					<structure name='CI_Contact' >
+						<structure name='phone' usage='optional' test-method='isPhoneNotNull' >
+							<structure name='CI_Telephone'>
+								<structure name='voice' usage='optional' test-method='isVoiceNotNull' >
+									<value get-method='getPhone' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='facsimile' usage='optional' test-method='isFaxNotNull' >
+									<value get-method='getFax' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+						<structure name='address' usage='optional' test-method='isAddressNotNull'>
+							<structure name='CI_Address'>
+								<structure name='deliveryPoint' usage='optional' test-method='isPostNotNull' >
+									<value get-method='getPostalAddress' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='city' usage='optional' test-method='isCityNotNull' >
+									<value get-method='getCity' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='administrativeArea' usage='optional' test-method='isStateNotNull' >
+									<value get-method='getState' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='postalCode' usage='optional' test-method='isPostCodeNotNull' >
+									<value get-method='getPostCode' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='country' usage='optional' test-method='isCountryNotNull' >
+									<value get-method='getCountry' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+								<structure name='electronicMailAddress' usage='optional' test-method='isEmailNotNull'>
+									<value get-method='getEmail' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+								</structure>
+							</structure>
+						</structure>
+						<!-- Contstant Linkage as specified by client? -->
+						<!-- Removed from generic mapping of CI_ResponsibleParty at client request -->
+						<!-- structure name='onlineResource'>
+						<structure name='CI_OnlineResource'>
+							<structure name='linkage' >
+								<value name='URL' constant='http://www.land.vic.gov.au/spatial' />
+							</structure>
+						</structure>
+					</structure-->
+						<!-- Removed from generic mapping of CI_ResponsibleParty at client request -->
+						<!--structure name='contactInstructions'>
+						<value constant='Please consult the above link for a list of Data Distributors from whom this resource may be purchased' name='CharacterString' ns='http://www.isotc211.org/2005/gco' />
+					</structure-->
+					</structure>
+				</structure>
+			</structure>
+			<structure name='role' field='role'>
+				<structure name='CI_RoleCode' value-style='attribute'>
+					<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode' />
+					<value name='codeListValue' get-method='getRole' />
+				</structure>
+			</structure>
+		</structure>
+	</mapping>
+</binding>
