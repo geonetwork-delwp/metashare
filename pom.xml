@@ -1,0 +1,168 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>au.gov.vic.delwp.metartool</groupId>
+  <artifactId>metartool</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>metartool</name>
+  <description></description>
+
+  <url>http://github.com/geonetwork-delwp/metartool</url>
+
+  <issueManagement>
+    <system>git</system>
+    <url>http://github.com/geonetwork-delwp/metartool</url>
+  </issueManagement>
+
+  <scm>
+    <connection>scm:git:http://github.com/geonetwork-delwp/metartool</connection>
+    <url>github.com/geonetwork-delwp/metartool</url>
+  </scm>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.1</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <transformers>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>au.gov.vic.delwp.FileXMLWriter</mainClass>
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
+
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+  </properties>
+
+<!-- 
+$JAVA_HOME/bin/java -Xbootclasspath/p:lib/jaxp-api.jar -cp classes:lib/hibernate3.jar:lib/jug-lgpl-2.0.0.jar:lib/jaxp-ri.jar:lib/dom4j-1.6.1.jar:lib/commons-logging-1.0.4.jar:lib/commons-collections-2.1.1.jar:lib/jibx-run.jar:lib/cglib-2.1.3.jar:lib/asm.jar:lib/jta.jar:lib/antlr-2.7.6.jar:lib/xdb.jar:lib/xmlparserv2.jar:lib/jconn3.jar:lib/jTDS3.jar:lib/ojdbc14.jar
+-->
+  <dependencies>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate</artifactId>
+        <version>3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>2.1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.0.4</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.parsers</groupId>
+        <artifactId>jaxp-ri</artifactId>
+        <version>1.4.2</version>
+    </dependency>
+    <dependency>
+        <groupId>dom4j</groupId>
+        <artifactId>dom4j</artifactId>
+        <version>1.6.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.jibx</groupId>
+        <artifactId>jibx-run</artifactId>
+        <version>1.1.6</version>
+    </dependency>
+    <dependency>
+        <groupId>cglib</groupId>
+        <artifactId>cglib</artifactId>
+        <version>2.1_3</version>
+    </dependency>
+<!-- 
+$JAVA_HOME/bin/java -Xbootclasspath/p:lib/jaxp-api.jar -cp classes:lib/hibernate3.jar:lib/jug-lgpl-2.0.0.jar:lib/jaxp-ri.jar:lib/dom4j-1.6.1.jar:lib/commons-logging-1.0.4.jar:lib/commons-collections-2.1.1.jar:lib/jibx-run.jar:lib/cglib-2.1.3.jar:lib/asm.jar:lib/jta.jar:lib/antlr-2.7.6.jar:lib/xdb.jar:lib/xmlparserv2.jar:lib/jconn3.jar:lib/jTDS3.jar:lib/ojdbc14.jar
+-->
+    <dependency>
+        <groupId>org.objectweb.asm</groupId>
+        <artifactId>com.springsource.org.objectweb.asm.commons</artifactId>
+        <version>2.2.3</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.transaction</groupId>
+        <artifactId>jta</artifactId>
+        <version>1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>antlr</groupId>
+        <artifactId>antlr</artifactId>
+        <version>2.7.6</version>
+    </dependency>
+    <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc14</artifactId>
+        <version>1.4</version>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>local-repo</id>
+      <name>local-repo</name>
+      <url>file:${project.basedir}/local-repo</url>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>central</name>
+      <url>http://central.maven.org/maven2/</url>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>spring</id>
+      <name>spring</name>
+      <url>http://repo.spring.io/plugins-release/</url>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>geotools</id>
+      <name>Geotools repository</name>
+      <url>http://download.osgeo.org/webdav/geotools/</url>
+    </repository>
+  </repositories>
+  
+</project>
