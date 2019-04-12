@@ -1,0 +1,12 @@
+MS_MAINT_FREQ_ID|MAINTENANCE_FREQUENCY
+1|annually
+2|asNeeded
+3|biannually
+4|continual
+5|daily
+6|irregular
+7|monthly
+8|unknown
+9|notPlanned
+10|quarterly
+11|weekly

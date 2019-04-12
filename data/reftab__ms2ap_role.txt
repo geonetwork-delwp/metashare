@@ -1,0 +1,14 @@
+MS_CONTACT_ROLE_ID|ROLE_CODE
+1|owner
+2|custodian
+3|processor
+4|principalInvestigator
+5|resourceProvider
+6|Not Relevant - Ignore
+7|Not Relevant - Ignore
+8|Not Relevant - Ignore
+9|Out-of-date - Ignore
+10|author
+11|user
+12|distributor
+13|pointOfContact

@@ -1,0 +1,12 @@
+MS_OBJECT_TYPE_ID|SPATIAL_REPRESENTATION_TYPE
+1|vector
+2|grid
+3|grid
+4|vector
+5|vector
+6|vector
+7|vector
+8|textTable
+9|textTable
+10|vector
+11|textTable

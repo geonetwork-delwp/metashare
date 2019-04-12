@@ -1,0 +1,167 @@
+AGRICULTURE|farming
+AGRICULTURE Crops|farming
+AGRICULTURE Horticulture|farming
+AGRICULTURE Irrigation|farming
+AGRICULTURE Livestock|farming
+ATMOSPHERE|climatologyMeteorologyAtmosphere
+ATMOSPHERE Air Quality|climatologyMeteorologyAtmosphere
+ATMOSPHERE Greenhouse|climatologyMeteorologyAtmosphere
+ATMOSPHERE Ozone|climatologyMeteorologyAtmosphere
+ATMOSPHERE Pressure|climatologyMeteorologyAtmosphere
+BOUNDARIES|boundaries
+BOUNDARIES Administrative|boundaries
+BOUNDARIES Biophysical|boundaries
+BOUNDARIES Biophysical|biota
+BOUNDARIES Cultural|boundaries
+BOUNDARIES Cultural|society
+CLIMATE AND WEATHER|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER Climate change|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER Drought|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER El Nino|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER Extreme weather events|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER Meteorology|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER Radiation|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER Rainfall|climatologyMeteorologyAtmosphere
+CLIMATE AND WEATHER Temperature|climatologyMeteorologyAtmosphere
+DEMOGRAPHY|society
+DISEASE|health
+DISEASE|farming
+ECOLOGY|biota
+ECOLOGY Community|biota
+ECOLOGY Ecosystem|biota
+ECOLOGY Habitat|biota
+ECOLOGY Landscape|biota
+ENERGY|utilitiesCommunication
+ENERGY Coal|utilitiesCommunication
+ENERGY Electricity|utilitiesCommunication
+ENERGY Petroleum|utilitiesCommunication
+ENERGY Renewable|utilitiesCommunication
+ENERGY Use|utilitiesCommunication
+FAUNA|biota
+FAUNA Exotic|biota
+FAUNA Insects|biota
+FAUNA Invertebrates|biota
+FAUNA Native|biota
+FAUNA Vertebrates|biota
+FISHERIES|farming
+FISHERIES Aquaculture|farming
+FISHERIES Freshwater|farming
+FISHERIES Marine|farming
+FISHERIES Recreational|society
+FLORA|biota
+FLORA Exotic|biota
+FLORA Native|biota
+FORESTS|farming
+FORESTS|biota
+FORESTS Agriforestry|farming
+FORESTS Natural|biota
+FORESTS Plantation|farming
+GEOSCIENCES|geoscientificInformation
+GEOSCIENCES Geochemistry|geoscientificInformation
+GEOSCIENCES Geology|geoscientificInformation
+GEOSCIENCES Geomorphology|geoscientificInformation
+GEOSCIENCES Geophysics|geoscientificInformation
+GEOSCIENCES Hydrogeology|geoscientificInformation
+HAZARDS|environment
+HAZARDS Cyclones|environment
+HAZARDS Drought|environment
+HAZARDS Earthquake|environment
+HAZARDS Fire|environment
+HAZARDS Flood|environment
+HAZARDS Landslip|environment
+HAZARDS Manmade|society
+HAZARDS Pests|environment
+HAZARDS Severe local storms|environment
+HAZARDS Tsunamis|environment
+HEALTH|health
+HERITAGE|society
+HERITAGE Aboriginal|society
+HERITAGE Architectural|society
+HERITAGE Natural|environment
+HERITAGE World|environment
+HUMAN ENVIRONMENT|structure
+HUMAN ENVIRONMENT Economics|structure
+HUMAN ENVIRONMENT Housing|structure
+HUMAN ENVIRONMENT Housing|planningCadastre
+HUMAN ENVIRONMENT Livability|structure
+HUMAN ENVIRONMENT Planning|structure
+HUMAN ENVIRONMENT Structures and Facilities|structure
+HUMAN ENVIRONMENT Urban Design|structure
+INDUSTRY|economy
+INDUSTRY Manufacturing|economy
+INDUSTRY Mining|economy
+INDUSTRY Other|economy
+INDUSTRY Primary|economy
+INDUSTRY Service|economy
+LAND|environment
+LAND Cadastre|planningCadastre
+LAND Cover|biota
+LAND Cover|environment
+LAND Geodesy|geoscientificInformation
+LAND Geography|geoscientificInformation
+LAND Ownership|planningCadastre
+LAND Topography|elevation
+LAND Topography|environment
+LAND Topography|geoscientificInformation
+LAND Use|society
+LAND Valuation|planningCadastre
+LAND Valuation|economy
+MARINE|oceans
+MARINE Biology|oceans
+MARINE Coasts|oceans
+MARINE Estuaries|oceans
+MARINE Geology and Geophysics|oceans
+MARINE Geology and Geophysics|geoscientificInformation
+MARINE Human Impacts|oceans
+MARINE Meteorology|oceans
+MARINE Meteorology|climatologyMeteorologyAtmosphere
+MARINE Reefs|oceans
+MINERALS|geoscientificInformation
+MOLECULAR BIOLOGY|biota
+MOLECULAR BIOLOGY Genetics|biota
+OCEANOGRAPHY|geoscientificInformation
+OCEANOGRAPHY|oceans
+OCEANOGRAPHY Chemical|geoscientificInformation
+OCEANOGRAPHY Chemical|oceans
+OCEANOGRAPHY Physical|geoscientificInformation
+OCEANOGRAPHY Physical|oceans
+PHOTOGRAPHY AND IMAGERY|imageryBaseMapsEarthCover
+PHOTOGRAPHY AND IMAGERY Aerial|imageryBaseMapsEarthCover
+PHOTOGRAPHY AND IMAGERY Remote Sensing|imageryBaseMapsEarthCover
+PHOTOGRAPHY AND IMAGERY Satellite|imageryBaseMapsEarthCover
+POLLUTION|environment
+POLLUTION Air|environment
+POLLUTION Noise|environment
+POLLUTION Soil|environment
+POLLUTION Water|environment
+SOIL|geoscientificInformation
+SOIL Biology|biota
+SOIL Chemistry|geoscientificInformation
+SOIL Erosion|geoscientificInformation
+SOIL Physics|geoscientificInformation
+TRANSPORTATION|transportation
+TRANSPORTATION Air|transportation
+TRANSPORTATION Land|transportation
+TRANSPORTATION Marine|transportation
+UTILITIES|utilitiesCommunication
+VEGETATION|biota
+VEGETATION Floristic|biota
+VEGETATION Structural|biota
+WASTE|environment
+WASTE Greenhouse gas|environment
+WASTE Heat|environment
+WASTE Liquid|environment
+WASTE Sewage|environment
+WASTE Solid|environment
+WASTE Toxic|environment
+WATER|inlandWaters
+WATER Groundwater|inlandWaters
+WATER Hydrochemistry|inlandWaters
+WATER Hydrology|inlandWaters
+WATER Lakes|inlandWaters
+WATER Quality|inlandWaters
+WATER Rivers|inlandWaters
+WATER Salinity|inlandWaters
+WATER Supply|inlandWaters
+WATER Surface|inlandWaters
+WATER Wetlands|inlandWaters
