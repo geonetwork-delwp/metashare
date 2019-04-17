@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC '-//Hibernate/Hibernate Mapping DTD 3.0//EN' 'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<!--<hibernate-mapping package='au.gov.vic.delwp' default-access='field' schema='metadata.dbo'>-->
+<hibernate-mapping package='au.gov.vic.delwp' default-access='field'>
+
+	<class name='DatasetContact' table='dataset_contact' mutable='false' >
+		<composite-id name='ID' class='DatasetContactID'>
+			<key-property name='contactID' column='contact_id' />
+			<key-property name='datasetID' column='dataset_id'  />
+			<key-property name='roleID' column='contact_role_id' />
+		</composite-id>
+		<many-to-one name='dataset' class='Dataset' column='dataset_id' unique='true' not-null='true' insert='false' update='false' />
+		<many-to-one name='contact' class='Contact' column='contact_id' unique='true' not-null='true' insert='false' update='false' />
+		<many-to-one name='role' class='ContactRole' column='contact_role_id' unique='true'	not-null='true' insert='false' update='false' />
+	</class>
+
+	<class name='Dataset' table='dataset' mutable='false' where="name != 'DUMMYDONTDEL'">
+		<id name='ID' column='dataset_id' >
+			<generator class='native' />
+		</id>
+		<property name='Title' column='title' />
+		<property name='Name' column='name' />
+		<property name='Abstract' column='abstract' />
+		<property name='Purpose' column='purpose' />
+		<property name='Status' column='status_id' />
+		<property name='StoredDataFormat' column='stored_data_format' />
+		<property name='AccessConstraint' column='access_constraint' />
+		<property name='UseConstraint' column='use_constraint' />
+		<property name='SpecialIpDetail' column='special_ip_detail' />
+		<property name='MaintenanceFrequency' column='maint_freq_id' />
+		<property name='AccessId' column='access_id' />
+		<property name='AccessAdvertScopeId' column='access_advert_scope_id' />
+		<property name='PositionalAccuracy' column='positional_accuracy' />
+		<property name='AttributeAccuracy' column='attribute_accuracy' />
+		<property name='LogicalConsistency' column='logical_consistency' />
+		<property name='Completeness' column='completeness' />
+		<property name='CompletenessCoverage' column='completeness_coverage' />
+		<property name='CompletenessVerification' column='completeness_verification' />
+		<property name='CompletenessClassification' column='completeness_classification' />
+		<property name='History' column='history' />
+		<property name='Credit' column='credit' />
+		<property name='LayerRelationship' column='layer_relationship' />
+		<property name='DesignIssuesCurrent' column='design_issues_current' />
+		<property name='DesignIssuesFuture' column='design_issues_future' />
+		<property name='AdditionalMetadata' column='additional_metadata' />
+		<property name='AddMdUrl' column='add_md_url' />
+		<property name='LastUpdated' column='last_update_date' />
+		<property name='LastUpdateUser' column='last_update_user' />
+		<property name='BeginningDate' column='begin_date' />
+		<property name='EndingDate' column='end_date' />
+		<property name='SourceDataScale' column='source_data_scale' />
+		<property name='ProcessingSteps' column='lineage_processing_steps' />
+		<property name='SourceData' column='lineage_source_data' />
+		<property name='CollectionMethod' column='lineage_data_collection_method' />
+		<property name='DataFormat' column='available_format_type' />
+		<property name='SeriesID' column='series_id' />
+		<property name='ANZLIC_ID' column='anzlic_id' />
+		<property name='DataType' column='object_type_id' />
+		<set name='Citations'>
+			<key column='dataset_id' />
+			<one-to-many class='Citation' />
+		</set>
+		<set name='RelatedDocuments'>
+			<key column='dataset_id' />
+			<one-to-many class='RelatedDocument' not-found='ignore' />
+		</set>
+		<set name='Contacts'>
+			<key column='dataset_id' />
+			<one-to-many class='DatasetContact' />
+		</set>
+		<set name='ANZLICSearchWords'>
+			<key column='dataset_id' />
+			<one-to-many class='SearchWordFull' />
+		</set>
+		<set name='GeographicNameDataset'>
+			<key column='dataset_id' />
+			<one-to-many entity-name='GeographicNameDataset' not-found='ignore' />
+		</set>
+		<set name='GeographicExtentPolygon'>
+			<key column='dataset_id' />
+			<one-to-many entity-name='GeographicExtentPolygon' not-found='ignore' />
+		</set>
+		<many-to-one name='Datum' entity-name='Datum' column='datum_id' unique='true' />
+		<many-to-one name='Projection' entity-name='Projection' column='projection_id' unique='true' />
+		<many-to-one name='DatasetOriginality' entity-name='DatasetOriginality' column='lineage_data_originality_id' unique='true' not-found='ignore' />
+		<many-to-one name='DatasetOrganisation' entity-name='Organisation' column='owner_id' unique='true' />
+	</class>
+
+	<class name='Citation' table='citation' lazy='false' mutable='false' >
+		<id name='ID' column='citation_id'>
+			<generator class='native' />
+		</id>
+		<property name='Author' column='author' />
+		<property name='Title' column='title' />
+		<property name='SeriesTitle' column='series_title' />
+		<property name='Pages' column='pages' />
+		<property name='CorporateAuthor' column='corporate_author' />
+		<property name='PublisherName' column='publisher_name' />
+		<property name='YearPublished' column='year_published' />
+		<property name='Isbn' column='isbn' />
+		<property name='AdditionalDetail' column='additional_detail' />
+	</class>
+
+	<class name='RelatedDocument' table='related_documents' lazy='false' mutable='false' >
+		<id name='ID' column='related_documents_id' >
+			<generator class='native' />
+		</id>
+		<property name='Path' column='path' />
+		<property name='RelDocCurrent' column='rel_doc_current' />
+		<property name='Description' column='description' />
+		<property name='UnixPrefix' column='unix_prefix' />
+		<property name='PcPrefix' column='pc_prefix' />
+	</class>
+
+	<class name='Contact' table='contact' lazy='false' where='organisation_id IS NOT NULL' mutable='false' >
+		<id name='ID' column='contact_id' >
+			<generator class='native' />
+		</id>
+		<property name='Email' column='contact_email_address' />
+		<property name='Salutation' column='salutation' />
+		<property name='FirstName' column='first_name' />
+		<property name='LastName' column='surname' />
+		<property name='Position' column='title' />
+		<property name='Phone' column='phone_1' />
+		<property name='Fax' column='fax' />
+		<property name='Mail1' column='mail_address_1' />
+		<property name='Mail2' column='mail_address_2' />
+		<property name='Locality' column='mail_suburb' />
+		<property name='Postcode' column='mail_postcode' />
+		<property name='State' column='state' />
+		<property name='Country' column='country' />
+		<many-to-one name='Organisation' entity-name='Organisation' column='organisation_id' unique='true' />
+		<many-to-one name='Division' entity-name='Division' column='division_id' unique='true' />
+		<many-to-one name='Unit' entity-name='BusinessUnit' column='business_unit_id' unique='true' not-found='ignore' />
+		
+		<!-- These JOINs are broken! Join is occuring on contact.contact_id = Organisation.organisation_id!!! -->
+		<!--
+		<join table='Organisation' >
+			<key column='organisation_id' />
+			<property name='Organisation' column='description' />
+		</join>
+		<join table='Division'>
+			<key column='division_id' />
+			<property name='Division' column='name' />
+		</join>
+		<join table='Business_Unit'>
+			<key column='business_unit_id' />
+			<property name='Unit' column='description' />
+		</join>
+		-->
+		<!--
+		<set name='Datasets' >
+			<key column='contact_id' />
+			<one-to-many class='Dataset' />
+		</set>
+		-->
+	</class>
+
+	<class name='ContactRole' table='contact_role' lazy='false' mutable='false' >
+		<id name='ID' column='contact_role_id' >
+			<generator class='native' />
+		</id>
+		<property name='Description' column='role_type' />
+		<!--
+		<set name='Contacts'>
+			<key column='contact_role_id' />
+			<one-to-many class='DatasetContact' />
+		</set>
+		-->
+	</class>
+
+	<class name='SearchWordFull' table='search_word_full' lazy='false' mutable='false' >
+		<composite-id name='ID' class='SearchWordFullID' >
+			<key-property name='DatasetID' column='dataset_id' />
+			<key-property name='SearchWordID' column='search_word_id' />
+			<!-- Can't have SearchWordQualifierID as a key-property because it is nullable -->
+			<!--<key-property name='SearchWordQualifierID' column='search_word_qualifier_id' />-->
+		</composite-id>
+		<many-to-one name='SearchWord' column='search_word_id' unique='true' insert='false' update='false' not-null='false' />
+	</class>
+
+	<class name='ANZLICSearchWord' table='search_word' lazy='false' mutable='false' >
+		<id name='ID' column='search_word_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='description' />
+	</class>
+	
+	
+	<class entity-name='Organisation' name='IDnText' table='organisation' lazy='false' mutable='false' >
+		<id name='ID' column='organisation_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='description' />
+	</class>
+
+	<class entity-name='BusinessUnit' name='IDnText' table='business_unit' lazy='false' mutable='false' >
+		<id name='ID' column='business_unit_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='description' />
+	</class>
+
+	<class entity-name='Division' name='IDnText' table='division' lazy='false' mutable='false' >
+		<id name='ID' column='division_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='name' />
+	</class>
+
+	<class entity-name='Datum' name='IDnText' table='datum' lazy='false' mutable='false' >
+		<id name='ID' column='datum_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='abbreviation' />
+	</class>
+
+	<class entity-name='Projection' name='IDnText' table='projection' lazy='false' mutable='false' >
+		<id name='ID' column='projection_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='abbreviation' />
+	</class>
+
+	<class entity-name='DatasetOriginality' name='IDnText' table='lineage_originality' lazy='false' mutable='false' >
+		<id name='ID' column='lineage_data_originality_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='description' />
+	</class>
+	
+	<class entity-name='GeographicExtentName' name='Extent' table='geographic_extent_name' lazy='false' mutable='false' >
+		<composite-id name='ID' class='ExtentID' >
+			<key-property name='DatasetID' column='ge_name_id' />
+		</composite-id>
+		<property name='WestLong' column='long_min' />
+		<property name='EastLong' column='long_max' />
+		<property name='SouthLat' column='lat_min' />
+		<property name='NorthLat' column='lat_max' />
+		<property name='Description' column='description' />
+		<many-to-one name='Category' entity-name='ExtentCategory' column='category_id' unique='true' />
+	</class>
+	
+	<class entity-name='ExtentCategory' name='IDnText' table='ge_name_category' lazy='false' mutable='false' >
+		<id name='ID' column='category_id'>
+			<generator class='native' />
+		</id>
+		<property name='Text' column='description' />
+	</class>
+
+	<class entity-name='GeographicNameDataset' name='NameDataset' table='ge_name_dataset' lazy='false' mutable='false' >
+		<composite-id name='ID' class='GeographicNameDatasetID' >
+			<key-property name='DatasetID' column='dataset_id' />
+			<key-property name='GeNameID' column='ge_name_id' />
+		</composite-id>
+		<many-to-one name='ExtentDetails' entity-name='GeographicExtentName' column='ge_name_id' unique='true' insert='false' update='false' />
+	</class>
+
+	<class entity-name='GeographicExtentPolygon' name='Extent' table='geographic_extent_polygon' lazy='false' mutable='false' >
+		<composite-id name='ID' class='ExtentID' >
+			<key-property name='DatasetID' column='dataset_id' />
+			<key-property name='OtherID' column='coordinate_number' />
+		</composite-id>
+		<property name='WestLong' column='longitude' insert='false' update='false' />
+		<property name='EastLong' column='longitude' insert='false' update='false' />
+		<property name='SouthLat' column='latitude' insert='false' update='false' />
+		<property name='NorthLat' column='latitude' insert='false' update='false' />
+	</class>
+
+</hibernate-mapping>

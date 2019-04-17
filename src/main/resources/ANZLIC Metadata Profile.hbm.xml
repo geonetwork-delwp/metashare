@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC '-//Hibernate/Hibernate Mapping DTD 3.0//EN' 'http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd'>
+<hibernate-mapping package='au.gov.vic.delwp' default-access='field'>
+
+	<class name='ANZMetadataProfile' table='ANZMeta_Profile' mutable='true' >
+		<id name='ID' column='ANZMETA_PROFILE_ID' >
+			<generator class='native'>
+				<param name='sequence'>Seq_ANZMeta_Profile</param>
+			</generator>
+		</id>
+		<property name='DatasetID' column='resource_id' />
+		<property name='Name' column='resource_name' />
+		<property name='Title' column='resource_title' />
+		<property name='ANZLIC_ID' column='anzlic_id' />
+		<property name='UUID' column='fileidentifier' />
+    <!--
+		<property name='XML' column='anzmeta_profile' type='au.gov.vic.delwp.OracleXMLType' lazy='true' />
+-->
+		<property name='Datestamp' column='metadata_datestamp' />
+		<property name='LastUpdated' column='metadata_last_update_datestamp' />
+		<property name='XMLIsValid' column='xml_validates' />
+		<property name='ContentIsValid' column='content_validates' />
+		<property name='ResourceAccessClassification' column='resource_access_classification' />
+		<property name='MetadataAccessClassification' column='metadata_access_classification' />
+	</class>
+
+
+</hibernate-mapping>
