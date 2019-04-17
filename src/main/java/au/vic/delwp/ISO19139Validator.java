@@ -17,7 +17,7 @@ import org.xml.sax.SAXNotSupportedException;
 class ISO19139Validator {
 
 	private static javax.xml.parsers.SAXParser sp;
-	private static String ISO19139_URL = "http://www.isotc211.org/2005/gmd/gmd.xsd";
+	private static String ISO19139_URL = "https://www.isotc211.org/2005/gmd/gmd.xsd";
 
 	static {
 		

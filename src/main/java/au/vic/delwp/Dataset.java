@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 
 public class Dataset {
 
-	public short ID;
+	public int ID;
 	public String Title;
 	public String Name;
 	public String Abstract;

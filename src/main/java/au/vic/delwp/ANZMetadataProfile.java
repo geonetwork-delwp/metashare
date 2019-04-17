@@ -5,7 +5,7 @@ import java.util.Date;
 public class ANZMetadataProfile {
 
     public int ID;
-    public short DatasetID;
+    public int DatasetID;
     public String Name;
     public String Title;
     public String ANZLIC_ID;

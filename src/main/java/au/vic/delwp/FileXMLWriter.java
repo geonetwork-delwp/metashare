@@ -20,7 +20,9 @@ public class FileXMLWriter {
 		IMarshallingContext mctx = getMarshallingContext( );
 		
 		Session src = new Configuration( ).configure("SourceDB.cfg.xml").buildSessionFactory( ).openSession( );
+/*
 		Session dest = new Configuration( ).configure("TargetDB.cfg.xml").buildSessionFactory( ).openSession( );
+*/
 
 		/* Process output directory if specifed, otherwise use current directory as default */
 		String path = "." + File.separator;
@@ -42,10 +44,12 @@ public class FileXMLWriter {
 				
 				/* See if matching metadata_profile record already exists (query on DatasetID property) */
                 ANZMetadataProfile m;
+/*
 				Query q = dest.createQuery( "FROM ANZMetadataProfile WHERE DatasetID = ?" );
 				q = q.setShort( 0, d.ID );
 				m = (ANZMetadataProfile) q.uniqueResult( );
 				if( m == null ){ // No pre-existing record
+*/
 					m = new ANZMetadataProfile( );
 					d.UUID = Dataset.generateUUID( ); // generate new UUID for dataset
 					/* set metadata attributes */
@@ -54,12 +58,14 @@ public class FileXMLWriter {
 					m.ANZLIC_ID = d.ANZLIC_ID;
 					m.Datestamp = d.LastUpdated; // use dataset update date for date stamp
 					m.LastUpdated = d.LastUpdated; // Added on 28th Aug 08
+/*
 					}
 				else { // Pre-existing record - use existing UUID and date
 				    m.LastUpdated = d.LastUpdated; // Added on 28th Aug 08
 					d.UUID = m.UUID;
 					//d.LastUpdated = m.Datestamp;  -- Commented on 28th Aug 08
 					}
+*/
 				
 				/* Transform Dataset instance to XML */
 				try {
@@ -95,7 +101,7 @@ public class FileXMLWriter {
 					}
 				finally {
 					// Have finished with these elements, so purge them from the session
-					dest.evict( m );
+					//dest.evict( m );
 					src.evict( d );
 					}
 				} // for each dataset				
@@ -107,7 +113,7 @@ public class FileXMLWriter {
 			}
 		finally {
 			src.close( );
-			dest.close( );
+			//dest.close( );
 			}
 		}
 	

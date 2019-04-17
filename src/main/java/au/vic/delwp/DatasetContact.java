@@ -1,21 +1,26 @@
 package au.gov.vic.delwp;
 
+import java.io.InputStream;
 import java.util.Properties;
 
 public class DatasetContact {
 
-	private static final String propPrefix = "classes" + java.io.File.separator;
+	//private static final String propPrefix = "classes" + java.io.File.separator;
 	public DatasetContactID ID;
 	public Contact contact;
 	public Dataset dataset;
 	public ContactRole role;
+
+  private static ClassLoader classLoader = DatasetContact.class.getClassLoader();
 
 	protected static DatasetContact Default;
 	
 	static {
 		Properties p = new Properties( );
 		try{
-			p.load( new java.io.FileInputStream( propPrefix + "DefaultContact.properties" ) );
+			//p.load( new java.io.FileInputStream( propPrefix + "DefaultContact.properties" ) );
+      InputStream inputStream = classLoader.getResourceAsStream("DefaultContact.properties");
+			p.load( inputStream );
 			}
 		catch( java.io.FileNotFoundException e ){
 			throw new RuntimeException( "Could not find default contact properties file", e );
