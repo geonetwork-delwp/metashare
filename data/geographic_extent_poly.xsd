@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:fme="http://www.safe.com/gml/fme" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.safe.com/gml/fme" elementFormDefault="qualified">
+<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+<element name="GEOGRAPHIC_EXTENT_POLYGON" type="fme:GEOGRAPHIC_EXTENT_POLYGONType" substitutionGroup="gml:_Feature"/>
+<complexType name="GEOGRAPHIC_EXTENT_POLYGONType">
+<complexContent>
+<extension base="gml:AbstractFeatureType">
+<sequence>
+<element name="ANZLIC_ID" minOccurs="0">
+<simpleType>
+<restriction base="string">
+<maxLength value="15"/>
+</restriction>
+</simpleType></element>
+<element ref="gml:surfaceProperty" minOccurs="0"/>
+<element ref="gml:multiSurfaceProperty" minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+</schema>
