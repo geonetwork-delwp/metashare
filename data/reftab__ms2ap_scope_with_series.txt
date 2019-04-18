@@ -9,6 +9,8 @@ SERIES_ID|OBJECT_TYPE_ID|SCOPE_CODE
 |9|nonGeographicDataset
 |10|dataset
 |11|nonGeographicDataset
+|16|unknown
+|20|unknown
 0|1|dataset
 0|2|dataset
 0|3|dataset
