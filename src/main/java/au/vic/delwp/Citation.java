@@ -2,7 +2,7 @@ package au.gov.vic.delwp;
 
 public class Citation {
 
-	public short ID;
+	public int ID;
 	public String Author;
 	public String Title;
 	public String SeriesTitle;

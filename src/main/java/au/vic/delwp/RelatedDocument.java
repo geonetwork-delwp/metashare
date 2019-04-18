@@ -2,7 +2,7 @@ package au.gov.vic.delwp;
 
 public class RelatedDocument {
 
-	public short ID;
+	public int ID;
 	public String Path;
 	public String RelDocCurrent;
 	public String Description;

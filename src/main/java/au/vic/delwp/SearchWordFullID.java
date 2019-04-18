@@ -2,8 +2,8 @@ package au.gov.vic.delwp;
 
 public class SearchWordFullID implements java.io.Serializable {
 
-    public short DatasetID;
-    public short SearchWordID;
+    public int DatasetID;
+    public int SearchWordID;
 
 	public SearchWordFullID( ){ }
 	

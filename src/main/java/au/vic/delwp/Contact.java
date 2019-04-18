@@ -2,7 +2,7 @@ package au.gov.vic.delwp;
 
 public class Contact {
 
-	public short ID;
+	public int ID;
 	public String Salutation;
 	public String FirstName;
 	public String LastName;

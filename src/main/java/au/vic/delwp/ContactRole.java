@@ -13,7 +13,7 @@ public class ContactRole {
 
 	static protected HashMap RoleTranslations = new HashMap( );
 
-	public short ID;
+	public int ID;
 	protected String Description;	
 	// public java.util.Set Contacts = new java.util.HashSet( );
 	
@@ -23,6 +23,6 @@ public class ContactRole {
 		}
 
 	public String getRole( ){
-		return (String) RoleTranslations.get( Short.toString( ID ) );
+		return (String) RoleTranslations.get( ID+"" );
 		}
 	}

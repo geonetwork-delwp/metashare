@@ -2,8 +2,8 @@ package au.gov.vic.delwp;
 
 public class GeographicNameDatasetID implements java.io.Serializable {
 
-    public short DatasetID;
-    public short GeNameID;
+    public int DatasetID;
+    public int GeNameID;
 
 	public GeographicNameDatasetID( ){ }
 	
