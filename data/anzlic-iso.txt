@@ -165,3 +165,39 @@ WATER Salinity|inlandWaters
 WATER Supply|inlandWaters
 WATER Surface|inlandWaters
 WATER Wetlands|inlandWaters
+BOUNDARIES Legal|boundaries
+BUILDING|structure
+Climate change|climatologyMeteorologyAtmosphere
+ELEVATION|elevation
+EMERGENCY MARKER|location
+FAUNA Birds|biota
+FAUNA Mammals|biota
+FEATURES|geoscientificInformation
+FIRE|environment
+FIRE STATION|location
+FORESTS Natural Modelled Old Growth|biota 
+Hazard|geoscientificInformation
+ISC|inlandWaters
+LANDMARK|location
+LiDAR|imageryBaseMapsEarthCover
+MARINE Habitat|oceans
+MARINE Pollution Response|disaster
+MARKERS|location
+NETWORK|utilitiesCommunication
+OBJECTS OF INTEREST|location
+PHYSICAL FORM|elevation
+POINTS OF INTEREST|location
+RIPARIAN|transportation
+SWOOPING|biota
+Coast|oceans
+Flood|environment
+FORESTS Natural Modelled Old Growth|biota
+Inundation|environment
+Local Coastal Hazard Assessment (LCHA)|environment
+MARINE Navigation|transportation
+RECREATION|society
+Sea Level Rise|environment
+Storm surge|environment
+Storm tide|environment
+SUSTAINABLE DIVERSION LIMIT|environment
+SWOOPING MAP|biota

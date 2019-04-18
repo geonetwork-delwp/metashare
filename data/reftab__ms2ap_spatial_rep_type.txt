@@ -10,3 +10,14 @@ MS_OBJECT_TYPE_ID|SPATIAL_REPRESENTATION_TYPE
 9|textTable
 10|vector
 11|textTable
+12|grid
+13|grid
+14|grid
+15|textTable
+16|textTable
+17|vector
+18|textTable
+19|textTable
+20|textTable
+21|textTable
+22|vector

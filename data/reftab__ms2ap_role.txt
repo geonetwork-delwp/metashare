@@ -12,3 +12,6 @@ MS_CONTACT_ROLE_ID|ROLE_CODE
 11|user
 12|distributor
 13|pointOfContact
+14|productManager
+15|custodian
+16|processor
