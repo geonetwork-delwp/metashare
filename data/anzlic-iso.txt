@@ -14,6 +14,8 @@ BOUNDARIES Biophysical|boundaries
 BOUNDARIES Biophysical|biota
 BOUNDARIES Cultural|boundaries
 BOUNDARIES Cultural|society
+BOUNDARIES Legal|boundaries
+BUILDING|structure
 CLIMATE AND WEATHER|climatologyMeteorologyAtmosphere
 CLIMATE AND WEATHER Climate change|climatologyMeteorologyAtmosphere
 CLIMATE AND WEATHER Drought|climatologyMeteorologyAtmosphere
@@ -23,6 +25,7 @@ CLIMATE AND WEATHER Meteorology|climatologyMeteorologyAtmosphere
 CLIMATE AND WEATHER Radiation|climatologyMeteorologyAtmosphere
 CLIMATE AND WEATHER Rainfall|climatologyMeteorologyAtmosphere
 CLIMATE AND WEATHER Temperature|climatologyMeteorologyAtmosphere
+Climate change|climatologyMeteorologyAtmosphere
 DEMOGRAPHY|society
 DISEASE|health
 DISEASE|farming
@@ -31,6 +34,8 @@ ECOLOGY Community|biota
 ECOLOGY Ecosystem|biota
 ECOLOGY Habitat|biota
 ECOLOGY Landscape|biota
+ELEVATION|elevation
+EMERGENCY MARKER|location
 ENERGY|utilitiesCommunication
 ENERGY Coal|utilitiesCommunication
 ENERGY Electricity|utilitiesCommunication
@@ -38,11 +43,16 @@ ENERGY Petroleum|utilitiesCommunication
 ENERGY Renewable|utilitiesCommunication
 ENERGY Use|utilitiesCommunication
 FAUNA|biota
+FAUNA Birds|biota
 FAUNA Exotic|biota
 FAUNA Insects|biota
 FAUNA Invertebrates|biota
+FAUNA Mammals|biota
 FAUNA Native|biota
 FAUNA Vertebrates|biota
+FEATURES|geoscientificInformation
+FIRE|environment
+FIRE STATION|structure
 FISHERIES|farming
 FISHERIES Aquaculture|farming
 FISHERIES Freshwater|farming
@@ -55,6 +65,7 @@ FORESTS|farming
 FORESTS|biota
 FORESTS Agriforestry|farming
 FORESTS Natural|biota
+FORESTS Natural Modelled Old Growth|biota
 FORESTS Plantation|farming
 GEOSCIENCES|geoscientificInformation
 GEOSCIENCES Geochemistry|geoscientificInformation
@@ -73,6 +84,7 @@ HAZARDS Manmade|society
 HAZARDS Pests|environment
 HAZARDS Severe local storms|environment
 HAZARDS Tsunamis|environment
+Hazard|geoscientificInformation
 HEALTH|health
 HERITAGE|society
 HERITAGE Aboriginal|society
@@ -93,6 +105,7 @@ INDUSTRY Mining|economy
 INDUSTRY Other|economy
 INDUSTRY Primary|economy
 INDUSTRY Service|economy
+ISC|inlandWaters
 LAND|environment
 LAND Cadastre|planningCadastre
 LAND Cover|biota
@@ -106,19 +119,26 @@ LAND Topography|geoscientificInformation
 LAND Use|society
 LAND Valuation|planningCadastre
 LAND Valuation|economy
+LANDMARK|location
+LiDAR|imageryBaseMapsEarthCover
 MARINE|oceans
 MARINE Biology|oceans
 MARINE Coasts|oceans
 MARINE Estuaries|oceans
 MARINE Geology and Geophysics|oceans
 MARINE Geology and Geophysics|geoscientificInformation
+MARINE Habitat|oceans
 MARINE Human Impacts|oceans
 MARINE Meteorology|oceans
 MARINE Meteorology|climatologyMeteorologyAtmosphere
+MARINE Pollution Response|environment
 MARINE Reefs|oceans
+MARKERS|location
 MINERALS|geoscientificInformation
 MOLECULAR BIOLOGY|biota
 MOLECULAR BIOLOGY Genetics|biota
+NETWORK|utilitiesCommunication
+OBJECTS OF INTEREST|location
 OCEANOGRAPHY|geoscientificInformation
 OCEANOGRAPHY|oceans
 OCEANOGRAPHY Chemical|geoscientificInformation
@@ -129,16 +149,20 @@ PHOTOGRAPHY AND IMAGERY|imageryBaseMapsEarthCover
 PHOTOGRAPHY AND IMAGERY Aerial|imageryBaseMapsEarthCover
 PHOTOGRAPHY AND IMAGERY Remote Sensing|imageryBaseMapsEarthCover
 PHOTOGRAPHY AND IMAGERY Satellite|imageryBaseMapsEarthCover
+PHYSICAL FORM|elevation
+POINTS OF INTEREST|location
 POLLUTION|environment
 POLLUTION Air|environment
 POLLUTION Noise|environment
 POLLUTION Soil|environment
 POLLUTION Water|environment
+RIPARIAN|transportation
 SOIL|geoscientificInformation
 SOIL Biology|biota
 SOIL Chemistry|geoscientificInformation
 SOIL Erosion|geoscientificInformation
 SOIL Physics|geoscientificInformation
+SWOOPING|biota
 TRANSPORTATION|transportation
 TRANSPORTATION Air|transportation
 TRANSPORTATION Land|transportation
