@@ -201,3 +201,6 @@ Storm surge|environment
 Storm tide|environment
 SUSTAINABLE DIVERSION LIMIT|environment
 SWOOPING MAP|biota
+SWOOPING BIRD|biota
+MAGPIE|biota
+WINTERFILL|environment
