@@ -33,14 +33,14 @@ public class FileXMLWriter {
 			}
 		
 		/* Fetch list of (or iterator over?) datasets from Oracle DB */
-		String HQL = "FROM Dataset WHERE ( ANZLIC_ID IS NOT NULL AND name IS NOT NULL AND title IS NOT NULL )"; // Build a HQL query string from command line arguments plus some default
+		String HQL = "FROM Dataset WHERE ( ANZLIC_ID IS NOT NULL AND name IS NOT NULL AND title IS NOT NULL AND NAME NOT LIKE 'CIP%' )"; // Build a HQL query string from command line arguments plus some default
 		if( args.length > 1 && args[1].matches(".*\\S+.*") ) HQL += " AND " + args[1];
 		ArrayList datasets = (ArrayList) src.createQuery( HQL ).list( );
 		
 		try {
             for( int i = 0; i < datasets.size(); ++i ){
                 Dataset d = (Dataset) datasets.get( i ); // Fetch dataset object from the list of datasets
-				System.out.println("Processing Dataset '" + d.Name + "'");
+				System.out.println("Processing Dataset '" + d.Name + "' " + d.ANZLIC_ID);
 				
 				/* See if matching metadata_profile record already exists (query on DatasetID property) */
                 ANZMetadataProfile m;

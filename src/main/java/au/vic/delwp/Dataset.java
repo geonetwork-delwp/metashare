@@ -75,6 +75,7 @@ public class Dataset {
 	static protected HashMap CRSCodes = new HashMap( );
 	static protected HashMap DataTypes = new HashMap( );
 	static protected HashMap ScopeCodes = new HashMap( );
+	static protected HashMap Products = new HashMap( );
 	static protected SimpleDateFormat DBDateFormat = new SimpleDateFormat("ddMMMyyyy",Locale.ENGLISH );
 	static protected SimpleDateFormat IS08601DateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH );
 
@@ -89,6 +90,7 @@ public class Dataset {
 		MapUtils.Populate( "reftab__ms2ap_crscodes.txt", CRSCodes, ".+\\|\\d+" );
 		MapUtils.Populate( "reftab__ms2ap_spatial_rep_type.txt", DataTypes, "\\d+\\|.+" );
 		MapUtils.PopulateScopeCodeMap( "reftab__ms2ap_scope_with_series.txt", ScopeCodes );
+    MapUtils.PopulateMulti( "product_object.csv", Products );
 		}
 
 		
@@ -163,6 +165,7 @@ public class Dataset {
 		}
 
 	public String getResourceConstraint( ){
+    System.out.println("AccessID: "+AccessId);
 		String resourceConstraint = "Unknown";
 		if (AccessId.toUpperCase().equals("R")){
 			resourceConstraint = "restricted";
@@ -272,6 +275,7 @@ public class Dataset {
 
 	public String getProgressCode( ){
 		String progress = (String) ProgressCodes.get( Status );
+    System.out.println("Status: "+Status+" Looked up: "+progress);
 		if (progress.toLowerCase().equals("ongoing")){
 			String maintenance = getMaintenanceFrequency( );
 			if (maintenance.toLowerCase().equals("unknown") || maintenance.toLowerCase().equals("notplanned")){
@@ -286,6 +290,7 @@ public class Dataset {
 		}
 	
 	public String getMaintenanceFrequency( ){
+    System.out.println("MaintenanceFrequency: "+MaintenanceFrequency+" looked up: "+MaintenanceFrequencies.get( MaintenanceFrequency ));
 		return (String) MaintenanceFrequencies.get( MaintenanceFrequency );
 		}
 		
@@ -742,9 +747,18 @@ public class Dataset {
 		}
 		
 	public String getHierarchyLevel( ){
-		return (String) ScopeCodes.get( new ScopeCodePair( SeriesID, DataType ) );
-		// return ( SeriesID == null || SeriesID.equals("0") ) ? "dataset" : "series";
+    System.out.println("SeriesID: "+SeriesID+" DataType: "+ DataType);
+    System.out.println("ScopeCodePair: "+new ScopeCodePair( SeriesID, DataType )+" "+ScopeCodes);
+    String hierarchyLevel;
+    if (Products.get(ANZLIC_ID) != null) {
+       hierarchyLevel = "product";
+    } else {
+       hierarchyLevel = (String) ScopeCodes.get( new ScopeCodePair( SeriesID, DataType ) );
+		  // return ( SeriesID == null || SeriesID.equals("0") ) ? "dataset" : "series";
 		}
+    System.out.println("HIELevel = "+hierarchyLevel);
+    return hierarchyLevel;
+  }
 	
 	
 	public String getHierarchyLevelName( ){
@@ -753,6 +767,7 @@ public class Dataset {
 	
 	
 	public String getDataType( ){
+    System.out.println("DataType: "+ DataType+ " Looked up: "+DataTypes.get( DataType ));
 		return (String) DataTypes.get( DataType );
 		}
 		

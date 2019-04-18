@@ -23,6 +23,7 @@ public class ContactRole {
 		}
 
 	public String getRole( ){
+    System.out.println("ROLE: "+ID+" looked up "+(String) RoleTranslations.get( ID+"" ));
 		return (String) RoleTranslations.get( ID+"" );
 		}
 	}
