@@ -13,7 +13,7 @@ class ANZLICSearchWord extends IDnText {
 		}
 	
 	public Collection getISOTopicCategories( ){
-		return (Collection) TopicCategories.get( super.Text );
+		return (Collection) TopicCategories.get( super.Text.trim() );
 		}
 	}
 	
