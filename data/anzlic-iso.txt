@@ -181,7 +181,7 @@ ISC|inlandWaters
 LANDMARK|location
 LiDAR|imageryBaseMapsEarthCover
 MARINE Habitat|oceans
-MARINE Pollution Response|disaster
+MARINE Pollution Response|environment
 MARKERS|location
 NETWORK|utilitiesCommunication
 OBJECTS OF INTEREST|location
