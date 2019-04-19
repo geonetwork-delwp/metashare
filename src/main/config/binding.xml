@@ -157,6 +157,9 @@
 				<structure name='purpose' usage='optional' test-method='isPurposeNotNull' >
 					<value name='CharacterString' field='Purpose' ns='http://www.isotc211.org/2005/gco' />
 				</structure>
+				<structure name='credit' usage='optional' test-method='isCreditNotNull' >
+					<value name='CharacterString' field='Credit' ns='http://www.isotc211.org/2005/gco' />
+				</structure>
 				<structure name='status' usage='optional' test-method='isProgressCodeNotNull'>
 					<structure name='MD_ProgressCode' value-style='attribute'>
 						<value name='codeList' constant='http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ProgressCode' />
@@ -231,10 +234,10 @@
 									<structure name='onlineResource' >
 										<structure name='CI_OnlineResource' >
 											<structure name='linkage' >
-												<value name='URL' constant='http://www.land.vic.gov.au/spatial' />
+												<value name='URL' constant='https://www.delwp.vic.gov.au/maps' />
 											</structure>
 											<structure name='description'>
-												<value name='CharacterString' constant='Web page listing describing spatial information in Department of Sustainability and Environment and Department of Primary Industries (DSE/DPI)' ns='http://www.isotc211.org/2005/gco' />
+												<value name='CharacterString' constant='Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)' ns='http://www.isotc211.org/2005/gco' />
 											</structure>
 										</structure>
 									</structure>
@@ -445,10 +448,10 @@
 						<structure name='onLine'>
 							<structure name='CI_OnlineResource'>
 								<structure name='linkage'>
-									<value name='URL' constant='http://www.land.vic.gov.au/spatial' />
+									<value name='URL' constant='https://www.delwp.vic.gov.au/maps' />
 								</structure>
 								<structure name='description'>
-									<value name='CharacterString' constant='Web page listing describing spatial information in Department of Sustainability and Environment and Department of Primary Industries (DSE/DPI)' ns='http://www.isotc211.org/2005/gco' />
+									<value name='CharacterString' constant='Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)' ns='http://www.isotc211.org/2005/gco' />
 								</structure>
 							</structure>
 						</structure>
@@ -835,7 +838,7 @@
 						<!-- structure name='onlineResource'>
 						<structure name='CI_OnlineResource'>
 							<structure name='linkage' >
-								<value name='URL' constant='http://www.land.vic.gov.au/spatial' />
+								<value name='URL' constant='https://www.delwp.vic.gov.au/maps' />
 							</structure>
 						</structure>
 					</structure-->

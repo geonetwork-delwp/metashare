@@ -329,12 +329,14 @@ public class Dataset {
 			additionalMetadata = "History: " + History;
 			}
 
+    /* Credit is handled in gmd:credit elsewhere
 		if (Credit != null && !Credit.equals("")){
 			if (!additionalMetadata.equals("")){
 				additionalMetadata += "\n\n";
 				}
 			additionalMetadata += "Credit: " + Credit;
 			}
+    */
 
 		if (LayerRelationship != null && !LayerRelationship.equals("")){
 			if (!additionalMetadata.equals("")){
@@ -564,6 +566,15 @@ public class Dataset {
 		}*/
 	public boolean isPurposeNotNull( ){
 		if ( Purpose == null || Purpose == "null" || Purpose.trim().length()==0 ){
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+		
+	public boolean isCreditNotNull( ){
+		if ( Credit == null || Credit == "null" || Credit.trim().length()==0 ){
 			return false;
 		}
 		else {
