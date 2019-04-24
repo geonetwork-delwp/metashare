@@ -1,6 +1,6 @@
 <?xml version='1.0' ?>
 <binding direction='output' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='../doc/binding.xsd'>
-    <namespace uri='http://standards.iso.org/iso/19115/-3/mdb/2.0' prefix='mdb'/>
+    <namespace uri='http://standards.iso.org/iso/19115/-3/mdb/2.0' default="elements" prefix='mdb'/>
     <namespace uri='http://standards.iso.org/iso/19115/-3/gco/1.0' prefix='gco' />
     <namespace uri='http://www.opengis.net/gml/3.2' prefix='gml' />
     <namespace uri='http://standards.iso.org/iso/19115/-3/mcc/1.0' prefix='mcc' />

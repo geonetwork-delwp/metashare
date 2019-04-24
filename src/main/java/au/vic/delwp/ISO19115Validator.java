@@ -40,7 +40,7 @@ class ISO19115Validator {
 			}
 
 		try {
-			s =  sf.newSchema( new URL( new URL("file://"), ISO19115_URL ) );
+			s =  sf.newSchema( new URL( new URL("file:"), ISO19115_URL ) );
 			}
 		catch( java.net.MalformedURLException e ){ // Exception thrown by java.net.URL( String ) constructor
 			throw new RuntimeException( "\"" + ISO19115_URL + "\" is not a valid URL according to java.net.URL", e );
