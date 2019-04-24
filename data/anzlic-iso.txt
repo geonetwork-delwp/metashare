@@ -175,7 +175,7 @@ FAUNA Mammals|biota
 FEATURES|geoscientificInformation
 FIRE|environment
 FIRE STATION|location
-FORESTS Natural Modelled Old Growth|biota 
+FORESTS Natural Modelled Old Growth|biota
 Hazard|geoscientificInformation
 ISC|inlandWaters
 LANDMARK|location
