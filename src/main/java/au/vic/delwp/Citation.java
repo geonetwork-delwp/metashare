@@ -14,9 +14,6 @@ public class Citation {
 	public String AdditionalDetail;
 	
 	public String getCorporateAuthor(){
-		if (CorporateAuthor == null || CorporateAuthor.trim().length()==0){
-			return "Unknown";
-			}
 		return CorporateAuthor;
 		}
 
@@ -30,14 +27,12 @@ public class Citation {
 		return organisationName;
 		}
 
+	public String getAuthor(){
+		return Author;
+  }
+
 	public String getOtherCitationDetails(){
-		String otherCitationDetails = "Author(s): " + Author;
-
-		if (isAdditionalDetailNotNull()){
-			otherCitationDetails += "\n\nSupplemental Information: " + AdditionalDetail;
-			}
-
-		return otherCitationDetails;
+			return AdditionalDetail;
 		}
 
 	public boolean isAuthorNotNull( ){
@@ -56,8 +51,12 @@ public class Citation {
 		return Pages != null;
 		}
 
+	public boolean isCorporateAuthorNull( ){
+		return !isCorporateAuthorNotNull();
+		}
+
 	public boolean isCorporateAuthorNotNull( ){
-		return CorporateAuthor != null;
+		return CorporateAuthor != null && CorporateAuthor.trim().length()!=0;
 		}
 
 	public boolean isPublisherNameNotNull( ){

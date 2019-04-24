@@ -14,10 +14,13 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
 
-class ISO19139Validator {
+import java.net.URL;
+
+class ISO19115Validator {
 
 	private static javax.xml.parsers.SAXParser sp;
-	private static String ISO19139_URL = "https://www.isotc211.org/2005/gmd/gmd.xsd";
+	//private static String ISO19115_URL = "https://www.isotc211.org/2005/gmd/gmd.xsd";
+	private static String ISO19115_URL = "./schemas/iso19115-3/src/main/plugin/iso19115-3/schema.xsd";
 
 	static {
 		
@@ -37,16 +40,16 @@ class ISO19139Validator {
 			}
 
 		try {
-			s =  sf.newSchema( new java.net.URL( ISO19139_URL ) );
+			s =  sf.newSchema( new URL( new URL("file://"), ISO19115_URL ) );
 			}
 		catch( java.net.MalformedURLException e ){ // Exception thrown by java.net.URL( String ) constructor
-			throw new RuntimeException( "\"" + ISO19139_URL + "\" is not a valid URL according to java.net.URL", e );
+			throw new RuntimeException( "\"" + ISO19115_URL + "\" is not a valid URL according to java.net.URL", e );
 			}
 		catch( SAXException e ){ // Exception thrown by SchemaFactory::newSchema( )
 			throw new RuntimeException( "Cannot create new schema object", e );
 			}
 		catch( NullPointerException e ){ // Exception thrown by SchemaFactory::newSchema( java.net.URL )
-			throw new RuntimeException( "java.net.URL has munged \"" + ISO19139_URL + "\" into a null value without throwing an exception", e );
+			throw new RuntimeException( "java.net.URL has munged \"" + ISO19115_URL + "\" into a null value without throwing an exception", e );
 			}
 
 		spf = SAXParserFactory.newInstance( );
@@ -77,7 +80,7 @@ class ISO19139Validator {
 			sp.parse( new InputSource( new StringReader( xml ) ), r );
 			}
 		catch( IllegalArgumentException e ){
-			throw new IllegalArgumentException( "ISO19139 XML string is null" );
+			throw new IllegalArgumentException( "ISO19115 XML string is null" );
 			}
 		catch( SAXException e ){
 			// Really should throw something more meaningful here

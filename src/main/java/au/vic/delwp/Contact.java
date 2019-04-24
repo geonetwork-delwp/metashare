@@ -113,6 +113,9 @@ public class Contact {
 		return getPostalAddress( ) != null;
 		}
 
+  public boolean isIndividualNotNull() {
+    return isPositionNotNull() && isNameNotNull();
+  }
 	
 	public boolean isPositionNotNull( ){
 		return getPosition() != null && !getPosition().equals("") && !getPosition().equals("null");

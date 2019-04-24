@@ -77,8 +77,8 @@ public class FileXMLWriter {
 					m.Title = d.Title;
 					//m.LastUpdated = d.LastUpdated; -- Commented on 28th Aug 08
 					m.XML = sw.toString( );
-					System.out.println("Validating '" + d.Name + "' against http://www.isotc211.org/2005/gmd/gmd.xsd :" );
-					m.XMLIsValid = ISO19139Validator.isValid( m.XML );
+					System.out.println("Validating '" + d.Name + "' against http://schemas.isotc211.org/19115/-3/mdb/2.0 :" );
+					m.XMLIsValid = ISO19115Validator.isValid( m.XML );
 					System.out.println( );
 					System.out.println("Validating '" + d.Name + "' against ANZLIC Metadata Schematron:");
 					m.ContentIsValid = ANZLICSchematronValidator.isValid( m.XML );
