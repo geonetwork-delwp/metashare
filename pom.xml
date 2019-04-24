@@ -4,7 +4,7 @@
 
   <groupId>au.gov.vic.delwp.metartool</groupId>
   <artifactId>metartool</artifactId>
-  <version>2.0.0-SNAPSHOT</version>
+  <version>2.1</version>
   <packaging>jar</packaging>
   <name>metartool</name>
   <description></description>
@@ -90,6 +90,16 @@ $JAVA_HOME/bin/java -Xbootclasspath/p:lib/jaxp-api.jar -cp classes:lib/hibernate
         <groupId>commons-collections</groupId>
         <artifactId>commons-collections</artifactId>
         <version>2.1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-cli</groupId>
+        <artifactId>commons-cli</artifactId>
+        <version>1.4</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.12</version>
     </dependency>
     <dependency>
         <groupId>commons-logging</groupId>

@@ -14,32 +14,66 @@ import java.util.ArrayList;
 
 import org.jibx.runtime.JiBXException;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+
 public class FileXMLWriter {
+
     public static void main( String args[] ){
 
+    String hostNameForLinks = "http://localhost:8080/geonetwork/srv/eng/";
 		IMarshallingContext mctx = getMarshallingContext( );
 		
 		Session src = new Configuration( ).configure("SourceDB.cfg.xml").buildSessionFactory( ).openSession( );
-/*
-		Session dest = new Configuration( ).configure("TargetDB.cfg.xml").buildSessionFactory( ).openSession( );
-*/
 
+    Options options = new Options();
+    options.addOption("h", true, "Specify host name for linkages to metadata records. If not specified then http://localhost:8080/geonetwork/srv/eng/ will be used.");
+    options.addOption("q", true, "Specify a query condition eg. ANZLIC_ID = 'ANZVI0803002511' for debugging purposes.");
+    options.addOption("s", false, "Skip validation. Useful for debugging because reading the schemas takes some time.");
+    options.addRequiredOption("d", "directory", true, "Specify the directory name for output xml files.");
+
+    CommandLineParser parser = new DefaultParser();
+    CommandLine cmd = null;
+
+    String header = "Convert metashare metadata from database to XML\n\n";
+ 
+    HelpFormatter formatter = new HelpFormatter();
+
+    try {
+      cmd = parser.parse(options, args);
+    } catch (Exception e) {
+      formatter.printHelp("metartool", header, options, null, true);
+      System.exit(1);
+    }
+
+    // Process the hostname if specified
+    if (cmd.hasOption("h")) {
+      hostNameForLinks = cmd.getOptionValue("h");
+    }
+    
 		/* Process output directory if specifed, otherwise use current directory as default */
-		String path = "." + File.separator;
-		if( args.length > 0 && args[0].matches(".*\\S+.*") ){
-			path = args[0];
-			/* Append final separator character if not already suppled */
-			if( ! path.endsWith( File.separator ) ) path += File.separator;
-			}
+		String path = cmd.getOptionValue("d");
+		/* Append final separator character if not already suppled */
+		if(!path.endsWith(File.separator)) path += File.separator;
 		
 		/* Fetch list of (or iterator over?) datasets from Oracle DB */
 		String HQL = "FROM Dataset WHERE ( ANZLIC_ID IS NOT NULL AND name IS NOT NULL AND title IS NOT NULL AND NAME NOT LIKE 'CIP%' )"; // Build a HQL query string from command line arguments plus some default
-		if( args.length > 1 && args[1].matches(".*\\S+.*") ) HQL += " AND " + args[1];
+		if( cmd.hasOption("q")) {
+      String query = cmd.getOptionValue("q");
+      if (query.matches(".*\\S+.*")) HQL += " AND " + query;
+    }
+    System.out.println("Requesting metashare records using:\n" + HQL);
+
 		ArrayList datasets = (ArrayList) src.createQuery( HQL ).list( );
 		
 		try {
             for( int i = 0; i < datasets.size(); ++i ){
+            //for( int i = 0; i < 10; ++i ){ Just get any 10 for testing...
                 Dataset d = (Dataset) datasets.get( i ); // Fetch dataset object from the list of datasets
+                d.hostNameForLinks = hostNameForLinks;
 				System.out.println("Processing Dataset '" + d.Name + "' " + d.ANZLIC_ID);
 				
 				/* See if matching metadata_profile record already exists (query on DatasetID property) */
@@ -51,7 +85,7 @@ public class FileXMLWriter {
 				if( m == null ){ // No pre-existing record
 */
 					m = new ANZMetadataProfile( );
-					d.UUID = Dataset.generateUUID( ); // generate new UUID for dataset
+					d.UUID = d.generateUUID( ); // generate new UUID for dataset
 					/* set metadata attributes */
 					m.UUID = d.UUID; // also apply to new metadata record
 					m.DatasetID = d.ID;
@@ -77,11 +111,15 @@ public class FileXMLWriter {
 					m.Title = d.Title;
 					//m.LastUpdated = d.LastUpdated; -- Commented on 28th Aug 08
 					m.XML = sw.toString( );
-					System.out.println("Validating '" + d.Name + "' against http://schemas.isotc211.org/19115/-3/mdb/2.0 :" );
-					m.XMLIsValid = ISO19115Validator.isValid( m.XML );
-					System.out.println( );
-					System.out.println("Validating '" + d.Name + "' against ANZLIC Metadata Schematron:");
-					m.ContentIsValid = ANZLICSchematronValidator.isValid( m.XML );
+          if (cmd.hasOption("s")) {
+					  System.out.println("Validation is skipped.");
+          } else {
+					  System.out.println("Validating '" + d.Name + "' against http://schemas.isotc211.org/19115/-3/mdb/2.0 :" );
+					  m.XMLIsValid = ISO19115Validator.isValid( m.XML );
+					  System.out.println( );
+					  System.out.println("Validating '" + d.Name + "' against ANZLIC Metadata Schematron:");
+					  m.ContentIsValid = ANZLICSchematronValidator.isValid( m.XML );
+          }
 
 					/* Write XML out to file */
 					FileWriter fw = new FileWriter( path + d.UUID + ".xml" );

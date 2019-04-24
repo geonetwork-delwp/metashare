@@ -276,6 +276,9 @@
                           <structure name='linkage'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                             <value name='CharacterString' constant='https://www.delwp.vic.gov.au/maps'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
                           </structure>
+                          <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                            <value name='CharacterString' constant='WWW:LINK-1.0-http--related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                          </structure>
                           <structure name='description' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                             <value name='CharacterString' constant='Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                           </structure>
@@ -380,19 +383,6 @@
                 <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value field='StoredDataFormat' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
-                <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                    <structure name='date' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value name='nilReason' constant='missing' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
-                    <structure name='dateType' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value name='nilReason' constant='missing' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
-                  </structure>
-                </structure>
-                <structure name='edition' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <value name='nilReason' constant='missing' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                </structure>
               </structure>
             </structure>
           </structure>
@@ -479,7 +469,9 @@
           </structure>
         </structure>
 
-<!-- TODO: associatedResource goes here -->
+        <collection get-method='getAssociatedResources' item-type='au.gov.vic.delwp.AssociatedResource' >
+          <structure name='associatedResource' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'/>
+        </collection>
 
         <structure name='defaultLocale' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='PT_Locale' ns='http://standards.iso.org/iso/19115/-3/lan/1.0'>
@@ -537,9 +529,11 @@
           <structure name='MD_DigitalTransferOptions' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
             <structure name='onLine' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
               <structure name='CI_OnlineResource' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                <!-- TODO: Check that linkage is charcterstring - add protocol! -->
                 <structure name='linkage' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' constant='https://www.delwp.vic.gov.au/maps' />
+                </structure>
+                <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value name='CharacterString' constant='WWW:LINK-1.0-http--related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
                 <structure name='description' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value name='CharacterString' constant='Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
@@ -888,6 +882,37 @@
     </structure>
   </mapping>
 
+  <mapping class='au.gov.vic.delwp.AssociatedResource' abstract='true'>
+    <structure name='MD_AssociatedResource' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+      <structure name='associationType' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+        <structure name='DS_AssociationTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+          <value name='codeList' constant='http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode' />
+          <value name='codeListValue' constant='isComposedOf' />
+        </structure>
+      </structure>
+      <structure name='metadataReference' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+        <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+          <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+            <value name='CharacterString' field='anzlicId' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+          </structure>
+          <structure name='onlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+            <structure name='CI_OnlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='linkage'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <value name='CharacterString' get-method='getMetadataRecordUrl'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+              </structure>
+              <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <value name='CharacterString' constant='WWW:LINK-1.0-http--related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+              </structure>
+              <structure name='description' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <value name='CharacterString' constant='Link to Dataset that is part of this product' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+              </structure>
+            </structure>
+          </structure>
+        </structure>
+      </structure>
+    </structure>
+  </mapping>
+
   <mapping class='au.gov.vic.delwp.DatasetContact' abstract='true'>
     <structure name='CI_Responsibility' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
       <structure name='role' field='role' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
@@ -961,6 +986,9 @@
                   <structure name='linkage'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                     <value name='URL' constant='https://www.delwp.vic.gov.au/maps' />
                   </structure>
+              <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <value name='CharacterString' constant='WWW:LINK-1.0-http- -related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+              </structure>
                 </structure>
               </structure-->
                 <!-- Removed from generic mapping of CI_ResponsibleParty at client request -->

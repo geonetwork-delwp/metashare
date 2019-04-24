@@ -5,12 +5,15 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.HashMap; 
+import java.util.List; 
 import java.util.Map;
 import java.util.Locale;
 import java.text.SimpleDateFormat;
 import java.util.regex.*;
 import java.text.ParseException;
 import java.util.StringTokenizer;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class Dataset {
 
@@ -54,6 +57,8 @@ public class Dataset {
 	public IDnText DatasetOrganisation;
 	public IDnText DatasetOriginality;
 	
+	public String hostNameForLinks;
+
 	protected String SourceDataScale;
 	protected String SeriesID;
 	protected IDnText Datum;
@@ -76,6 +81,7 @@ public class Dataset {
 	static protected HashMap DataTypes = new HashMap( );
 	static protected HashMap ScopeCodes = new HashMap( );
 	static protected HashMap Products = new HashMap( );
+	static protected HashMap Objects = new HashMap( );
 	static protected SimpleDateFormat DBDateFormat = new SimpleDateFormat("ddMMMyyyy",Locale.ENGLISH );
 	static protected SimpleDateFormat IS08601DateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH );
 
@@ -91,11 +97,13 @@ public class Dataset {
 		MapUtils.Populate( "reftab__ms2ap_spatial_rep_type.txt", DataTypes, "\\d+\\|.+" );
 		MapUtils.PopulateScopeCodeMap( "reftab__ms2ap_scope_with_series.txt", ScopeCodes );
     MapUtils.PopulateMulti( "product_object.csv", Products );
+    MapUtils.Populate( "object.csv", Objects );
 		}
 
 		
-	public static String generateUUID( ){	
-		return java.util.UUID.randomUUID().toString();
+	public String generateUUID( ){	
+		//return java.util.UUID.randomUUID().toString();
+    return DigestUtils.sha1Hex(ANZLIC_ID);
 		}
 	
 	public boolean isAccessConstraintNotNull( ){
@@ -387,6 +395,21 @@ public class Dataset {
 		return additionalMetadata;
 
 		}
+
+	public Set getAssociatedResources( ) throws Exception {
+    Set associatedResources = new HashSet();
+   
+    List resources = (List)Products.get( ANZLIC_ID ); 
+    if (resources != null) {
+      for (int i = 0; i < resources.size(); i++) {
+         AssociatedResource assRes = new AssociatedResource();
+         assRes.anzlicId = (String)resources.get(i);
+         assRes.hostNameForLinks = hostNameForLinks;
+         associatedResources.add(assRes);
+      }
+    }
+    return associatedResources;
+  }
 
 	public Set getTopicCategories( ) throws Exception {
 	

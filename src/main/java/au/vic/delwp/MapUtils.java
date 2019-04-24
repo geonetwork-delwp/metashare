@@ -1,5 +1,6 @@
 package au.gov.vic.delwp;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,16 +38,19 @@ public class MapUtils {
 				if( line.matches( pattern ) ){ // if line is determined have some appropriate content...					
 					String[] fields;
 					fields = line.split( "\\|" );
-					m.put( fields[0], fields[1] );
-					}
-				line = br.readLine( );
+          if (fields.length == 2) {
+					  m.put( fields[0], fields[1] );
+          } else {
+            m.put( fields[0], Arrays.copyOfRange(fields, 1, fields.length) );
+          }
 				}
+				line = br.readLine( );
+			}
 			br.close( );
-			}
-		catch( IOException e ){
+		} catch( IOException e ) {
 			throw new RuntimeException( "Error initialising application - error reading translation file", e );
-			}
 		}
+	}
 
 		
 	protected static void PopulateScopeCodeMap( String filename, Map m ){
