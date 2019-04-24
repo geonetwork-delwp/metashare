@@ -102,6 +102,11 @@ $JAVA_HOME/bin/java -Xbootclasspath/p:lib/jaxp-api.jar -cp classes:lib/hibernate
         <version>1.12</version>
     </dependency>
     <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.9</version>
+    </dependency>
+    <dependency>
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging</artifactId>
         <version>1.0.4</version>

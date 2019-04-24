@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.util.StringTokenizer;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class Dataset {
 
@@ -146,6 +147,27 @@ public class Dataset {
 		String completenessOmission = getCompletenessOmission();
 		return CompletenessClassification != null && !completenessOmission.equals("");
 		}
+
+	public boolean hasVMDDSchema( ){
+    String[] objectProps = (String[])Objects.get(ANZLIC_ID);
+    return ((objectProps != null) && (objectProps.length >= 2) && !StringUtils.isBlank(objectProps[0]) && !StringUtils.isBlank(objectProps[1]));
+  }
+
+	public String getVMDDSchema( ){
+    String[] objectProps = (String[])Objects.get(ANZLIC_ID);
+    return objectProps[0]+":"+objectProps[1];
+  }
+
+	public boolean hasVMDDMasterPublicationDate( ){
+    String[] objectProps = (String[])Objects.get(ANZLIC_ID);
+    return ((objectProps != null) && (objectProps.length > 2) && !StringUtils.isBlank(objectProps[2]));
+  }
+
+	public String getVMDDMasterPublicationDate( ){
+    String[] objectProps = (String[])Objects.get(ANZLIC_ID);
+    String date = objectProps[2];
+    return date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + "T" + date.substring(8,10) + ":" + date.substring(10,12) + ":" + date.substring(12);
+  }
 
 	public String getCompletenessOmission( ){
 		String completenessOmission = "";

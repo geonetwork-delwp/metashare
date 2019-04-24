@@ -104,6 +104,29 @@
                 </structure>
               </structure>
             </structure>
+            <structure name='date' usage='optional' test-method='hasVMDDMasterPublicationDate' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value name='DateTime' get-method='getVMDDMasterPublicationDate' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='dateType' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='CI_DateTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                    <value name='codeList' constant='http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode' />
+                    <value name='codeListValue' constant='publication' />
+                  </structure>
+                </structure>
+              </structure>
+            </structure>
+            <structure name='identifier' usage='optional' test-method='hasVMDDSchema' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                  <value name='CharacterString' get-method='getVMDDSchema' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='description' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                  <value name='CharacterString' constant='VMDD Schema' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+              </structure>
+            </structure>
             <structure name='identifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
               <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                 <structure name='authority' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
@@ -370,7 +393,19 @@
                 <value name='codeListValue' get-method='getMaintenanceFrequency' />
               </structure>
             </structure>
-            <!-- TODO: add resource maintenance date with type publication if a master publication date field is set for this resource -->
+            <structure name='maintenanceDate' usage='optional' test-method='hasVMDDMasterPublicationDate' ns='http://standards.iso.org/iso/19115/-3/mmi/1.0'>
+              <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value name='DateTime' get-method='getVMDDMasterPublicationDate' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='dateType' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='CI_DateTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                    <value name='codeList' constant='http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode' />
+                    <value name='codeListValue' constant='publication' />
+                  </structure>
+                </structure>
+              </structure>
+            </structure>
           </structure>
         </structure>
 
@@ -507,19 +542,6 @@
               <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value name='CharacterString' get-method='getDataFormat' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                </structure>
-                <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                    <structure name='date' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value name='nilReason' constant='missing' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
-                    <structure name='dateType' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value name='nilReason' constant='missing' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
-                  </structure>
-                </structure>
-                <structure name='edition' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <value name='nilReason' constant='missing' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
               </structure>
             </structure>
