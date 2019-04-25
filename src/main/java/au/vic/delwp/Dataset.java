@@ -352,21 +352,33 @@ public class Dataset {
 
 		}
 
+  public boolean isObjectIDNotNull() {
+    // TODO: Get from ANZLIC_ID map to object ID
+    return true;
+  }
+
+  public String getObjectID() {
+    // TODO: get object ID
+    return "UNKNOWN";
+  }
+
+	public String getBrowseGraphicUrl( ){
+    // Get bbox from geograhic extent
+    Set extents = getExtents(); 
+    Object[] exsa = extents.toArray();
+    // has only one extent which is max of all boxes
+    Extent ex = (Extent)exsa[0];
+    
+
+    return "http://pwms-ags-00.aaa.depi.vic.gov.au/arcgis/rest/services/BusinessApps/SDM_coverage_map/MapServer/export?dpi=96&transparent=false&format=png8&bbox="+ ex.WestLong + "," + ex.SouthLat + "," + ex.EastLong + "," + ex.NorthLat +"&bboxSR=4326&imageSR=4326&size=440,300&f=image&layerDefs=5:LCSMAP.VMDD_EXTENTS.OBJECT_ID=" + getObjectID() + "&layers=show:1,2,3,5";
+  }
+
 	public String getSupplementalInformation( ){
 		String additionalMetadata = "";
 
 		if (History != null && !History.equals("")){
 			additionalMetadata = "History: " + History;
 			}
-
-    /* Credit is handled in gmd:credit elsewhere
-		if (Credit != null && !Credit.equals("")){
-			if (!additionalMetadata.equals("")){
-				additionalMetadata += "\n\n";
-				}
-			additionalMetadata += "Credit: " + Credit;
-			}
-    */
 
 		if (LayerRelationship != null && !LayerRelationship.equals("")){
 			if (!additionalMetadata.equals("")){
@@ -532,7 +544,7 @@ public class Dataset {
 
 		}
 
-	public Set getExtents( ) throws Exception {
+	public Set getExtents( ) { //throws Exception {
 	
 		Set extents  = new HashSet( );
 		

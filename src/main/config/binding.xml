@@ -409,7 +409,24 @@
           </structure>
         </structure>
 
-<!-- TODO: graphicOverview goes here -->
+        
+        <structure name='graphicOverview' usage='optional' test-method='isObjectIDNotNull' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+          <structure name='MD_BrowseGraphic' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+            <structure name='linkage' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+              <structure name='CI_OnlineResource' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <structure name='linkage' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value get-method='getBrowseGraphicUrl' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value name='CharacterString' constant='WWW:LINK-1.0-http--related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='description' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value constant='Graphic Overview of Data Footprint' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+              </structure>
+            </structure>
+          </structure>
+        </structure>
 
         <structure name='resourceFormat' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_Format' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
