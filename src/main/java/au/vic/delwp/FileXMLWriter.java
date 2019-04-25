@@ -9,10 +9,17 @@ import org.jibx.runtime.IBindingFactory;
 import org.jibx.runtime.IMarshallingContext;
 import java.io.StringWriter;
 import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jibx.runtime.JiBXException;
+
+import org.jdom.Element;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -58,6 +65,9 @@ public class FileXMLWriter {
 		String path = cmd.getOptionValue("d");
 		/* Append final separator character if not already suppled */
 		if(!path.endsWith(File.separator)) path += File.separator;
+    File op = new File(path + "invalid");
+    op.mkdirs(); // creates both output directory and invalid directory if they don't exist
+
 		
 		/* Fetch list of (or iterator over?) datasets from Oracle DB */
 		String HQL = "FROM Dataset WHERE ( ANZLIC_ID IS NOT NULL AND name IS NOT NULL AND title IS NOT NULL AND NAME NOT LIKE 'CIP%' )"; // Build a HQL query string from command line arguments plus some default
@@ -113,6 +123,7 @@ public class FileXMLWriter {
 					m.XML = sw.toString( );
           if (cmd.hasOption("s")) {
 					  System.out.println("Validation is skipped.");
+            m.XMLIsValid = m.ContentIsValid = true;
           } else {
 					  System.out.println("Validating '" + d.Name + "' against http://schemas.isotc211.org/19115/-3/mdb/2.0 :" );
 					  m.XMLIsValid = ISO19115Validator.isValid( m.XML );
@@ -122,9 +133,33 @@ public class FileXMLWriter {
           }
 
 					/* Write XML out to file */
+          String outputFile = path;
+          if (!m.XMLIsValid) {
+            outputFile += "invalid" + File.separator;
+          } 
+          outputFile += d.UUID + ".xml";
+           
+          
 					FileWriter fw = new FileWriter( path + d.UUID + ".xml" );
 					fw.write( m.XML );
 					fw.close( );
+
+          // Now finally run the created XML through a postprocessing XSLT which does
+          // things like add the GML polygons (if anzlic_id matches)
+          Element mdXml = Xml.loadFile(outputFile);
+          Map<String,String> xsltparams = new HashMap<String,String>();
+          xsltparams.put("anzlicid", d.ANZLIC_ID);
+			    System.out.println( "Transforming "+d.UUID );
+          Element result = Xml.transform(mdXml, "data" + File.separator + "insert-gml.xsl",  xsltparams);
+          System.out.println("Result was \n"+Xml.getString(result));
+          XMLOutputter out = new XMLOutputter();
+          Format f = Format.getPrettyFormat();  
+          f.setEncoding("UTF-8");
+          out.setFormat(f);  
+          FileOutputStream fo = new FileOutputStream(outputFile);
+          out.output(result, fo);
+          fo.close();
+
 					}
 				catch( JiBXException e ){
 					/* This usually due to data problems such as unexpected nulls or
@@ -142,6 +177,8 @@ public class FileXMLWriter {
 					//dest.evict( m );
 					src.evict( d );
 					}
+
+         
 				} // for each dataset				
 			}
 		catch( org.hibernate.HibernateException e ){

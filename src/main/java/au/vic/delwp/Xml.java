@@ -167,7 +167,7 @@ public class Xml {
 	
 	//---------------------------------------------------------------------------
 
-	public static void transform(Element xml, String styleSheetPath, Result result, Map<String,String> params) throws Exception {
+	public static Element transform(Element xml, String styleSheetPath, Map<String,String> params) throws Exception {
 
 		System.setProperty("javax.xml.transform.TransformerFactory",
 		                  "net.sf.saxon.TransformerFactoryImpl");
@@ -193,7 +193,9 @@ public class Xml {
 				  t.setParameter(param,params.get(param));
 			  }
       }
+      JDOMResult result = new JDOMResult();
 		  t.transform(srcXml, result);
+      return (Element)result.getDocument().getRootElement().detach();
 		}
 	}
 
