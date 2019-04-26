@@ -106,6 +106,7 @@
                 </structure>
               </structure>
             </structure>
+<!--
             <structure name='date' usage='optional' test-method='hasVMDDMasterPublicationDate' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
               <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
@@ -119,6 +120,7 @@
                 </structure>
               </structure>
             </structure>
+-->
             <structure name='identifier' usage='optional' test-method='hasVMDDSchema' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
               <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                 <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
@@ -414,6 +416,9 @@
         
         <structure name='graphicOverview' usage='optional' test-method='isObjectIDNotNull' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_BrowseGraphic' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+            <structure name='fileName' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+              <value name='nilReason' constant='inapplicable' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+            </structure>
             <structure name='linkage' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
               <structure name='CI_OnlineResource' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='linkage' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
@@ -552,10 +557,21 @@
 
     <structure name='contentInfo' usage='optional' test-method='attributesNotNull' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name="MD_CoverageDescription" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
+        <structure name='attributeDescription' value-style="attribute" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
+          <value name='nilReason' constant='inapplicable' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+        </structure>
         <structure name="attributeGroup" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
+          <structure name="MD_AttributeGroup" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
+          <structure name='contentType' ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
+              <structure name='MD_CoverageContentTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
+                <value name='codeList' constant='http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_SpatialRepresentationTypeCode' />
+                <value name='codeListValue' constant='physicalMeasurement' />
+              </structure>
+          </structure>
           <collection get-method='getAttributes' item-type='au.gov.vic.delwp.DelwpColumn' >
             <structure name='attribute' ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'/>
           </collection>
+          </structure> 
         </structure> 
       </structure>
     </structure>
@@ -936,7 +952,8 @@
   <mapping class='au.gov.vic.delwp.DelwpColumn' abstract='true'>
     <structure name='MD_SampleDimension' ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
       <structure name='otherProperty' value-style="attribute" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
-        <value name='type' constant='somedelwpschemathing' ns='http://www.w3.org/2001/XMLSchema-instance' />
+       <value name='type' constant='somedelwpschemathing' ns='http://www.w3.org/2001/XMLSchema-instance' />
+       <structure name="Record" ns='http://standards.iso.org/iso/19115/-3/gco/1.0'>
         <structure name='MD_Attribute' value-style="element" ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
           <structure name='name' usage='optional' test-method='isNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
             <value name='CharacterString' field='name'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
@@ -969,6 +986,7 @@
             <value name='CharacterString' field='comments'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
         </structure>
+       </structure>
       </structure>
     </structure>
   </mapping>

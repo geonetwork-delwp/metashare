@@ -127,7 +127,7 @@ public class FileXMLWriter {
           } else {
 					  System.out.println("Validating '" + d.Name + "' against http://schemas.isotc211.org/19115/-3/mdb/2.0 :" );
 					  m.XMLIsValid = ISO19115Validator.isValid( m.XML );
-					  System.out.println( );
+					  System.out.println();
 					  System.out.println("Validating '" + d.Name + "' against ANZLIC Metadata Schematron:");
 					  m.ContentIsValid = ANZLICSchematronValidator.isValid( m.XML );
           }
@@ -140,7 +140,7 @@ public class FileXMLWriter {
           outputFile += d.UUID + ".xml";
            
           
-					FileWriter fw = new FileWriter( path + d.UUID + ".xml" );
+					FileWriter fw = new FileWriter( outputFile );
 					fw.write( m.XML );
 					fw.close( );
 

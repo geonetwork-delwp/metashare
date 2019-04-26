@@ -34,6 +34,9 @@
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
+          <compilerArgs>
+            <arg>-XX:-Inline</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
