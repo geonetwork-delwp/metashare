@@ -11,10 +11,12 @@
     <namespace uri='http://standards.iso.org/iso/19115/-3/lan/1.0' prefix='lan' />
     <namespace uri='http://standards.iso.org/iso/19115/-3/mmi/1.0' prefix='mmi' />
     <namespace uri='http://standards.iso.org/iso/19115/-3/msr/2.0' prefix='msr' />
+    <namespace uri='http://standards.iso.org/iso/19115/-3/mrc/2.0' prefix='mrc' />
     <namespace uri='http://standards.iso.org/iso/19115/-3/mrd/1.0' prefix='mrd' />
     <namespace uri='http://standards.iso.org/iso/19115/-3/mrs/1.0' prefix='mrs' />
     <namespace uri='http://standards.iso.org/iso/19115/-3/gex/1.0' prefix='gex' />
     <namespace uri='http://standards.iso.org/iso/19157/-2/mdq/1.0' prefix='mdq' />
+    <namespace uri='https://github.com/geonetwork-delwp/iso19115-3.2018' prefix='delwp' />
     <namespace uri='http://www.w3.org/2001/XMLSchema-instance' prefix='xsi' />
     <namespace uri='http://www.w3.org/1999/xlink' prefix='xlink' />
   <mapping name='MD_Metadata' class='au.gov.vic.delwp.Dataset'>
@@ -548,6 +550,16 @@
       </structure>
     </structure>
 
+    <structure name='contentInfo' usage='optional' test-method='attributesNotNull' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
+      <structure name="MD_CoverageDescription" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
+        <structure name="attributeGroup" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
+          <collection get-method='getAttributes' item-type='au.gov.vic.delwp.DelwpColumn' >
+            <structure name='attribute' ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'/>
+          </collection>
+        </structure> 
+      </structure>
+    </structure>
+
     <structure name='distributionInfo' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name='MD_Distribution' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
         <!-- Cannot remove 'distributionFormat' if DataFormat is null because then we'll -->
@@ -915,6 +927,46 @@
           </structure>
           <structure name='ISBN' usage='optional' test-method='isIsbnNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
             <value field='Isbn' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+          </structure>
+        </structure>
+      </structure>
+    </structure>
+  </mapping>
+
+  <mapping class='au.gov.vic.delwp.DelwpColumn' abstract='true'>
+    <structure name='MD_SampleDimension' ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
+      <structure name='otherProperty' value-style="attribute" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
+        <value name='type' constant='somedelwpschemathing' ns='http://www.w3.org/2001/XMLSchema-instance' />
+        <structure name='MD_Attribute' value-style="element" ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+          <structure name='name' usage='optional' test-method='isNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='name'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='obligation' usage='optional' test-method='isObligationNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='obligation'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='unique' usage='optional' test-method='isUniqueNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='unique'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='dataType' usage='optional' test-method='isDataTypeNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='dataType'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='dataLength' usage='optional' test-method='isDataLengthNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='dataLength'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='dataPrecision' usage='optional' test-method='isDataPrecisionNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='dataPrecision'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='refTabOwnerName' usage='optional' test-method='isRefTabOwnerNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='refTabOwnerName'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='refTabTableName' usage='optional' test-method='isRefTabTableNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='refTabTableName'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='refTabCodeColumnName' usage='optional' test-method='isRefTabCodeColumnNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='refTabCodeColumnName'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='comments' usage='optional' test-method='isCommentsNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='comments'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
         </structure>
       </structure>

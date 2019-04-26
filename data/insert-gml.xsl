@@ -82,7 +82,7 @@
   </xsl:template>
 
   <xsl:template name="fill">
-      <xsl:message><xsl:copy-of select="$gml32"/></xsl:message>
+      <!-- <xsl:message><xsl:copy-of select="$gml32"/></xsl:message> -->
       <mri:extent>
         <gex:EX_Extent>
           <gex:geographicElement>

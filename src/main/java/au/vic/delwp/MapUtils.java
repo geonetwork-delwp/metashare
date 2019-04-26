@@ -1,5 +1,6 @@
 package au.gov.vic.delwp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.LinkedList;
@@ -10,6 +11,8 @@ import java.io.BufferedReader;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
+
+import com.opencsv.bean.CsvToBeanBuilder;
 
 public class MapUtils {
 
@@ -118,4 +121,12 @@ public class MapUtils {
 		}
 	
 	
+	protected static List PopulateUsingOpenCSV( String filename, Class beanClass ){
+		try {
+      return new CsvToBeanBuilder(new FileReader(dataPrefix + filename)).withSeparator('|').withType(beanClass).build().parse();
+		} catch( FileNotFoundException e ){
+			throw new RuntimeException( "Error initialising application - translation file '" + filename + "' not found", e );
+		}
+    
 	}
+}

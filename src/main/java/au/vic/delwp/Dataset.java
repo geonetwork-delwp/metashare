@@ -1,5 +1,6 @@
 package au.gov.vic.delwp;
 
+import java.util.ArrayList; 
 import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
@@ -83,6 +84,7 @@ public class Dataset {
 	static protected HashMap ScopeCodes = new HashMap( );
 	static protected HashMap Products = new HashMap( );
 	static protected HashMap Objects = new HashMap( );
+  static protected List<DelwpColumn> Columns = new ArrayList<DelwpColumn>();
 	static protected SimpleDateFormat DBDateFormat = new SimpleDateFormat("ddMMMyyyy",Locale.ENGLISH );
 	static protected SimpleDateFormat IS08601DateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH );
 
@@ -99,9 +101,25 @@ public class Dataset {
 		MapUtils.PopulateScopeCodeMap( "reftab__ms2ap_scope_with_series.txt", ScopeCodes );
     MapUtils.PopulateMulti( "product_object.csv", Products );
     MapUtils.Populate( "object.csv", Objects );
+    Columns = MapUtils.PopulateUsingOpenCSV( "column.csv", DelwpColumn.class );
 		}
 
-		
+	public boolean attributesNotNull() { 
+    // this could get CPU intensive....
+    for (DelwpColumn dc : Columns) {
+      if (dc.anzlicId.equals(ANZLIC_ID)) return true;
+    }
+    return false;
+  }
+	
+	public Set getAttributes() { 
+    Set attributes = new HashSet();
+    for (DelwpColumn dc : Columns) {
+      if (dc.anzlicId.equals(ANZLIC_ID)) attributes.add(dc);
+    }
+    return attributes;
+  }
+
 	public String generateUUID( ){	
 		//return java.util.UUID.randomUUID().toString();
     return DigestUtils.sha1Hex(ANZLIC_ID);

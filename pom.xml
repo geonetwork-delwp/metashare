@@ -4,7 +4,7 @@
 
   <groupId>au.gov.vic.delwp.metartool</groupId>
   <artifactId>metartool</artifactId>
-  <version>2.1</version>
+  <version>2.2</version>
   <packaging>jar</packaging>
   <name>metartool</name>
   <description></description>
@@ -155,6 +155,11 @@ $JAVA_HOME/bin/java -Xbootclasspath/p:lib/jaxp-api.jar -cp classes:lib/hibernate
         <groupId>net.sf.saxon</groupId>
         <artifactId>saxon-jdom</artifactId>
         <version>9.1.0.8b</version>
+      </dependency>
+      <dependency>
+        <groupId>com.opencsv</groupId>
+        <artifactId>opencsv</artifactId>
+        <version>4.0</version>
       </dependency>
   </dependencies>
 

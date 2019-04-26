@@ -151,7 +151,7 @@ public class FileXMLWriter {
           xsltparams.put("anzlicid", d.ANZLIC_ID);
 			    System.out.println( "Transforming "+d.UUID );
           Element result = Xml.transform(mdXml, "data" + File.separator + "insert-gml.xsl",  xsltparams);
-          System.out.println("Result was \n"+Xml.getString(result));
+          //System.out.println("Result was \n"+Xml.getString(result));
           XMLOutputter out = new XMLOutputter();
           Format f = Format.getPrettyFormat();  
           f.setEncoding("UTF-8");
