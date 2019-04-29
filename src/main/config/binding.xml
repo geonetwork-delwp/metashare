@@ -902,8 +902,8 @@
   <mapping class='au.gov.vic.delwp.DelwpColumn' abstract='true'>
     <structure name='MD_SampleDimension' ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
       <structure name='otherProperty' value-style="attribute" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'>
-       <value name='type' constant='somedelwpschemathing' ns='http://www.w3.org/2001/XMLSchema-instance' />
        <structure name="Record" ns='http://standards.iso.org/iso/19115/-3/gco/1.0'>
+        <value name='type' constant='delwp:MD_Attribute_PropertyType' ns='http://www.w3.org/2001/XMLSchema-instance' />
         <structure name='MD_Attribute' value-style="element" ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
           <structure name='name' usage='optional' test-method='isNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
             <value name='CharacterString' field='name'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
