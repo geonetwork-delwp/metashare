@@ -1,5 +1,7 @@
 package au.gov.vic.delwp;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Contact {
 
 	public int ID;
@@ -31,17 +33,25 @@ public class Contact {
 		if( Salutation != null ) s += (s.length( ) == 0 ? "" : " ") + Salutation;
 		return s.length( ) == 0 ? null : s;
 		}
-	
+
+  public boolean isVoiceNotNull() {
+    return !StringUtils.isEmpty(getPhone());
+  }	
+
+  public boolean isFaxNotNull() {
+    return !StringUtils.isEmpty(getFax());
+  }	
+
 	public String getPhone(){
 		String phone_plus_area = Phone;
-	
+
 		if (phone_plus_area == null){
 			return "";
 			}
 
 		phone_plus_area = phone_plus_area.trim();
 
-		if (phone_plus_area.equals("")){
+		if (phone_plus_area.equals("") || phone_plus_area.equals(".")){
 			return "";
 			}
 
@@ -66,7 +76,7 @@ public class Contact {
 
 		fax_plus_area = fax_plus_area.trim();
 
-		if (fax_plus_area.equals("")){
+		if (fax_plus_area.equals("") || fax_plus_area.equals(".")){
 			return "";
 			}
 
@@ -172,16 +182,6 @@ public class Contact {
 		
 	public boolean isPhoneNotNull( ){
 		return ( isVoiceNotNull() || isFaxNotNull() );
-		}
-		
-		
-	public boolean isVoiceNotNull( ){
-		return getPhone() != null && !getPhone().trim().equals("") && !getPhone().trim().equals("null");
-		}
-	
-		
-	public boolean isFaxNotNull( ){
-		return getFax() != null && !getFax().trim().equals("") && !getFax().trim().equals("null");
 		}
 		
 		
