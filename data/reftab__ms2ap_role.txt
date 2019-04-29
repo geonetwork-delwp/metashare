@@ -1,9 +1,9 @@
 MS_CONTACT_ROLE_ID|ROLE_CODE
 1|owner
-2|custodian
+2|pointOfContact
 3|processor
 4|principalInvestigator
-5|resourceProvider
+5|originator
 6|Not Relevant - Ignore
 7|Not Relevant - Ignore
 8|Not Relevant - Ignore

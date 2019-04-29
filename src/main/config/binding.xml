@@ -177,122 +177,7 @@
           </structure>
         </structure>
 
-        <!-- Want:
-          <pointOfContact>
-            <CI_ResponsibleParty>
-              ...
-            </CI_ResponsibleParty>
-          </pointOfContact>
-          <pointOfContact>
-            <CI_ResponsibleParty>
-              ...
-            </CI_ResponsibleParty>
-          </pointOfContact>
-          ...
-        -->
-        <structure name='pointOfContact' get-method='getResourcePOC' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
-          <!-- Special handling of Dataset Contact for this element which includes -->
-          <!-- online resource url and contact instructions -->
-          <structure name='CI_Responsibility' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-            <structure name='role' field='role' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-              <structure name='CI_RoleCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                <value name='codeList' constant='http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode' />
-                <value name='codeListValue' get-method='getRole' />
-              </structure>
-            </structure>
-            <structure field='contact'>
-              <structure name='party' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                <structure name='CI_Organisation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <structure name='name' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                    <structure field='Organisation' >
-                      <value field='Text' name='CharacterString'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
-                  </structure>
-         
-                  <structure name='contactInfo' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                    <structure name='CI_Contact' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <structure name='phone' usage='optional' test-method='isPhoneNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                        <structure name='CI_Telephone' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                          <structure name='number' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value get-method='getPhone' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='numberType' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <structure name='CI_TelephoneTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                              <value name='codeList' constant='http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode' />
-                              <value name='codeListValue' constant='voice' />
-                            </structure>
-                          </structure>
-                        </structure>
-                      </structure>
-                      <structure name='phone' usage='optional' test-method='isFaxNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                        <structure name='CI_Telephone' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                          <structure name='number' usage='optional' test-method='isFaxNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value get-method='getFax' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='numberType' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <structure name='CI_TelephoneTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                              <value name='codeList' constant='http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode' />
-                              <value name='codeListValue' constant='facsimile' />
-                            </structure>
-                          </structure>
-                        </structure>
-                      </structure>
-                      <structure name='address' usage='optional' test-method='isAddressNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                        <structure name='CI_Address' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                          <structure name='deliveryPoint' usage='optional' test-method='isPostNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0' >
-                            <value get-method='getPostalAddress' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='city' usage='optional' test-method='isCityNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value get-method='getCity' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='administrativeArea' usage='optional' test-method='isStateNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value get-method='getState' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='postalCode' usage='optional' test-method='isPostCodeNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value get-method='getPostCode' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='country' usage='optional' test-method='isCountryNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value get-method='getCountry' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='electronicMailAddress' usage='optional' test-method='isEmailNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value get-method='getEmail' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                        </structure>
-                      </structure>
-                      <!-- Contstant Linkage as specified by client? -->
-                      <structure name='onlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                        <structure name='CI_OnlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                          <structure name='linkage'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value name='CharacterString' constant='https://www.delwp.vic.gov.au/maps'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
-                          </structure>
-                          <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value name='CharacterString' constant='WWW:LINK-1.0-http--related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                          <structure name='description' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                            <value name='CharacterString' constant='Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                          </structure>
-                        </structure>
-                      </structure>
-                      <structure name='contactInstructions'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                        <value constant='Please consult the above link for a list of Data Distributors from whom this resource may be purchased' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                      </structure>
-                    </structure>
-                  </structure>
-                  <structure name='individual' usage="optional" ns='http://standards.iso.org/iso/19115/-3/cit/2.0' test-method='isIndividualNotNull'>
-                    <structure name='CI_Individual' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <structure name='name' usage='optional' test-method='isNameNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                        <value get-method='getName' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                      </structure>
-                      <structure name='positionName' usage='optional' test-method='isPositionNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                        <value get-method='getPosition' name='CharacterString'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                      </structure>
-                    </structure>
-                  </structure>
-                </structure>
-              </structure>
-            </structure>
-          </structure>
-        </structure>
+        <structure name='pointOfContact' get-method='getResourcePOC' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'/>
 
         <structure name='spatialRepresentationType' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_SpatialRepresentationTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
@@ -1039,21 +924,36 @@
                   </structure>
                 </structure>
                 <!-- Contstant Linkage as specified by client? -->
-                <!-- Removed from generic mapping of CI_ResponsibleParty at client request -->
-                <!-- structure name='onlineResource' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                <structure name='CI_OnlineResource' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <structure name='linkage'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                    <value name='URL' constant='https://www.delwp.vic.gov.au/maps' />
+                <!-- Contact details are as in the contact info so this
+                     shouldn't be necessary -->
+                <!--
+                <structure name='onlineResource' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='CI_OnlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                    <structure name='linkage'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                      <value name='CharacterString' constant='https://www.delwp.vic.gov.au/maps'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+                    </structure>
+                    <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                      <value name='CharacterString' constant='WWW:LINK-1.0-http- -related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                    </structure>
+                    <structure name='description' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                      <value name='CharacterString' constant='Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                    </structure>
                   </structure>
-              <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                <value name='CharacterString' constant='WWW:LINK-1.0-http- -related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-              </structure>
                 </structure>
-              </structure-->
-                <!-- Removed from generic mapping of CI_ResponsibleParty at client request -->
-                <!--structure name='contactInstructions' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                <value constant='Please consult the above link for a list of Data Distributors from whom this resource may be purchased' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-              </structure-->
+                <structure name='contactInstructions' usage='optional' test-method="isPointOfContact" ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value constant='Please consult the above link for a list of Data Distributors from whom this resource may be purchased' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                -->
+              </structure>
+            </structure>
+            <structure name='partyIdentifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                  <value name='CharacterString' get-method='getContactID' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='description' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                  <value name='CharacterString' constant='MetaShare Contact ID' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
               </structure>
             </structure>
             <structure name='individual' usage='optional' test-method='isIndividualNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>

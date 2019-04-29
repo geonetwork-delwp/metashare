@@ -726,18 +726,25 @@ public class Dataset {
 
 		
 	public DatasetContact getResourcePOC( ){
-		
 		Iterator i = Contacts.iterator( );
+		DatasetContact mgr = null;
 		
 		while( i.hasNext( ) ){
 			DatasetContact dc = (DatasetContact) i.next( );
 			String roletype = dc.role.Description;
 			IDnText org = dc.contact.Organisation; // ISO19139 XSD states organiation is compulsorary
 			
-			if( org != null && roletype.equals("Dataset Contact") ) return dc;
+			if( org != null) {
+        if (roletype.equals("Dataset Data Manager") ) return dc;
+        else if (roletype.equals("Dataset Contact")) mgr = dc; // keep reference
 			}
-		return DatasetContact.getDefault( );
-		}
+    }
+		if( mgr == null ) {
+      System.err.println( "No data contact found for dataset '" + Name + "', using default" );
+		  return DatasetContact.getDefault( );
+    }
+		return mgr; // Reach here only if did not find 1st preference, so return 2nd
+	}
 
 	/* This method assumes that every Dataset at least has a 'Dataset Data Manager'. My 
 	 * checks indicate this is not 100% true */
@@ -780,7 +787,7 @@ public class Dataset {
 			String roletype = dc.role.Description;
 			IDnText org = dc.contact.Organisation; // ISO19139 XSD states organiation is compulsorary
 			
-			if( org != null && !( roletype.equals("Dataset Contact") || roletype.equals("GI Manager") || roletype.startsWith("Warehouse") ) )
+			if( org != null && !( roletype.equals("Dataset Data Manager") || roletype.equals("Dataset Contact") || roletype.equals("GI Manager") || roletype.startsWith("Warehouse") ) )
 				orps.add( dc );
 			}	
 		return orps;

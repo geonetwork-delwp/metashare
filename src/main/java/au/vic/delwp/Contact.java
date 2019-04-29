@@ -189,4 +189,8 @@ public class Contact {
 		return getEmail() != null && !getEmail().equals("") && !getEmail().equals("null");
 		}
 	
+	public String getContactID( ){
+		return ""+ID;
+		}
+
 	}
