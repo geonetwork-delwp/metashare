@@ -857,9 +857,6 @@
                     <structure name='country' usage='optional' test-method='isCountryNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                       <value get-method='getCountry' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                     </structure>
-                    <structure name='electronicMailAddress' usage='optional' test-method='isEmailNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value get-method='getEmail' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
                   </structure>
                 </structure>
                 <!-- Contstant Linkage as specified by client? -->
@@ -899,6 +896,17 @@
               <structure name='CI_Individual' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='name' usage='optional' test-method='isNameNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value get-method='getName' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='contactInfo' usage='optional' test-method='isEmailNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='CI_Contact' ns='http://standards.iso.org/iso/19115/-3/cit/2.0' >
+                    <structure name='address' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                      <structure name='CI_Address' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                        <structure name='electronicMailAddress' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                          <value get-method='getEmail' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                        </structure>
+                      </structure>
+                    </structure>
+                  </structure>
                 </structure>
                 <structure name='positionName' usage='optional' test-method='isPositionNotNull'ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value get-method='getPosition' name='CharacterString'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
