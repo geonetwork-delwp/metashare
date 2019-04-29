@@ -66,6 +66,15 @@
               </goals>
             </execution>
           </executions>
+<!-- Include this dependency if building on java9 or later
+          <dependencies>
+            <dependency>
+                <groupId>org.apache.bcel</groupId>
+                <artifactId>bcel</artifactId>
+                <version>6.3</version>
+            </dependency>
+          </dependencies>
+-->
         </plugin>
     </plugins>
   </build>

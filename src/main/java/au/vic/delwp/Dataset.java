@@ -58,6 +58,7 @@ public class Dataset {
 	public String UUID;
 	public IDnText DatasetOrganisation;
 	public IDnText DatasetOriginality;
+  public ISODateBlock PublicationDate;
 	
 	public String hostNameForLinks;
 
@@ -178,13 +179,15 @@ public class Dataset {
 
 	public boolean hasVMDDMasterPublicationDate( ){
     String[] objectProps = (String[])Objects.get(ANZLIC_ID);
-    return ((objectProps != null) && (objectProps.length > 2) && !StringUtils.isBlank(objectProps[2]));
-  }
-
-	public String getVMDDMasterPublicationDate( ){
-    String[] objectProps = (String[])Objects.get(ANZLIC_ID);
-    String date = objectProps[2];
-    return date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + "T" + date.substring(8,10) + ":" + date.substring(10,12) + ":" + date.substring(12);
+    if ((objectProps != null) && (objectProps.length > 2) && !StringUtils.isBlank(objectProps[2])) {
+      String date = objectProps[2];
+      this.PublicationDate = new ISODateBlock();
+      this.PublicationDate.date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + "T" + date.substring(8,10) + ":" + date.substring(10,12) + ":" + date.substring(12);
+      this.PublicationDate.dateType = "publication";
+      return true;
+    } else {
+      return false;
+    }
   }
 
 	public String getCompletenessOmission( ){
@@ -714,8 +717,11 @@ public class Dataset {
 		}
 
 		
-	public String getDateStamp( ) throws ParseException {	
-		return IS08601DateFormat.format( LastUpdated );
+	public ISODateBlock getDateStamp( ) throws ParseException {	
+    ISODateBlock db = new ISODateBlock();
+    db.date = IS08601DateFormat.format( LastUpdated );
+    db.dateType = "revision";
+    return db;
 		}
 
 		
