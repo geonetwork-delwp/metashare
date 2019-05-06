@@ -124,7 +124,7 @@ public class Contact {
 		}
 
   public boolean isIndividualNotNull() {
-    return isPositionNotNull() && isNameNotNull();
+    return isPositionNotNull() || isNameNotNull() || isEmailOrPhoneNotNull();
   }
 	
 	public boolean isPositionNotNull( ){
@@ -184,6 +184,9 @@ public class Contact {
 		return ( isVoiceNotNull() || isFaxNotNull() );
 		}
 		
+	public boolean isEmailOrPhoneNotNull( ){
+    return isEmailNotNull() || isPhoneNotNull();
+  }
 		
 	public boolean isEmailNotNull( ){
 		return getEmail() != null && !getEmail().equals("") && !getEmail().equals("null");
