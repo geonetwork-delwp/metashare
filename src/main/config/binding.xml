@@ -190,8 +190,7 @@
           <structure name='MD_Resolution' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
             <structure name='distance' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
               <structure name='Distance' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' >
-                <!-- TODO: Does "UOM" have a codelist? -->
-                <value name='uom' constant='meters'  style='attribute' />
+                <value name='uom' constant='m'  style='attribute' />
                 <value get-method='getEquivalentScale' style='text' />
               </structure>
             </structure>
