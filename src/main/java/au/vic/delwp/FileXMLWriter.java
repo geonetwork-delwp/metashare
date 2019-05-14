@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.jibx.runtime.JiBXException;
@@ -68,7 +69,8 @@ public class FileXMLWriter {
     File op = new File(path + "invalid");
     op.mkdirs(); // creates both output directory and invalid directory if they don't exist
 
-		
+	  HashSet uuidSet = new HashSet();
+	
 		/* Fetch list of (or iterator over?) datasets from Oracle DB */
 		String HQL = "FROM Dataset WHERE ( ANZLIC_ID IS NOT NULL AND name IS NOT NULL AND title IS NOT NULL AND NAME NOT LIKE 'CIP%' )"; // Build a HQL query string from command line arguments plus some default
 		if( cmd.hasOption("q")) {
@@ -96,6 +98,12 @@ public class FileXMLWriter {
 */
 					m = new ANZMetadataProfile( );
 					d.UUID = d.generateUUID( ); // generate new UUID for dataset
+          if (uuidSet.contains(d.UUID)) {
+            System.err.println("Sha1 CLASH: "+d.ANZLIC_ID);
+            System.exit(1);
+          } else {
+            uuidSet.add(d.UUID);
+          } 
 					/* set metadata attributes */
 					m.UUID = d.UUID; // also apply to new metadata record
 					m.DatasetID = d.ID;

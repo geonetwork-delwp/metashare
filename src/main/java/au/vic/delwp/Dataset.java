@@ -127,44 +127,19 @@ public class Dataset {
 		}
 	
 	public boolean isAccessConstraintNotNull( ){
-		return AccessConstraint != null;
+		return !Utils.isBlank(AccessConstraint);
 		}
 		
 	public boolean isUseConstraintNotNull( ){
-		return UseConstraint != null;
+		return !Utils.isBlank(UseConstraint);
 		}
 		
+	public boolean isStoredDataFormatNotNull( ){
+		return !Utils.isBlank(StoredDataFormat);
+		}
+
 	public boolean isSpecialIpDetailNotNull( ){
-		return SpecialIpDetail != null;
-		}
-	// Modified on 26th Aug 08
-	/*public boolean isCompletenessClassificationNotNull( ){
-		return CompletenessClassification != null;
-		}*/
-	public boolean isCompletenessClassificationNotNull( ){
-		if (CompletenessClassification == null || CompletenessClassification == "null" || CompletenessClassification.trim().length()==0 ){
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-
-	public boolean isAttributeAccuracyNotNull( ){
-		return AttributeAccuracy != null;
-		}
-
-	public boolean isPositionalAccuracyNotNull( ){
-		return PositionalAccuracy != null;
-		}
-
-	public boolean isLogicalConsistencyNotNull( ){
-		return LogicalConsistency != null;
-		}
-
-	public boolean isCompletenessOmissionNotNull( ){
-		String completenessOmission = getCompletenessOmission();
-		return CompletenessClassification != null && !completenessOmission.equals("");
+		return !Utils.isBlank(SpecialIpDetail);
 		}
 
 	public boolean hasVMDDSchema( ){
@@ -190,12 +165,32 @@ public class Dataset {
     }
   }
 
+	public boolean isCompletenessClassificationNotNull( ){
+		return !Utils.isBlank(CompletenessClassification);
+	}
+
+	public boolean isAttributeAccuracyNotNull( ){
+		return !Utils.isBlank(AttributeAccuracy);
+  }
+
+	public boolean isPositionalAccuracyNotNull( ){
+		return !Utils.isBlank(PositionalAccuracy);
+		}
+
+	public boolean isLogicalConsistencyNotNull( ){
+		return !Utils.isBlank(LogicalConsistency);
+		}
+
+	public boolean isCompletenessOmissionNotNull( ){
+		return !Utils.isBlank(getCompletenessOmission());
+		}
+
 	public String getCompletenessOmission( ){
 		String completenessOmission = "";
-		if (Completeness != null && !Completeness.equals("")){
+		if (!Utils.isBlank(Completeness)){
 			completenessOmission += Completeness;
 			}
-		if (CompletenessCoverage != null && !CompletenessCoverage.equals("")){
+		if (!Utils.isBlank(CompletenessCoverage)){
 			if (!completenessOmission.equals("")){
 				completenessOmission += "\n\n" + CompletenessCoverage;
 				}
@@ -203,7 +198,7 @@ public class Dataset {
 				completenessOmission += CompletenessCoverage;
 				}
 			}
-		if (CompletenessVerification != null && !CompletenessVerification.equals("")){
+		if (!Utils.isBlank(CompletenessVerification)){
 			if (!completenessOmission.equals("")){
 				completenessOmission += "\n\nCompleteness Verification: " + CompletenessVerification;
 				}
@@ -299,6 +294,10 @@ public class Dataset {
 			}
 		return resourceConstraint;
 		}
+
+  public boolean isUseLimitationNotNull() {
+    return !Utils.isBlank(getUseLimitation());
+  }
 	
 	public String getUseLimitation( ){
 		String useLimitation = "";
@@ -397,25 +396,25 @@ public class Dataset {
 	public String getSupplementalInformation( ){
 		String additionalMetadata = "";
 
-		if (History != null && !History.equals("")){
+		if (!Utils.isBlank(History)){
 			additionalMetadata = "History: " + History;
 			}
 
-		if (LayerRelationship != null && !LayerRelationship.equals("")){
+		if (!Utils.isBlank(LayerRelationship)){
 			if (!additionalMetadata.equals("")){
 				additionalMetadata += "\n\n";
 				}
 			additionalMetadata += "Relationship to other Datasets: " + LayerRelationship;
 			}
 
-		if (DesignIssuesCurrent != null && !DesignIssuesCurrent.equals("")){
+		if (!Utils.isBlank(DesignIssuesCurrent)){
 			if (!additionalMetadata.equals("")){
 				additionalMetadata += "\n\n";
 				}
 			additionalMetadata += "Current Design Issues: " + DesignIssuesCurrent;
 			}
 
-		if (DesignIssuesFuture != null && !DesignIssuesFuture.equals("")){
+		if (!Utils.isBlank(DesignIssuesFuture)){
 			if (!additionalMetadata.equals("")){
 				additionalMetadata += "\n\n";
 				}
@@ -433,14 +432,14 @@ public class Dataset {
 			additionalMetadata += "Related Documents: None";
 			}
 
-		if (AdditionalMetadata != null && !AdditionalMetadata.equals("") && !AdditionalMetadata.toLowerCase().equals("not documented") && !AdditionalMetadata.toLowerCase().equals("None")){
+		if (!Utils.isBlank(AdditionalMetadata)){
 			if (!additionalMetadata.equals("")){
 				additionalMetadata += "\n\n";
 				}
 			additionalMetadata += AdditionalMetadata;
 			}
 
-		if (AddMdUrl != null && !AddMdUrl.equals("")){
+		if (!Utils.isBlank(AddMdUrl)){
 			if (!additionalMetadata.equals("")){
 				additionalMetadata += "\n\n";
 				}
@@ -554,7 +553,7 @@ public class Dataset {
 		Iterator i = extents.iterator();
 		while (i.hasNext()){
 			Extent e = (Extent) i.next();
-			if (e.getExtentDescription() != null && !e.getExtentDescription().equals("")){
+			if (!Utils.isBlank(e.getExtentDescription())){
 				extentDescription += e.getExtentDescription() + " ";
 				}
 			}	
@@ -639,76 +638,55 @@ public class Dataset {
 		return extents;
 		}
 
-	/*public boolean isPurposeNotNull( ){
-		return Purpose != null;
-		}*/
 	public boolean isPurposeNotNull( ){
-		if ( Purpose == null || Purpose == "null" || Purpose.trim().length()==0 ){
-			return false;
-		}
-		else {
-			return true;
-		}
+		return !Utils.isBlank(Purpose);
 	}
 		
 	public boolean isCreditNotNull( ){
-		if ( Credit == null || Credit == "null" || Credit.trim().length()==0 ){
-			return false;
-		}
-		else {
-			return true;
-		}
+		return !Utils.isBlank(Credit);
 	}
 		
 	
 	public String getCollectionMethod( ){
-		return CollectionMethod != null ? "Collection Method: " + CollectionMethod : null;
+		return !Utils.isBlank(CollectionMethod) ? "Collection Method: " + CollectionMethod : null;
 		}
 
 		
 	public boolean isCollectionMethodNotNull( ){
-		return CollectionMethod != null;
+		return !Utils.isBlank(CollectionMethod);
 		}
 		
 	public boolean isCompletenessNotNull( ){
-		return Completeness != null;
+		return !Utils.isBlank(Completeness);
 		}
 		
 	
-	/*public boolean isProcessingStepsNotNull( ){
-		return ProcessingSteps != null;
-		}*/
-	// Modified on 26th Aug 08
 	public boolean isProcessingStepsNotNull( ){
-		if (ProcessingSteps == null || ProcessingSteps == "null" || ProcessingSteps.trim().length()==0 ){
-			return false;
-		}
-		else {
-			return true;
-		}
+		return !Utils.isBlank(ProcessingSteps);
 	}
 	
 	
 	public String getSourceData( ){
-		return SourceData != null ? "Dataset Source: " + SourceData + "\n\nDataset Originality: " + (DatasetOriginality != null ? DatasetOriginality.Text : "") : null;
+		return !Utils.isBlank(SourceData) ? "Dataset Source: " + SourceData + "\n\nDataset Originality: " + ((DatasetOriginality != null) ? DatasetOriginality.Text : "") : null;
 		}
 
 	
 	public boolean isSourceDataNotNull( ){
-		return SourceData != null;
+		return !Utils.isBlank(getSourceData());
 		}
 		
 		
-	public boolean isDataQualityInfoNotNull( ){
-		return isProcessingStepsNotNull( ) 
-			|| isCompletenessNotNull( ) 
-			|| isCollectionMethodNotNull( );
-		//	|| isSourceDataNotNull( );
+	public boolean isDataQualityInfoNotNull(){
+		return isAttributeAccuracyNotNull() 
+			|| isPositionalAccuracyNotNull() 
+			|| isLogicalConsistencyNotNull() 
+			|| isCompletenessOmissionNotNull() 
+			|| isCompletenessClassificationNotNull();
 		}
 		
 		
-	public String getDataFormat( ){
-		return DataFormat != null ? DataFormat : DEFAULT_DATA_FORMAT;
+	public boolean isDataFormatNotNull( ){
+		return !Utils.isBlank(DataFormat);
 		}
 		
 		

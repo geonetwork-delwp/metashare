@@ -266,7 +266,7 @@
           </structure>
         </structure>
 
-        <structure name='resourceFormat' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+        <structure name='resourceFormat' usage='optional' test-method='isStoredDataFormatNotNull' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_Format' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
             <structure name='formatSpecificationCitation' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
               <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
@@ -349,7 +349,7 @@
 
         <structure name='resourceConstraints' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_SecurityConstraints' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
-            <structure name='useLimitation' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
+            <structure name='useLimitation' usage='optional' test-method='isUseLimitationNotNull' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
               <value name='CharacterString' get-method='getUseLimitation' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
             </structure>
             <structure name='classification' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
@@ -411,15 +411,12 @@
 
     <structure name='distributionInfo' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name='MD_Distribution' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
-        <!-- Cannot remove 'distributionFormat' if DataFormat is null because then we'll -->
-        <!-- fail ANZLIC Scematron validaiton. Hence instead a default value will be provided -->
-        <!-- in this situation. -->
-        <structure name='distributionFormat'  ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
+        <structure name='distributionFormat' usage='optional' test-method='isDataFormatNotNull' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
           <structure name='MD_Format' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
             <structure name='formatSpecificationCitation' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
               <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <value name='CharacterString' get-method='getDataFormat' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                  <value name='CharacterString' field='DataFormat' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
               </structure>
             </structure>
@@ -445,8 +442,7 @@
       </structure>
     </structure>
 
-    <!--<structure name='dataQualityInfo' usage='optional' test-method='isDataQualityInfoNotNull'>-->
-    <structure name='dataQualityInfo' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
+    <structure name='dataQualityInfo' usage='optional' test-method='isDataQualityInfoNotNull'>
       <structure name='DQ_DataQuality' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
         <structure name='scope' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
           <structure name='MD_Scope' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
@@ -465,7 +461,7 @@
             </structure>
           </structure>
         </structure>
-        <structure name='report' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
+        <structure name='report' usage='optional' test-method='isAttributeAccuracyNotNull' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
           <structure name='DQ_NonQuantitativeAttributeCorrectness' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
             <structure name='result' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
               <structure name='DQ_ConformanceResult' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
@@ -486,7 +482,7 @@
             </structure>
           </structure>
         </structure>
-        <structure name='report' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
+        <structure name='report' usage='optional' test-method='isPositionalAccuracyNotNull' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
           <structure name='DQ_AbsoluteExternalPositionalAccuracy' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
             <structure name='result' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
               <structure name='DQ_ConformanceResult' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
@@ -507,7 +503,7 @@
             </structure>
           </structure>
         </structure>
-        <structure name='report' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
+        <structure name='report' usage='optional' test-method='isLogicalConsistencyNotNull' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
           <structure name='DQ_ConceptualConsistency' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
             <structure name='result' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
               <structure name='DQ_ConformanceResult' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
@@ -528,7 +524,7 @@
             </structure>
           </structure>
         </structure>
-        <structure name='report' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
+        <structure name='report' usage='optional' test-method='isCompletenessOmissionNotNull' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
           <structure name='DQ_CompletenessOmission' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
             <structure name='result' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
               <structure name='DQ_ConformanceResult' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
@@ -604,7 +600,7 @@
 
     <structure name='metadataConstraints' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name='MD_SecurityConstraints' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
-        <structure name='useLimitation' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
+        <structure name='useLimitation' usage='optional' test-method='isUseLimitationNotNull' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
           <value name='CharacterString' get-method='getUseLimitation' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
         </structure>
         <structure name='classification' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
