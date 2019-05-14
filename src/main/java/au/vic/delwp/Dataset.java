@@ -821,12 +821,14 @@ public class Dataset {
 	
 	// Returns null if key not found (or in unlikely case where key maps to null)
 	public String getIndeterminateBeginning( ){
+    if (StringUtils.isBlank(BeginningDate)) BeginningDate = "not known";
 		return (String) IndeterminateDates.get( BeginningDate.toLowerCase( ) );
 		}
 
 		
 	// Returns null if key not found (or in unlikely case where key maps to null)
 	public String getIndeterminateEnding( ){
+    if (StringUtils.isBlank(EndingDate)) EndingDate = "not known";
 		return (String) IndeterminateDates.get( EndingDate.toLowerCase( ) );
 		}
 	
@@ -858,11 +860,6 @@ public class Dataset {
     System.out.println("HIELevel = "+hierarchyLevel);
     return hierarchyLevel;
   }
-	
-	
-	public String getHierarchyLevelName( ){
-		return getHierarchyLevel( ) + " of " + Title;
-		}
 	
 	
 	public String getDataType( ){

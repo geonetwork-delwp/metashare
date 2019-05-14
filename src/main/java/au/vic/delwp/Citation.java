@@ -1,5 +1,7 @@
 package au.gov.vic.delwp;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Citation {
 
 	public int ID;
@@ -36,19 +38,19 @@ public class Citation {
 		}
 
 	public boolean isAuthorNotNull( ){
-		return Author != null;
+		return !StringUtils.isBlank(Author);
 		}
 
 	public boolean isTitleNotNull( ){
-		return Title != null;
+		return !StringUtils.isBlank(Title);
 		}
 
 	public boolean isSeriesTitleNotNull( ){
-		return SeriesTitle != null;
+		return !StringUtils.isBlank(SeriesTitle);
 		}
 
 	public boolean isPagesNotNull( ){
-		return Pages != null;
+		return !StringUtils.isBlank(Pages);
 		}
 
 	public boolean isCorporateAuthorNull( ){
@@ -56,15 +58,15 @@ public class Citation {
 		}
 
 	public boolean isCorporateAuthorNotNull( ){
-		return CorporateAuthor != null && CorporateAuthor.trim().length()!=0;
+		return !StringUtils.isBlank(CorporateAuthor);
 		}
 
 	public boolean isPublisherNameNotNull( ){
-		return PublisherName != null;
+		return !StringUtils.isBlank(PublisherName);
 		}
 
 	public boolean isYearPublishedNotNull( ){
-		return YearPublished != null;
+		return !StringUtils.isBlank(YearPublished);
 		}
 
 	/*public boolean isIsbnNotNull( ){
@@ -72,7 +74,7 @@ public class Citation {
 		}*/
 	// Method modified to handle spaces dated 18-08-08
 	public boolean isIsbnNotNull( ){
-		if (Isbn == null || Isbn == "null" || Isbn.trim().length()==0 ){
+		if (StringUtils.isBlank(Isbn) || Isbn == "null"){
 			return false;
 		}
 		else {
@@ -80,8 +82,26 @@ public class Citation {
 		}
 	}
 
+  public boolean isSourceCitationNotNull() {
+    System.out.println(this.toString());
+    return isTitleNotNull() && isYearPublishedNotNull() && 
+           isCorporateAuthorNotNull() && isAuthorNotNull() && 
+           isAdditionalDetailNotNull() && isIsbnNotNull();
+  }
+
 	public boolean isAdditionalDetailNotNull( ){
-		return AdditionalDetail != null;
+		return !StringUtils.isBlank(AdditionalDetail);
 		}
 
-	}
+  @Override
+  public String toString() {
+    StringBuilder output = new StringBuilder();
+    output.append("Title: "+Title+"\n");
+    output.append("YearPublished: "+YearPublished+"\n");
+    output.append("Corporate Author: "+CorporateAuthor+"\n");
+    output.append("Author: "+Author+"\n");
+    output.append("AdditionalDetail: "+AdditionalDetail+"\n");
+    output.append("Isbn: "+Isbn+"\n");
+    return "Object citation: \n"+output.toString();
+  }
+}

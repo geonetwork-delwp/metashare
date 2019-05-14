@@ -36,9 +36,6 @@
             <value name='codeListValue' get-method='getHierarchyLevel' />
           </structure>
         </structure>
-        <structure name='name'>
-          <value name='CharacterString' get-method='getHierarchyLevelName' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-        </structure>
       </structure>
     </structure>
     <!-- contact is [1..*] according to ISO 19115 -->
@@ -281,6 +278,7 @@
           </structure>
         </structure>
 
+        <!-- ANZLIC search words abandoned
         <structure name='descriptiveKeywords' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_Keywords' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
             <collection get-method='getKeywords' item-type='java.lang.String' >
@@ -347,6 +345,7 @@
             </structure>
           </structure>
         </structure>
+        -->
 
         <structure name='resourceConstraints' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_SecurityConstraints' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
@@ -664,7 +663,7 @@
       <structure name="description" ns='http://standards.iso.org/iso/19115/-3/mrl/2.0'>
         <value name='CharacterString' constant="Source description not available" ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
       </structure>
-      <structure name='sourceCitation' ns='http://standards.iso.org/iso/19115/-3/mrl/2.0'>
+      <structure name='sourceCitation' usage='optional' test-method='isSourceCitationNotNull' ns='http://standards.iso.org/iso/19115/-3/mrl/2.0'>
         <structure name='CI_Citation'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
           <structure name='title' usage='optional' test-method='isTitleNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
             <value field='Title' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />

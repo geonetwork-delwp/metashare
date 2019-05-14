@@ -51,7 +51,10 @@ public class Contact {
 
 		phone_plus_area = phone_plus_area.trim();
 
-		if (phone_plus_area.equals("") || phone_plus_area.equals(".")){
+		if (phone_plus_area.equals("") || phone_plus_area.equals(".") ||
+        phone_plus_area.equalsIgnoreCase("na") || 
+        phone_plus_area.equalsIgnoreCase("unknown") || 
+        phone_plus_area.equalsIgnoreCase("n/a")){
 			return "";
 			}
 
@@ -76,7 +79,10 @@ public class Contact {
 
 		fax_plus_area = fax_plus_area.trim();
 
-		if (fax_plus_area.equals("") || fax_plus_area.equals(".")){
+		if (fax_plus_area.equals("") || fax_plus_area.equals(".") ||
+        fax_plus_area.equalsIgnoreCase("na") || 
+        fax_plus_area.equalsIgnoreCase("unknown") || 
+        fax_plus_area.equalsIgnoreCase("n/a")){
 			return "";
 			}
 
@@ -94,7 +100,7 @@ public class Contact {
 	
 	
 	public boolean isNameNotNull( ){
-		return getName( ) != null;
+		return StringUtils.isBlank(getName());
 		}
 
 	
