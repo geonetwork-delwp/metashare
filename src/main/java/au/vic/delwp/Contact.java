@@ -28,9 +28,9 @@ public class Contact {
 	public String getName( ){
 		String s = "";
 		
-		if( LastName != null ) s +=  LastName;
-		if( FirstName != null ) s += (s.length( ) == 0 ? "" : " ") + FirstName;
-		if( Salutation != null ) s += (s.length( ) == 0 ? "" : " ") + Salutation;
+		if( !Utils.isBlank(LastName) ) s +=  LastName;
+		if( !Utils.isBlank(FirstName) ) s += (s.length( ) == 0 ? "" : " ") + FirstName;
+		if( !Utils.isBlank(Salutation) ) s += (s.length( ) == 0 ? "" : " ") + Salutation;
 		return s.length( ) == 0 ? null : s;
 		}
 
@@ -51,10 +51,7 @@ public class Contact {
 
 		phone_plus_area = phone_plus_area.trim();
 
-		if (phone_plus_area.equals("") || phone_plus_area.equals(".") ||
-        phone_plus_area.equalsIgnoreCase("na") || 
-        phone_plus_area.equalsIgnoreCase("unknown") || 
-        phone_plus_area.equalsIgnoreCase("n/a")){
+		if (phone_plus_area.equals(".") || Utils.isBlank(phone_plus_area)) {
 			return "";
 			}
 
@@ -79,10 +76,7 @@ public class Contact {
 
 		fax_plus_area = fax_plus_area.trim();
 
-		if (fax_plus_area.equals("") || fax_plus_area.equals(".") ||
-        fax_plus_area.equalsIgnoreCase("na") || 
-        fax_plus_area.equalsIgnoreCase("unknown") || 
-        fax_plus_area.equalsIgnoreCase("n/a")){
+		if (fax_plus_area.equals(".") || Utils.isBlank(fax_plus_area)) {
 			return "";
 			}
 
@@ -100,7 +94,7 @@ public class Contact {
 	
 	
 	public boolean isNameNotNull( ){
-		return StringUtils.isBlank(getName());
+		return !Utils.isBlank(getName());
 		}
 
 	
@@ -108,25 +102,22 @@ public class Contact {
 	// Added not null constraints on Mail1 and Mail2  -- Dated 7th Aug 08
 	public String getPostalAddress( ){
 		String s = "";
-		if( Mail1 != null && Mail1 != "null" && Mail1 != ""  && Mail1 != " " && Mail1.length() != 0 ){
-			if( Mail2 != null && Mail2 != "null" && Mail2 != ""  && Mail2 != " " && Mail2.length() != 0 ) {
+		if( !Utils.isBlank(Mail1) ){
+			if( !Utils.isBlank(Mail2) ){
 				s += Mail1.trim() + " " + Mail2.trim();
 			} else {
 				s = Mail1.trim();
 			}
 		} else {
-			if( Mail2 != null && Mail2 != "null" && Mail2 != ""  && Mail2 != " " && Mail2.length() != 0 ) {
+			if( !Utils.isBlank(Mail2) ) {
 				s += Mail2.trim();
 			}
-		}
-		if ( (s.trim().length()==0) ) {
-			s="Unknown";
 		}
 		return s;
 	}	
 	
 	public boolean isPostNotNull( ){
-		return getPostalAddress( ) != null;
+		return !Utils.isBlank(getPostalAddress());
 		}
 
   public boolean isIndividualNotNull() {
@@ -134,35 +125,35 @@ public class Contact {
   }
 	
 	public boolean isPositionNotNull( ){
-		return getPosition() != null && !getPosition().equals("") && !getPosition().equals("null");
+		return !Utils.isBlank(Position);
 		}
 	
 	public String getPosition( ){
-		return ((Position != null) ? Position.trim() : null);
+		return Position.trim();
 		}
 	
 	public boolean isContactInfoNotNull( ){
-		return isAddressNotNull( ) || isPhoneNotNull( );
+		return isAddressNotNull();
 		}
 		
 	public String getCountry( ){
-		return ((Country != null) ? Country.trim() : null);
+		return Country.trim();
 		}
 	
 	public String getState( ){
-		return ((State != null) ? State.trim() : null);
+		return State.trim();
 		}
 	
 	public String getCity( ){
-		return ((Locality != null) ? Locality.trim() : null);
+		return Locality.trim();
 		}
 	
 	public String getPostCode( ){
-		return ((Postcode != null) ? Postcode.trim() : null);
+		return Postcode.trim();
 		}
 	
 	public String getEmail( ){
-		return ((Email != null) ? Email.trim() : null);
+		return Email.trim();
 		}
 	
 	public boolean isAddressNotNull( ){
@@ -171,19 +162,19 @@ public class Contact {
 		}
 	
 	public boolean isCountryNotNull( ){
-		return getCountry() != null && !getCountry().equals("") && !getCountry().equals("null");
+		return !Utils.isBlank(Country);
 		}	
 		
 	public boolean isStateNotNull( ){
-		return getState() != null && !getState().equals("") && !getState().equals("null");
+		return !Utils.isBlank(State);
 		}	
 		
 	public boolean isCityNotNull( ){
-		return getCity() != null && !getCity().equals("") && !getCity().equals("null");
+		return !Utils.isBlank(Locality);
 		}	
 		
 	public boolean isPostCodeNotNull( ){
-		return getPostCode() != null && !getPostCode().equals("") && !getPostCode().equals("null");
+		return !Utils.isBlank(Postcode);
 		}	
 		
 	public boolean isPhoneNotNull( ){
@@ -195,7 +186,7 @@ public class Contact {
   }
 		
 	public boolean isEmailNotNull( ){
-		return getEmail() != null && !getEmail().equals("") && !getEmail().equals("null");
+		return !Utils.isBlank(Email);
 		}
 	
 	public String getContactID( ){

@@ -2,23 +2,23 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>au.gov.vic.delwp.metartool</groupId>
-  <artifactId>metartool</artifactId>
+  <groupId>au.gov.vic.delwp.metashare</groupId>
+  <artifactId>metashare</artifactId>
   <version>2.2</version>
   <packaging>jar</packaging>
-  <name>metartool</name>
+  <name>metashare</name>
   <description></description>
 
-  <url>http://github.com/geonetwork-delwp/metartool</url>
+  <url>http://github.com/geonetwork-delwp/metashare</url>
 
   <issueManagement>
     <system>git</system>
-    <url>http://github.com/geonetwork-delwp/metartool</url>
+    <url>http://github.com/geonetwork-delwp/metashare</url>
   </issueManagement>
 
   <scm>
-    <connection>scm:git:http://github.com/geonetwork-delwp/metartool</connection>
-    <url>github.com/geonetwork-delwp/metartool</url>
+    <connection>scm:git:http://github.com/geonetwork-delwp/metashare</connection>
+    <url>github.com/geonetwork-delwp/metashare</url>
   </scm>
 
   <build>
