@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration debug="true">
+  <Appenders>
+    <Console name="STDOUT">
+      <PatternLayout pattern="%d{ISO8601} %-5p [%c] - %m%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Logger name="main" level="info" additivity="false">
+      <AppenderRef ref="STDOUT"/>
+    </Logger>
+    <Logger name="dataset" level="error" additivity="false">
+      <AppenderRef ref="STDOUT"/>
+    </Logger>
+    <Logger name="citation" level="error" additivity="false">
+      <AppenderRef ref="STDOUT"/>
+    </Logger>
+    <Logger name="contact" level="error" additivity="false">
+      <AppenderRef ref="STDOUT"/>
+    </Logger>
+    <Logger name="resolver" level="debug" additivity="false">
+      <AppenderRef ref="STDOUT"/>
+    </Logger>
+  </Loggers>
+</Configuration>

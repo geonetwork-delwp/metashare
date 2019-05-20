@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+import au.csiro.utils.Xml;
+import au.csiro.utils.XmlResolver;
+
 import org.jibx.runtime.JiBXException;
 
 import org.jdom.Element;
@@ -28,9 +31,25 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
+import jeeves.JeevesJCS;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class FileXMLWriter {
 
-    public static void main( String args[] ){
+ private static final Logger logger = LogManager.getLogger("main");
+
+ public static void main( String args[] ){
+
+    String oasisCatalogFile = "schemas/iso19115-3/src/main/plugin/iso19115-3/oasis-catalog.xml";
+
+    try {
+      JeevesJCS.setConfigFilename("src/main/config/cache.ccf");
+      JeevesJCS.getInstance(XmlResolver.XMLRESOLVER_JCS);
+    } catch (Exception ce) {
+      logger.error("Failed to create cache for schema files");
+    }
 
     String hostNameForLinks = "http://localhost:8080/geonetwork/srv/eng/";
 		IMarshallingContext mctx = getMarshallingContext( );
@@ -69,6 +88,10 @@ public class FileXMLWriter {
     File op = new File(path + "invalid");
     op.mkdirs(); // creates both output directory and invalid directory if they don't exist
 
+
+    System.setProperty("XML_CATALOG_FILES", oasisCatalogFile);
+    Xml.resetResolver();
+
 	  HashSet uuidSet = new HashSet();
 	
 		/* Fetch list of (or iterator over?) datasets from Oracle DB */
@@ -77,89 +100,65 @@ public class FileXMLWriter {
       String query = cmd.getOptionValue("q");
       if (query.matches(".*\\S+.*")) HQL += " AND " + query;
     }
-    System.out.println("Requesting metashare records using:\n" + HQL);
+    logger.info("Requesting metashare records using:\n" + HQL);
 
 		ArrayList datasets = (ArrayList) src.createQuery( HQL ).list( );
 		
 		try {
-            for( int i = 0; i < datasets.size(); ++i ){
-            //for( int i = 0; i < 10; ++i ){ Just get any 10 for testing...
-                Dataset d = (Dataset) datasets.get( i ); // Fetch dataset object from the list of datasets
-                d.hostNameForLinks = hostNameForLinks;
-				System.out.println("Processing Dataset '" + d.Name + "' " + d.ANZLIC_ID);
+      for( int i = 0; i < datasets.size(); ++i ){
+        Dataset d = (Dataset) datasets.get( i ); 
+        d.hostNameForLinks = hostNameForLinks;
 				
-				/* See if matching metadata_profile record already exists (query on DatasetID property) */
-                ANZMetadataProfile m;
-/*
-				Query q = dest.createQuery( "FROM ANZMetadataProfile WHERE DatasetID = ?" );
-				q = q.setShort( 0, d.ID );
-				m = (ANZMetadataProfile) q.uniqueResult( );
-				if( m == null ){ // No pre-existing record
-*/
-					m = new ANZMetadataProfile( );
-					d.UUID = d.generateUUID( ); // generate new UUID for dataset
-          if (uuidSet.contains(d.UUID)) {
-            System.err.println("Sha1 CLASH: "+d.ANZLIC_ID);
-            System.exit(1);
-          } else {
-            uuidSet.add(d.UUID);
-          } 
-					/* set metadata attributes */
-					m.UUID = d.UUID; // also apply to new metadata record
-					m.DatasetID = d.ID;
-					m.ANZLIC_ID = d.ANZLIC_ID;
-					m.Datestamp = d.LastUpdated; // use dataset update date for date stamp
-					m.LastUpdated = d.LastUpdated; // Added on 28th Aug 08
-/*
-					}
-				else { // Pre-existing record - use existing UUID and date
-				    m.LastUpdated = d.LastUpdated; // Added on 28th Aug 08
-					d.UUID = m.UUID;
-					//d.LastUpdated = m.Datestamp;  -- Commented on 28th Aug 08
-					}
-*/
-				
+				d.UUID = d.generateUUID( ); // generate new UUID for dataset
+				logger.info("Processing Dataset\n"+
+           "        '" + d.Name + "'\n"+
+           "        ANZLIC_ID " + d.ANZLIC_ID + "\n" +
+           "        UUID: " + d.UUID);
+        if (uuidSet.contains(d.UUID)) {
+          logger.error("Sha1 CLASH: "+d.ANZLIC_ID);
+          System.exit(1);
+        } else {
+          uuidSet.add(d.UUID);
+        } 
+			
+        boolean xmlIsValid, contentIsValid = true;	
 				/* Transform Dataset instance to XML */
 				try {
 					StringWriter sw = new StringWriter( );
-	                mctx.marshalDocument( d, "utf-8", Boolean.FALSE, sw );
+	        mctx.marshalDocument( d, "utf-8", Boolean.FALSE, sw );
 					
-	                /* Update other metadata profile attributes which may change and persist */
-					m.Name = d.Name;
-					m.Title = d.Title;
-					//m.LastUpdated = d.LastUpdated; -- Commented on 28th Aug 08
-					m.XML = sw.toString( );
+          // Now run the created XML through a postprocessing XSLT which does
+          // things like add the GML polygons (if anzlic_id matches)
+          Element mdXml = Xml.loadString(sw.toString(), false);
+          Map<String,String> xsltparams = new HashMap<String,String>();
+          xsltparams.put("anzlicid", d.ANZLIC_ID);
+			    logger.debug("Transforming "+d.UUID );
+          Element result = Xml.transform(mdXml, "data" + File.separator + "insert-gml.xsl",  xsltparams);
+
+          //logger.debug("Result was \n"+Xml.getString(result));
+
+          // Now validate the transformed result
+          xmlIsValid = false;
           if (cmd.hasOption("s")) {
-					  System.out.println("Validation is skipped.");
-            m.XMLIsValid = m.ContentIsValid = true;
+					  logger.error("Validation is skipped.");
           } else {
-					  System.out.println("Validating '" + d.Name + "' against http://schemas.isotc211.org/19115/-3/mdb/2.0 :" );
-					  m.XMLIsValid = ISO19115Validator.isValid( m.XML );
-					  System.out.println();
-					  System.out.println("Validating '" + d.Name + "' against ANZLIC Metadata Schematron:");
-					  m.ContentIsValid = ANZLICSchematronValidator.isValid( m.XML );
+            try {
+					    Xml.validate(result);
+            } catch (Exception e) {
+					    logger.error("Validation of '" + d.Name + "' ("+d.UUID+") with ANZLIC_ID "+d.ANZLIC_ID+", against http://schemas.isotc211.org/19115/-3/mdb/2.0 FAILED:" );
+              logger.error("\n"+e.getMessage());
+              xmlIsValid = false;
+            }
           }
 
 					/* Write XML out to file */
           String outputFile = path;
-          if (!m.XMLIsValid) {
+          if (!xmlIsValid) {
             outputFile += "invalid" + File.separator;
           } 
           outputFile += d.UUID + ".xml";
            
           
-					FileWriter fw = new FileWriter( outputFile );
-					fw.write( m.XML );
-					fw.close( );
-
-          // Now finally run the created XML through a postprocessing XSLT which does
-          // things like add the GML polygons (if anzlic_id matches)
-          Element mdXml = Xml.loadFile(outputFile);
-          Map<String,String> xsltparams = new HashMap<String,String>();
-          xsltparams.put("anzlicid", d.ANZLIC_ID);
-			    System.out.println( "Transforming "+d.UUID );
-          Element result = Xml.transform(mdXml, "data" + File.separator + "insert-gml.xsl",  xsltparams);
-          //System.out.println("Result was \n"+Xml.getString(result));
           XMLOutputter out = new XMLOutputter();
           Format f = Format.getPrettyFormat();  
           f.setEncoding("UTF-8");
@@ -190,26 +189,25 @@ public class FileXMLWriter {
 				} // for each dataset				
 			}
 		catch( org.hibernate.HibernateException e ){
-			System.out.println( "Hibernate exception occurred" );
-			logThrowableMsgStack( e, "N/A" );
+			logger.error( "Hibernate exception occurred" );
 			System.exit( 1 );
 			}
 		finally {
 			src.close( );
-			//dest.close( );
 			}
 		}
 	
 	
 	private static void logThrowableMsgStack( Throwable t, String objName ){
 
-		java.io.PrintStream ps = System.out;
+		StringBuffer ps = new StringBuffer();
 		
-		ps.println( "Problem whilst processing dataset '" + objName + "'" );
-		t.printStackTrace(ps);
-		do ps.println( "Cause: " + t.getMessage( ) + " - " + t.getClass( ).getName( ) );
+		ps.append( "Problem whilst processing dataset '" + objName + "'" );
+		do ps.append( "Cause: " + t.getMessage( ) + " - " + t.getClass( ).getName( ) );
 		while( ( t = t.getCause( ) ) != null );
-		ps.println( "Processing of '" + objName + "' aborted" );
+		ps.append( "Processing of '" + objName + "' aborted" );
+
+    logger.error(ps.toString());
 		}
 
 		

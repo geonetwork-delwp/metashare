@@ -17,7 +17,12 @@ import java.util.StringTokenizer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Dataset {
+
+  private static final Logger logger = LogManager.getLogger("dataset");
 
 	public int ID;
 	public String Title;
@@ -211,7 +216,7 @@ public class Dataset {
 		}
 
 	public String getResourceConstraint( ){
-    System.out.println("AccessID: "+AccessId);
+    logger.debug("AccessID: "+AccessId);
 		String resourceConstraint = "Unknown";
 		if (AccessId.toUpperCase().equals("R")){
 			resourceConstraint = "restricted";
@@ -325,7 +330,7 @@ public class Dataset {
 
 	public String getProgressCode( ){
 		String progress = (String) ProgressCodes.get( Status );
-    System.out.println("Status: "+Status+" Looked up: "+progress);
+    logger.debug("Status: "+Status+" Looked up: "+progress);
 		if (progress.toLowerCase().equals("ongoing")){
 			String maintenance = getMaintenanceFrequency( );
 			if (maintenance.toLowerCase().equals("unknown") || maintenance.toLowerCase().equals("notplanned")){
@@ -340,7 +345,7 @@ public class Dataset {
 		}
 	
 	public String getMaintenanceFrequency( ){
-    System.out.println("MaintenanceFrequency: "+MaintenanceFrequency+" looked up: "+MaintenanceFrequencies.get( MaintenanceFrequency ));
+    logger.debug("MaintenanceFrequency: "+MaintenanceFrequency+" looked up: "+MaintenanceFrequencies.get( MaintenanceFrequency ));
 		return (String) MaintenanceFrequencies.get( MaintenanceFrequency );
 		}
 		
@@ -718,8 +723,8 @@ public class Dataset {
 			}
     }
 		if( mgr == null ) {
-      System.err.println( "No data contact found for dataset '" + Name + "', using default" );
-		  return DatasetContact.getDefault( );
+      logger.error( "No data contact found for dataset '" + Name + "', FAILING");
+		  return null;
     }
 		return mgr; // Reach here only if did not find 1st preference, so return 2nd
 	}
@@ -826,8 +831,8 @@ public class Dataset {
 		}
 		
 	public String getHierarchyLevel( ){
-    System.out.println("SeriesID: "+SeriesID+" DataType: "+ DataType);
-    System.out.println("ScopeCodePair: "+new ScopeCodePair( SeriesID, DataType )+" "+ScopeCodes);
+    logger.debug("SeriesID: "+SeriesID+" DataType: "+ DataType);
+    logger.debug("ScopeCodePair: "+new ScopeCodePair( SeriesID, DataType )+" "+ScopeCodes);
     String hierarchyLevel;
     if (Products.get(ANZLIC_ID) != null) {
        hierarchyLevel = "product";
@@ -835,13 +840,13 @@ public class Dataset {
        hierarchyLevel = (String) ScopeCodes.get( new ScopeCodePair( SeriesID, DataType ) );
 		  // return ( SeriesID == null || SeriesID.equals("0") ) ? "dataset" : "series";
 		}
-    System.out.println("HIELevel = "+hierarchyLevel);
+    logger.debug("HIELevel = "+hierarchyLevel);
     return hierarchyLevel;
   }
 	
 	
 	public String getDataType( ){
-    System.out.println("DataType: "+ DataType+ " Looked up: "+DataTypes.get( DataType ));
+    logger.debug("DataType: "+ DataType+ " Looked up: "+DataTypes.get( DataType ));
 		return (String) DataTypes.get( DataType );
 		}
 		

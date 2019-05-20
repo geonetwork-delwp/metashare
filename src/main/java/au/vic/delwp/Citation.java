@@ -2,7 +2,12 @@ package au.gov.vic.delwp;
 
 import org.apache.commons.lang3.StringUtils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Citation {
+
+  private static final Logger logger = LogManager.getLogger("citation");
 
 	public int ID;
 	public String Author;
@@ -83,7 +88,7 @@ public class Citation {
 	}
 
   public boolean isSourceCitationNotNull() {
-    System.out.println(this.toString());
+    logger.debug(this.toString());
     return isTitleNotNull() && isYearPublishedNotNull() && 
            isCorporateAuthorNotNull() && isAuthorNotNull() && 
            isAdditionalDetailNotNull() && isIsbnNotNull();

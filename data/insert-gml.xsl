@@ -89,7 +89,7 @@
             <gex:EX_BoundingPolygon>
     <xsl:for-each select="$gml32//gml:PolygonPatch">
               <gex:polygon>
-                <gml:Polygon>
+                <gml:Polygon gml:id="{generate-id()}">
                   <xsl:copy-of select="./*"/>
                 </gml:Polygon>
               </gex:polygon>

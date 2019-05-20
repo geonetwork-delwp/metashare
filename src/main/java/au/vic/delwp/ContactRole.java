@@ -8,8 +8,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ContactRole {
+
+  private static final Logger logger = LogManager.getLogger("contact");
 
 	static protected HashMap RoleTranslations = new HashMap( );
 
@@ -23,7 +27,7 @@ public class ContactRole {
 		}
 
 	public String getRole( ){
-    System.out.println("ROLE: "+ID+" looked up "+(String) RoleTranslations.get( ID+"" ));
+    logger.debug("ROLE: "+ID+" looked up "+(String) RoleTranslations.get( ID+"" ));
 		return (String) RoleTranslations.get( ID+"" );
 		}
 	}
