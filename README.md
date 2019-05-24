@@ -1,4 +1,4 @@
-# metartool
+# metashare
 
 This is a tool for converting metadata in Metashare (an Oracle database) to 19115-3 XML metadata files. 
 
