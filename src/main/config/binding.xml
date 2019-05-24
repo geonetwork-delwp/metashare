@@ -54,7 +54,26 @@
         <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
           <value constant='DELWP Profile'  name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
         </structure>
-        <!-- TODO: Add version and date? -->
+        <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+          <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+            <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <value name='Date' constant='2019-05-24' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+            </structure>
+            <structure name='dateType' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='CI_DateTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode'/>
+                <value name='codeListValue' constant='creation' />
+              </structure>
+            </structure>
+          </structure>
+        </structure>
+        <structure name='edition' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+          <value name='CharacterString' constant='Version 1' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+        </structure>
+        <structure name='editionDate' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+          <value name='DateTime' constant='2019-05-24T00:00:00' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+        </structure>
+        <structure name='citedResponsibleParty' get-method="getDefaultDELWP" ns='http://standards.iso.org/iso/19115/-3/cit/2.0'/>
       </structure>
     </structure>
     <structure name='referenceSystemInfo' usage='optional' test-method='isRefSysNotNull' >

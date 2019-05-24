@@ -138,7 +138,7 @@ public class FileXMLWriter {
           //logger.debug("Result was \n"+Xml.getString(result));
 
           // Now validate the transformed result
-          xmlIsValid = false;
+          xmlIsValid = true;
           if (cmd.hasOption("s")) {
 					  logger.error("Validation is skipped.");
           } else {
