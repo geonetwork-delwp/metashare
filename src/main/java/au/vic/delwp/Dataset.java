@@ -807,6 +807,10 @@ public class Dataset {
 		return ( ( EquivalentScales.get( SourceDataScale ) != null ) ? "m" : null );
 		}
 	
+
+  public boolean hasTemporalExtent() {
+    return (StringUtils.isBlank(BeginningDate) && StringUtils.isBlank(EndingDate));
+  }
 	
 	public String getBeginningDate( ) throws java.text.ParseException {	
 		return getTemporalDate( BeginningDate );

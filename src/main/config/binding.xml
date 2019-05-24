@@ -229,7 +229,7 @@
             </collection>
           </structure>
         </structure>    
-        <structure name='extent' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+        <structure name='extent' usage='optional' test-method='hasTemporalExtent' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='EX_Extent' ns='http://standards.iso.org/iso/19115/-3/gex/1.0'>
             <structure name='temporalElement' ns='http://standards.iso.org/iso/19115/-3/gex/1.0'>
               <structure name='EX_TemporalExtent' ns='http://standards.iso.org/iso/19115/-3/gex/1.0'>
@@ -336,7 +336,7 @@
                 <structure name='identifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                     <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
-                      <value name='CharacterString' constant='urn:delwp:thesaurus:SDMCategories' ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+                      <value name='CharacterString' constant='SDMCategories' ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
                     </structure>
                   </structure>
                 </structure>
