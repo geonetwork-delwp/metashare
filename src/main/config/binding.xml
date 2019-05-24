@@ -333,6 +333,13 @@
                 <structure name='editionDate' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value name='DateTime' constant='2019-05-24T00:00:00' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
+                <structure name='identifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                    <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                      <value name='CharacterString' constant='urn:delwp:thesaurus:SDMCategories' ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+                    </structure>
+                  </structure>
+                </structure>
                 <structure name='citedResponsibleParty' get-method="getDefaultDELWP" ns='http://standards.iso.org/iso/19115/-3/cit/2.0'/>
               </structure>
             </structure>
