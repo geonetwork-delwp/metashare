@@ -278,6 +278,48 @@
           </structure>
         </structure>
 
+        <structure name='descriptiveKeywords' usage='optional' test-method='hasSDMCategory' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+          <structure name='MD_Keywords' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+            <structure name='keyword' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+              <value name='CharacterString' get-method="getSDMCategory" ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+            </structure>
+            <structure name='type' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+              <structure name='MD_KeywordTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+                <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_KeywordTypeCode' />
+                <value name='codeListValue' constant='theme' />
+                <value constant='theme' style='text' />
+              </structure>
+            </structure>
+            <structure name='thesaurusName' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+              <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value name='CharacterString' constant='DELWP SDM Product Categories' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                    <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                      <value name='Date' constant='2019-05-24' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                    </structure>
+                    <structure name='dateType' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                      <structure name='CI_DateTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                        <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode'/>
+                        <value name='codeListValue' constant='creation' />
+                      </structure>
+                    </structure>
+                  </structure>
+                </structure>
+                <structure name='edition' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value name='CharacterString' constant='Version 1' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='editionDate' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <value name='DateTime' constant='2019-05-24T00:00:00' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='citedResponsibleParty' get-method="getDefaultDELWP" ns='http://standards.iso.org/iso/19115/-3/cit/2.0'/>
+              </structure>
+            </structure>
+          </structure>
+        </structure>
+
         <!-- ANZLIC search words abandoned
         <structure name='descriptiveKeywords' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
           <structure name='MD_Keywords' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>

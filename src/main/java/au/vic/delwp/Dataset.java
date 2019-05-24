@@ -89,6 +89,7 @@ public class Dataset {
 	static protected HashMap DataTypes = new HashMap( );
 	static protected HashMap ScopeCodes = new HashMap( );
 	static protected HashMap Products = new HashMap( );
+	static protected HashMap Categories = new HashMap( );
 	static protected HashMap Objects = new HashMap( );
   static protected List<DelwpColumn> Columns = new ArrayList<DelwpColumn>();
 	static protected SimpleDateFormat DBDateFormat = new SimpleDateFormat("ddMMMyyyy",Locale.ENGLISH );
@@ -106,6 +107,7 @@ public class Dataset {
 		MapUtils.Populate( "reftab__ms2ap_spatial_rep_type.txt", DataTypes, "\\d+\\|.+" );
 		MapUtils.PopulateScopeCodeMap( "reftab__ms2ap_scope_with_series.txt", ScopeCodes );
     MapUtils.PopulateMulti( "product_object.csv", Products );
+    MapUtils.Populate( "sdm_category_product.csv", Categories );
     MapUtils.Populate( "object.csv", Objects );
     Columns = MapUtils.PopulateUsingOpenCSV( "column.csv", DelwpColumn.class );
 		}
@@ -729,8 +731,6 @@ public class Dataset {
 		return mgr; // Reach here only if did not find 1st preference, so return 2nd
 	}
 
-	/* This method assumes that every Dataset at least has a 'Dataset Data Manager'. My 
-	 * checks indicate this is not 100% true */
 	public DatasetContact getMetadataContact( ){
 		
 		Iterator i = Contacts.iterator( );
@@ -750,6 +750,21 @@ public class Dataset {
 		return mgr; // Reach here only if did not find 1st preference, so return 2nd
 		}
 		
+	public DatasetContact getDefaultDELWP( ){
+    DatasetContact dc = DatasetContact.getDefault();
+    dc.role = new ContactRole();
+    dc.role.ID = 15; //custodian
+    return dc;
+  }
+
+  public boolean hasSDMCategory() {
+    return (Categories.get(ANZLIC_ID) != null);
+  }
+		
+  public String getSDMCategory() {
+    return (String)Categories.get(ANZLIC_ID);
+  }
+
 	public boolean hasOtherResponsibleParties( ){
 		Set parties = getOtherResponsibleParties();
 
@@ -760,6 +775,7 @@ public class Dataset {
 		return false;
 		}	
 
+  
 	public Set getOtherResponsibleParties( ){
 	
 		Set orps = new HashSet( );
