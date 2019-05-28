@@ -90,6 +90,7 @@ public class Dataset {
 	static protected HashMap ScopeCodes = new HashMap( );
 	static protected HashMap Products = new HashMap( );
 	static protected HashMap Categories = new HashMap( );
+	static protected HashMap SDMProductIds = new HashMap( );
 	static protected HashMap Objects = new HashMap( );
   static protected List<DelwpColumn> Columns = new ArrayList<DelwpColumn>();
 	static protected SimpleDateFormat DBDateFormat = new SimpleDateFormat("ddMMMyyyy",Locale.ENGLISH );
@@ -109,6 +110,7 @@ public class Dataset {
     MapUtils.PopulateMulti( "product_object.csv", Products );
     MapUtils.Populate( "sdm_category_product.csv", Categories );
     MapUtils.Populate( "object.csv", Objects );
+    MapUtils.Populate( "anzlic_id_to_sdm_product_id.csv", SDMProductIds );
     Columns = MapUtils.PopulateUsingOpenCSV( "column.csv", DelwpColumn.class );
 		}
 
@@ -380,13 +382,11 @@ public class Dataset {
 		}
 
   public boolean isObjectIDNotNull() {
-    // TODO: Get from ANZLIC_ID map to object ID
-    return true;
+    return SDMProductIds.get(ANZLIC_ID) != null;
   }
 
   public String getObjectID() {
-    // TODO: get object ID
-    return "UNKNOWN";
+    return (String)SDMProductIds.get(ANZLIC_ID);
   }
 
 	public String getBrowseGraphicUrl( ){
@@ -397,7 +397,7 @@ public class Dataset {
     Extent ex = (Extent)exsa[0];
     
 
-    return "http://pwms-ags-00.aaa.depi.vic.gov.au/arcgis/rest/services/BusinessApps/SDM_coverage_map/MapServer/export?dpi=96&transparent=false&format=png8&bbox="+ ex.WestLong + "," + ex.SouthLat + "," + ex.EastLong + "," + ex.NorthLat +"&bboxSR=4326&imageSR=4326&size=440,300&f=image&layerDefs=5:LCSMAP.VMDD_EXTENTS.OBJECT_ID=" + getObjectID() + "&layers=show:1,2,3,5";
+    return "http://pwms-ags-00.aaa.depi.vic.gov.au/arcgis/rest/services/BusinessApps/SDM_coverage_map/MapServer/export?dpi=96&transparent=false&format=png8&bbox="+ ex.WestLong + "," + ex.SouthLat + "," + ex.EastLong + "," + ex.NorthLat +"&bboxSR=4326&imageSR=4326&size=440,300&f=image&layerDefs=5:LCSMAP.VMDD_EXTENTS.OBJECT_ID=" + getObjectID() + "&layers=show:1,2,3,5,7";
   }
 
 	public String getSupplementalInformation( ){
