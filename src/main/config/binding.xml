@@ -904,16 +904,6 @@
                 </structure>
               </structure>
             </structure>
-            <structure name='partyIdentifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-              <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
-                <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
-                  <value name='CharacterString' get-method='getContactID' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                </structure>
-                <structure name='description' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
-                  <value name='CharacterString' constant='MetaShare Contact ID' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                </structure>
-              </structure>
-            </structure>
             <structure name='individual' usage='optional' test-method='isIndividualNotNull'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
               <structure name='CI_Individual' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='name' usage='optional' test-method='isNameNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
