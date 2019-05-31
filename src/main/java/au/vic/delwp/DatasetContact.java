@@ -48,6 +48,8 @@ public class DatasetContact {
 		c.State = p.getProperty("State");
 		c.Postcode = p.getProperty("Postcode");
 		c.Country = p.getProperty("Country");
+    c.ID = -1;
+
 		
 		Default = new DatasetContact( );
 		Default.role = r;

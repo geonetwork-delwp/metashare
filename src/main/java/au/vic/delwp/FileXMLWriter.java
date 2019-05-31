@@ -200,6 +200,8 @@ public class FileXMLWriter {
 		/* Fetch list of contacts from Oracle DB */
 		HQL = "FROM Contact"; 
 		ArrayList contacts = (ArrayList) src.createQuery( HQL ).list( );
+
+    contacts.add(DatasetContact.getDefault().contact);
 		
 		try {
       for( int i = 0; i < contacts.size(); ++i ){

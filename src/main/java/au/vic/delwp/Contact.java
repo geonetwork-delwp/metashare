@@ -29,7 +29,11 @@ public class Contact {
   }	
 	
   public String getTitle() {
-    return getName() + " @ " + Organisation.Text;
+    if (StringUtils.isEmpty(getName())) {
+      return Organisation.Text;
+    } else {
+      return getName() + " @ " + Organisation.Text;
+    }
   }	
 
 	public String getName( ){
