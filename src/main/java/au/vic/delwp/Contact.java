@@ -23,8 +23,15 @@ public class Contact {
 	public String Country;
 		
 	// public java.util.Set Datasets = new java.util.HashSet( );
+
+  public String getUUID() {
+    return Utils.generateContactUUID(getContactID());
+  }	
 	
-	
+  public String getTitle() {
+    return getName() + " @ " + Organisation.Text;
+  }	
+
 	public String getName( ){
 		String s = "";
 		

@@ -872,17 +872,10 @@
     </structure>
   </mapping>
 
-  <mapping name="CI_Organisation" class='au.gov.vic.delwp.DatasetContact'>
-    <structure name='CI_Responsibility' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-      <structure name='role' field='role' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-        <structure name='CI_RoleCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-          <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode' />
-          <value name='codeListValue' get-method='getRole' />
-        </structure>
-      </structure>
-      <structure field='contact'>
-        <structure name='party' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-          <structure name='CI_Organisation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+  <mapping name="CI_Organisation" class='au.gov.vic.delwp.Contact' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+            <value name='uuid' style='attribute' get-method='getUUID'/>
+            <value name='title' style='attribute' get-method='getTitle'/>
+
             <structure name='name' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
               <structure field='Organisation' >
                 <value field='Text' name='CharacterString'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
@@ -909,27 +902,6 @@
                     </structure>
                   </structure>
                 </structure>
-                <!-- Contstant Linkage as specified by client? -->
-                <!-- Contact details are as in the contact info so this
-                     shouldn't be necessary -->
-                <!--
-                <structure name='onlineResource' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <structure name='CI_OnlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                    <structure name='linkage'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value name='CharacterString' constant='https://www.delwp.vic.gov.au/maps'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
-                    </structure>
-                    <structure name='protocol' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value name='CharacterString' constant='WWW:LINK-1.0-http- -related' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
-                    <structure name='description' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <value name='CharacterString' constant='Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                    </structure>
-                  </structure>
-                </structure>
-                <structure name='contactInstructions' usage='optional' test-method="isPointOfContact" ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <value constant='Please consult the above link for a list of Data Distributors from whom this resource may be purchased' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-                </structure>
-                -->
               </structure>
             </structure>
             <structure name='partyIdentifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
@@ -989,10 +961,6 @@
                 </structure>
               </structure>
             </structure>
-          </structure>
-        </structure>
-      </structure>
-    </structure>
   </mapping>
 
   <mapping class='au.gov.vic.delwp.ISODateBlock' abstract='true'>

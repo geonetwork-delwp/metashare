@@ -18,4 +18,8 @@ public class Utils {
        return false;
      }
    }
+
+   public static String generateContactUUID(String id) {
+    return "urn:delwp:metashare:person:"+id+"_person_organisation";
+   }
 }

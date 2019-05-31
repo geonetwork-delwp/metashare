@@ -57,10 +57,11 @@ public class FileXMLWriter {
 		Session src = new Configuration( ).configure("SourceDB.cfg.xml").buildSessionFactory( ).openSession( );
 
     Options options = new Options();
-    options.addOption("h", true, "Specify host name for linkages to metadata records. If not specified then http://localhost:8080/geonetwork/srv/eng/ will be used.");
-    options.addOption("q", true, "Specify a query condition eg. ANZLIC_ID = 'ANZVI0803002511' for debugging purposes.");
-    options.addOption("s", false, "Skip validation. Useful for debugging because reading the schemas takes some time.");
+    options.addOption("h", true, "Optional: Specify host name for linkages to metadata records. If not specified then http://localhost:8080/geonetwork/srv/eng/ will be used.");
+    options.addOption("q", true, "Optional: Specify a query condition eg. ANZLIC_ID = 'ANZVI0803002511' for debugging purposes.");
+    options.addOption("s", false, "Optional: Skip validation. Useful for debugging because reading the schemas takes some time.");
     options.addRequiredOption("d", "directory", true, "Specify the directory name for output xml files.");
+    options.addRequiredOption("c", "contact_directory", true, "Specify the directory name for output contact xml fragment files.");
 
     CommandLineParser parser = new DefaultParser();
     CommandLine cmd = null;
@@ -81,13 +82,17 @@ public class FileXMLWriter {
       hostNameForLinks = cmd.getOptionValue("h");
     }
     
-		/* Process output directory if specifed, otherwise use current directory as default */
+		/* Process output directory */
 		String path = cmd.getOptionValue("d");
 		/* Append final separator character if not already suppled */
 		if(!path.endsWith(File.separator)) path += File.separator;
     File op = new File(path + "invalid");
     op.mkdirs(); // creates both output directory and invalid directory if they don't exist
 
+		/* Process output directory for contact fragments */
+		String contactpath = cmd.getOptionValue("c");
+    File ocp = new File(contactpath);
+    ocp.mkdirs();
 
     System.setProperty("XML_CATALOG_FILES", oasisCatalogFile);
     Xml.resetResolver();
@@ -186,16 +191,58 @@ public class FileXMLWriter {
 					}
 
          
-				} // for each dataset				
-			}
-		catch( org.hibernate.HibernateException e ){
+			} // for each dataset				
+		} catch( org.hibernate.HibernateException e ) {
 			logger.error( "Hibernate exception occurred" );
 			System.exit( 1 );
-			}
-		finally {
-			src.close( );
-			}
 		}
+
+		/* Fetch list of contacts from Oracle DB */
+		HQL = "FROM Contact"; 
+		ArrayList contacts = (ArrayList) src.createQuery( HQL ).list( );
+		
+		try {
+      for( int i = 0; i < contacts.size(); ++i ){
+        Contact c = (Contact)contacts.get(i);
+        logger.debug("Processing contact "+c.getContactID());
+				try {
+					StringWriter sw = new StringWriter( );
+	        mctx.marshalDocument( c, "utf-8", Boolean.FALSE, sw );
+          Element cXml = Xml.loadString(sw.toString(), false);
+         
+          String outputFile = contactpath + File.separator + c.getContactID() + ".xml";
+
+          XMLOutputter out = new XMLOutputter();
+          Format f = Format.getPrettyFormat();  
+          f.setEncoding("UTF-8");
+          out.setFormat(f);  
+          FileOutputStream fo = new FileOutputStream(outputFile);
+          out.output(cXml, fo);
+          fo.close();
+
+				} catch( JiBXException e ){
+					/* This usually due to data problems such as unexpected nulls or
+					 * referential integrity failures. Once a JiBXException occurs, JiBX's
+					 * state is corrupted, hence it must be reinitialised */
+					logThrowableMsgStack( e.getRootCause( ), c.getContactID() );
+					mctx = getMarshallingContext( );					
+				} catch( Exception e ) {
+					/* Write exception info to console, then continue processing next dataset record */
+					logThrowableMsgStack( e, c.getContactID() );
+				} finally {
+					// Have finished with these elements, so purge them from the session
+					//dest.evict( m );
+					src.evict( c );
+				}
+			} // for each contact				
+		} catch( org.hibernate.HibernateException e ) {
+			logger.error( "Hibernate exception occurred" );
+			System.exit( 1 );
+		} finally {
+			src.close( );
+		}
+
+	}
 	
 	
 	private static void logThrowableMsgStack( Throwable t, String objName ){
