@@ -710,7 +710,7 @@ public class Dataset {
 		}
 
 		
-	public DatasetContact getResourcePOC( ){
+	public XlinkedDatasetContact getResourcePOC( ){
 		Iterator i = Contacts.iterator( );
 		DatasetContact mgr = null;
 		
@@ -720,7 +720,7 @@ public class Dataset {
 			IDnText org = dc.contact.Organisation; // ISO19139 XSD states organiation is compulsorary
 			
 			if( org != null) {
-        if (roletype.equals("Dataset Data Manager") ) return dc;
+        if (roletype.equals("Dataset Data Manager") ) return new XlinkedDatasetContact(dc);
         else if (roletype.equals("Dataset Contact")) mgr = dc; // keep reference
 			}
     }
@@ -728,10 +728,10 @@ public class Dataset {
       logger.error( "No data contact found for dataset '" + Name + "', FAILING");
 		  return null;
     }
-		return mgr; // Reach here only if did not find 1st preference, so return 2nd
+		return new XlinkedDatasetContact(mgr); // Reach here only if did not find 1st preference, so return 2nd
 	}
 
-	public DatasetContact getMetadataContact( ){
+	public XlinkedDatasetContact getMetadataContact( ){
 		
 		Iterator i = Contacts.iterator( );
 		DatasetContact mgr = null;
@@ -742,19 +742,19 @@ public class Dataset {
 			IDnText org = dc.contact.Organisation; // ISO19139 XSD states organiation is compulsorary
 			
 			if( org != null ){
-				if( roletype.equals("Metadata Author") ) return dc; // Found 1st preference -> return it
+				if( roletype.equals("Metadata Author") ) return new XlinkedDatasetContact(dc); // Found 1st preference -> return it
 				else if( roletype.equals("Dataset Data Manager") ) mgr = dc; // Found 2nd preference -> keep reference, but continue looking for 1st
 				}
 			}
 		if( mgr == null ) throw new IllegalStateException( "No metadata contact found for dataset '" + Name + "'" );
-		return mgr; // Reach here only if did not find 1st preference, so return 2nd
+		return new XlinkedDatasetContact(mgr); // Reach here only if did not find 1st preference, so return 2nd
 		}
 		
-	public DatasetContact getDefaultDELWP( ){
+	public XlinkedDatasetContact getDefaultDELWP( ){
     DatasetContact dc = DatasetContact.getDefault();
     dc.role = new ContactRole();
     dc.role.ID = 15; //custodian
-    return dc;
+    return new XlinkedDatasetContact(dc);
   }
 
   public boolean hasSDMCategory() {
@@ -787,7 +787,7 @@ public class Dataset {
 			IDnText org = dc.contact.Organisation; // ISO19139 XSD states organiation is compulsorary
 			
 			if( org != null && !( roletype.equals("Dataset Data Manager") || roletype.equals("Dataset Contact") || roletype.equals("GI Manager") || roletype.startsWith("Warehouse") ) )
-				orps.add( dc );
+				orps.add( new XlinkedDatasetContact(dc) );
 			}	
 		return orps;
 		}
@@ -809,7 +809,7 @@ public class Dataset {
 	
 
   public boolean hasTemporalExtent() {
-    return (StringUtils.isBlank(BeginningDate) && StringUtils.isBlank(EndingDate));
+    return !StringUtils.isBlank(BeginningDate) && !StringUtils.isBlank(EndingDate);
   }
 	
 	public String getBeginningDate( ) throws java.text.ParseException {	

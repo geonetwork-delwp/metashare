@@ -172,7 +172,7 @@
                 </structure>
               </structure>
             </structure>
-            <collection get-method='getOtherResponsibleParties' item-type='au.gov.vic.delwp.DatasetContact' >
+            <collection get-method='getOtherResponsibleParties' item-type='au.gov.vic.delwp.XlinkedDatasetContact' >
               <structure name='citedResponsibleParty' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'/>
             </collection>
           </structure>
@@ -858,7 +858,21 @@
     </structure>
   </mapping>
 
-  <mapping class='au.gov.vic.delwp.DatasetContact' abstract='true'>
+  <mapping class='au.gov.vic.delwp.XlinkedDatasetContact' abstract='true'>
+    <structure name='CI_Responsibility' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+      <structure name='role' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+        <structure name='CI_RoleCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+          <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode' />
+          <value name='codeListValue' get-method='getRole' />
+        </structure>
+      </structure>
+      <structure name='party' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+        <value name='href' style='attribute' get-method='getContactXlink' ns='http://www.w3.org/1999/xlink' />
+      </structure>
+    </structure>
+  </mapping>
+
+  <mapping name="CI_Organisation" class='au.gov.vic.delwp.DatasetContact'>
     <structure name='CI_Responsibility' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
       <structure name='role' field='role' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
         <structure name='CI_RoleCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
