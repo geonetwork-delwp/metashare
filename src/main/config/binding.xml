@@ -437,13 +437,13 @@
           <structure name='PT_Locale' ns='http://standards.iso.org/iso/19115/-3/lan/1.0'>
             <structure name='language' ns='http://standards.iso.org/iso/19115/-3/lan/1.0'>
               <structure name='LanguageCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/lan/1.0'>
-                <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_SpatialRepresentationTypeCode' />
+                <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#LanguageCode' />
                 <value name='codeListValue' constant='eng' />
               </structure>
             </structure>
             <structure name='characterEncoding' ns='http://standards.iso.org/iso/19115/-3/lan/1.0'>
               <structure name='MD_CharacterSetCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/lan/1.0'>
-                <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_SpatialRepresentationTypeCode' />
+                <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_CharacterSetCode' />
                 <value name='codeListValue' constant='utf8' />
               </structure>
             </structure>
@@ -838,7 +838,7 @@
       <structure name='metadataReference' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
         <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
           <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-            <value name='CharacterString' field='anzlicId' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+            <value name='CharacterString' field='title' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
           </structure>
           <structure name='onlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
             <structure name='CI_OnlineResource'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>

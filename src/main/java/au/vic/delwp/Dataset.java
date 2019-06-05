@@ -465,6 +465,8 @@ public class Dataset {
       for (int i = 0; i < resources.size(); i++) {
          AssociatedResource assRes = new AssociatedResource();
          assRes.anzlicId = (String)resources.get(i);
+         assRes.UUID = UUID;
+         assRes.title = getTitle();
          assRes.hostNameForLinks = hostNameForLinks;
          associatedResources.add(assRes);
       }
