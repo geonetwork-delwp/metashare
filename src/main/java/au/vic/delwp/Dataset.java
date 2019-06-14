@@ -397,7 +397,7 @@ public class Dataset {
     Extent ex = (Extent)exsa[0];
     
 
-    return "http://pwms-ags-00.aaa.depi.vic.gov.au/arcgis/rest/services/BusinessApps/SDM_coverage_map/MapServer/export?dpi=96&transparent=false&format=png8&bbox="+ ex.WestLong + "," + ex.SouthLat + "," + ex.EastLong + "," + ex.NorthLat +"&bboxSR=4326&imageSR=4326&size=440,300&f=image&layerDefs=5:LCSMAP.VMDD_EXTENTS.OBJECT_ID=" + getObjectID() + "&layers=show:1,2,3,5,7";
+    return "https://pwms-ags-00.aaa.depi.vic.gov.au/arcgis/rest/services/BusinessApps/SDM_coverage_map/MapServer/export?dpi=96&transparent=false&format=png8&bbox="+ ex.WestLong + "," + ex.SouthLat + "," + ex.EastLong + "," + ex.NorthLat +"&bboxSR=4326&imageSR=4326&size=440,300&f=image&layerDefs=5:LCSMAP.VMDD_EXTENTS.OBJECT_ID=" + getObjectID() + "&layers=show:1,2,3,5,7";
   }
 
 	public String getSupplementalInformation( ){
