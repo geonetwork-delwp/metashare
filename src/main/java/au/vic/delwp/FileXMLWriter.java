@@ -51,7 +51,7 @@ public class FileXMLWriter {
       logger.error("Failed to create cache for schema files");
     }
 
-    String hostNameForLinks = "https://dev-metashare.delwp.vic.gov.au/geonetwork/srv/eng/";
+    String hostNameForLinks = "https://dev-metashare.maps.vic.gov.au/geonetwork/srv/eng/";
 
 		IMarshallingContext mctx = getMarshallingContext( );
 		
