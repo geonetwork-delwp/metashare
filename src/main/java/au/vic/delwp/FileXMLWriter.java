@@ -58,7 +58,7 @@ public class FileXMLWriter {
 		Session src = new Configuration( ).configure("SourceDB.cfg.xml").buildSessionFactory( ).openSession( );
 
     Options options = new Options();
-    options.addOption("h", true, "Optional: Specify host name for linkages to metadata records. If not specified then https://dev-metashare.delwp.vic.gov.au/geonetwork/srv/eng/ will be used.");
+    options.addOption("h", true, "Optional: Specify host name for linkages to metadata records. If not specified then "+hostNameForLinks+" will be used.");
     options.addOption("q", true, "Optional: Specify a query condition eg. ANZLIC_ID = 'ANZVI0803002511' for debugging purposes.");
     options.addOption("s", false, "Optional: Skip validation. Useful for debugging because reading the schemas takes some time.");
     options.addRequiredOption("d", "directory", true, "Specify the directory name for output xml files.");
