@@ -12,7 +12,7 @@ public class XlinkedDatasetContact {
   public String getRole() { return ds.role.getRole(); }
 
 	public String getContactXlink(){
-    return "local://xml.metadata.get?uuid="+Utils.generateContactUUID(ds.contact.getContactID()); 
+    return "local://srv/api/registries/entries/"+Utils.generateContactUUID(ds.contact.getContactID()); 
 	}
 
 	}
