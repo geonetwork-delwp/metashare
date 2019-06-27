@@ -89,7 +89,10 @@
             <gex:EX_BoundingPolygon>
     <xsl:for-each select="$gml32//gml:PolygonPatch">
               <gex:polygon>
-                <gml:Polygon gml:id="{generate-id()}">
+                <!-- Note we use the following srsName because the coord order
+                     coming out of fme is lat,long - if that changes to long,lat
+                     then this will need to be changed -->
+                <gml:Polygon gml:id="{generate-id()}" srsName="urn:x-ogc:def:crs:EPSG:4326">
                   <xsl:copy-of select="./*"/>
                 </gml:Polygon>
               </gex:polygon>
