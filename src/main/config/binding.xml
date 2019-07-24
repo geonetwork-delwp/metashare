@@ -946,7 +946,7 @@
                     </structure>
                   </structure>
                 </structure>
-                <structure name='positionName' usage='optional' test-method='isPositionNotNull'ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <structure name='positionName' usage='optional' test-method='isPositionNotNull' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <value get-method='getPosition' name='CharacterString'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
               </structure>
