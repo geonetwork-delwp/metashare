@@ -2,11 +2,11 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script></head>
-   <body><br><h1>au.gov.vic.delwp.Dataset</h1>
+   <body><br><h1>au.gov.vic.delwp.Dataset (table dataset)</h1>
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
@@ -210,12 +210,12 @@
          </tr>
          <tr>
             <td>Field</td>
-            <td>Method: getTopicCategories: lookup ANZLICSearchWords in TopicCategories</td>
+            <td>Method: getTopicCategories: lookup ANZLICSearchWords (from table search_word_full) in TopicCategories</td>
             <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory/mri:MD_TopicCategoryCode</td>
          </tr>
          <tr>
             <td>Field</td>
-            <td>Method: getExtentDescription, concatenate each GeographicNameDataset (space separated)</td>
+            <td>Method: getExtentDescription, concatenate each GeographicNameDataset (space separated) (from table ge_name_dataset)</td>
             <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent/gex:EX_Extent/gex:description/gco:CharacterString</td>
          </tr>
          <tr>
@@ -370,7 +370,7 @@
          </tr>
          <tr>
             <td>Field</td>
-            <td>Method: getSupplementalInformation, concatenate History, LayerRelationShip, DesignIssuesCurrent, DesignIssuesFuture, (RelatedDocuments - some reformatting here), AdditionalMetadata, AddMdUrl</td>
+            <td>Method: getSupplementalInformation, concatenate History, LayerRelationShip, DesignIssuesCurrent, DesignIssuesFuture, (RelatedDocuments from table related_documents - some reformatting here), AdditionalMetadata, AddMdUrl</td>
             <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:supplementalInformation/gco:CharacterString</td>
          </tr>
          <tr>
@@ -528,11 +528,11 @@
             <td>Method: getMetadataAccessClassification, if AccessAdvertScopeId == "1" or "2" then "restricted", otherwise "unclassified"</td>
             <td>MD_Metadata/mdb:metadataConstraints/mco:MD_SecurityConstraints/mco:classification/mco:MD_ClassificationCode/mdb:codeListValue</td>
          </tr>
-      </table><br><h1>au.gov.vic.delwp.Extent</h1>
+      </table><br><h1>au.gov.vic.delwp.Extent (table geographic_extent_name)</h1>
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
@@ -560,11 +560,11 @@
             <td>Method: getNorthLat, return NorthLat if BBOX defined</td>
             <td>gex:EX_GeographicBoundingBox/gex:northBoundLatitude/gco:Decimal</td>
          </tr>
-      </table><br><h1>au.gov.vic.delwp.Citation</h1>
+      </table><br><h1>au.gov.vic.delwp.Citation (table citation)</h1>
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
@@ -631,7 +631,7 @@
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
@@ -693,7 +693,7 @@
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
@@ -730,7 +730,7 @@
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
@@ -740,19 +740,19 @@
          </tr>
          <tr>
             <td>Field</td>
-            <td>Method: getRole, DatasetContact.role</td>
+            <td>Method: getRole, DatasetContact.role (from table dataset_contact)</td>
             <td>cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeListValue</td>
          </tr>
          <tr>
             <td>Field</td>
-            <td>Method: getContactXlink, generated UUID from DatasetContact.Contact.ID</td>
+            <td>Method: getContactXlink, generated UUID from DatasetContact.Contact.ID (from table dataset_contact and contact)</td>
             <td>cit:CI_Responsibility/cit:party/xlink:href</td>
          </tr>
-      </table><br><h1>au.gov.vic.delwp.Contact</h1>
+      </table><br><h1>au.gov.vic.delwp.Contact (table contact)</h1>
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
@@ -844,7 +844,7 @@
       <table class="table table-striped">
          <tr>
             <th>Type</th>
-            <th>Field</th>
+            <th>Description</th>
             <th>XPath</th>
          </tr>
          <tr>
