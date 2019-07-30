@@ -21,7 +21,7 @@
 
   <xsl:output method="html" indent="yes"/>
 
-  <xsl:template match="/">
+  <xsl:template match="/binding">
    <html>
     <head>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
@@ -30,15 +30,18 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </head>
     <body>
-    <table class="table table-striped">
-    <tr>
-      <th>Object</th>
-      <th>Type</th>
-      <th>Field</th>
-      <th>XPath</th>
-    </tr>
-    <xsl:apply-templates select="@*|node()"/>
-    </table>
+    <xsl:for-each select="mapping">
+      <br/>
+      <h1><xsl:value-of select="@class"/></h1>
+      <table class="table table-striped">
+        <tr>
+          <th>Type</th>
+          <th>Field</th>
+          <th>XPath</th>
+        </tr>
+        <xsl:apply-templates select="@*|node()"/>
+      </table>
+    </xsl:for-each>
     </body>
    </html>
   </xsl:template>
@@ -51,7 +54,6 @@
                                                  else 'Field'"/>
     <xsl:message><xsl:value-of select="concat(ancestor::mapping/@class,' ',$constantOrField,': ',$field,' XPath: ',$mappingname,gn:getXPath(.))"/></xsl:message>
     <tr>
-      <td><xsl:value-of select="ancestor::mapping/@class"/></td>
       <td><xsl:value-of select="$constantOrField"/></td>
       <td><xsl:value-of select="$field"/></td>
       <td><xsl:value-of select="concat($mappingname,gn:getXPath(.))"/></td>

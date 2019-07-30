@@ -1,0 +1,872 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script></head>
+   <body><br><h1>au.gov.vic.delwp.Dataset</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/-3/cat/1.0 http://standards.iso.org/iso/19115/-3/cat/1.0/cat.xsd http://standards.iso.org/iso/19115/-3/cit/2.0
+               http://standards.iso.org/iso/19115/-3/cit/2.0/cit.xsd http://standards.iso.org/iso/19115/-3/gcx/1.0 http://standards.iso.org/iso/19115/-3/gcx/1.0/gcx.xsd
+               http://standards.iso.org/iso/19115/-3/gex/1.0 http://standards.iso.org/iso/19115/-3/gex/1.0/gex.xsd http://standards.iso.org/iso/19115/-3/lan/1.0
+               http://standards.iso.org/iso/19115/-3/lan/1.0/lan.xsd http://standards.iso.org/iso/19115/-3/srv/2.0 http://standards.iso.org/iso/19115/-3/srv/2.0/srv.xsd
+               http://standards.iso.org/iso/19115/-3/mas/1.0 http://standards.iso.org/iso/19115/-3/mas/1.0/mas.xsd http://standards.iso.org/iso/19115/-3/mcc/1.0
+               http://standards.iso.org/iso/19115/-3/mcc/1.0/mcc.xsd http://standards.iso.org/iso/19115/-3/mco/1.0 http://standards.iso.org/iso/19115/-3/mco/1.0/mco.xsd
+               http://standards.iso.org/iso/19115/-3/mda/2.0 http://standards.iso.org/iso/19115/-3/mda/2.0/mda.xsd http://standards.iso.org/iso/19115/-3/mdb/2.0
+               http://standards.iso.org/iso/19115/-3/mdb/2.0/mdb.xsd http://standards.iso.org/iso/19115/-3/mds/2.0 http://standards.iso.org/iso/19115/-3/mds/2.0/mds.xsd
+               http://standards.iso.org/iso/19115/-3/mdt/2.0 http://standards.iso.org/iso/19115/-3/mdt/2.0/mdt.xsd http://standards.iso.org/iso/19115/-3/mex/1.0
+               http://standards.iso.org/iso/19115/-3/mex/1.0/mex.xsd http://standards.iso.org/iso/19115/-3/mmi/1.0 http://standards.iso.org/iso/19115/-3/mmi/1.0/mmi.xsd
+               http://standards.iso.org/iso/19115/-3/mpc/1.0 http://standards.iso.org/iso/19115/-3/mpc/1.0/mpc.xsd http://standards.iso.org/iso/19115/-3/mrc/2.0
+               http://standards.iso.org/iso/19115/-3/mrc/2.0/mrc.xsd http://standards.iso.org/iso/19115/-3/mrd/1.0 http://standards.iso.org/iso/19115/-3/mrd/1.0/mrd.xsd
+               http://standards.iso.org/iso/19115/-3/mri/1.0 http://standards.iso.org/iso/19115/-3/mri/1.0/mri.xsd http://standards.iso.org/iso/19115/-3/mrl/2.0
+               http://standards.iso.org/iso/19115/-3/mrl/2.0/mrl.xsd http://standards.iso.org/iso/19115/-3/mrs/1.0 http://standards.iso.org/iso/19115/-3/mrs/1.0/mrs.xsd
+               http://standards.iso.org/iso/19115/-3/msr/2.0 http://standards.iso.org/iso/19115/-3/msr/2.0/msr.xsd http://standards.iso.org/iso/19157/-2/mdq/1.0
+               http://standards.iso.org/iso/19157/-2/mdq/1.0/mdq.xsd http://standards.iso.org/iso/19115/-3/mac/2.0 http://standards.iso.org/iso/19115/-3/mac/2.0/mac.xsd
+               http://standards.iso.org/iso/19115/-3/gco/1.0 http://standards.iso.org/iso/19115/-3/gco/1.0/gco.xsd http://standards.iso.org/iso/19115/-3/gmw/1.0
+               http://standards.iso.org/iso/19115/-3/gmw/1.0/gmw.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/gml.xsd
+               http://www.w3.org/1999/xlink http://www.w3.org/1999/xlink.xsd
+            </td>
+            <td>MD_Metadata/xsi:schemaLocation</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>UUID - generated field from sha1sum of anzlicid</td>
+            <td>MD_Metadata/mdb:metadataIdentifier/mcc:MD_Identifier/mcc:code/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_ScopeCode</td>
+            <td>MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method getHierarchyLevel: if no ANZLIC_ID then product else lookup(SeriesID,DataType) in ScopeCodePair</td>
+            <td>MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>ISO 19115-3:2018</td>
+            <td>MD_Metadata/mdb:metadataStandard/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>DELWP Profile</td>
+            <td>MD_Metadata/mdb:metadataProfile/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>2019-05-24</td>
+            <td>MD_Metadata/mdb:metadataProfile/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode</td>
+            <td>MD_Metadata/mdb:metadataProfile/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>creation</td>
+            <td>MD_Metadata/mdb:metadataProfile/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>Version 1</td>
+            <td>MD_Metadata/mdb:metadataProfile/cit:CI_Citation/cit:edition/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>2019-05-24T00:00:00</td>
+            <td>MD_Metadata/mdb:metadataProfile/cit:CI_Citation/cit:editionDate/gco:DateTime</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getReferenceSystemID, if CRSCodes.containsKey( Projection.Text ) then CRSCodes.get( Projection.Text) else if Datum != null CRSCodes.get( Datum.Text )</td>
+            <td>MD_Metadata/mdb:referenceSystemInfo/mrs:MD_ReferenceSystem/mrs:referenceSystemIdentifier/mcc:MD_Identifier/mcc:code/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>EPSG Geodetic Parameter</td>
+            <td>MD_Metadata/mdb:referenceSystemInfo/mrs:MD_ReferenceSystem/mrs:referenceSystemIdentifier/mcc:MD_Identifier/mcc:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getTitle, Title + " ( " + Name + " )"</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getVMDDSchema, VMDDSchema dump from Ross Honeyman: if ANZLIC_ID in dump then OBJECT_OWNER + ":" OBJECT_NAME</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>VMDD Schema</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>ANZLIC Dataset Identifier</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:authority/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>2001-02</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:authority/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:authority/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>revision</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:authority/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:authority/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>custodian</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:authority/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>ANZLIC - the Spatial Information Council</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:authority/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>ANZLIC_ID</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>owner</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Text</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Abstract</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:abstract/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Purpose</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:purpose/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Credit</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:credit/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_ProgressCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:status/mcc:MD_ProgressCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getProgressCode, progress = ProgressCodes.get(Status), if progress == "ongoing" then if MaintenanceFrequency == "unknown" or "notplanned" then use "completed" otherwise use progress</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:status/mcc:MD_ProgressCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_SpatialRepresentationTypeCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialRepresentationType/mcc:MD_SpatialRepresentationTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getDataType, lookup DataType in DataTypes</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialRepresentationType/mcc:MD_SpatialRepresentationTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>m</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution/mri:MD_Resolution/mri:distance/gco:Distance/@uom</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getEquivalentScale, lookup SourceDataScale in EquivalentScales</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:spatialResolution/mri:MD_Resolution/mri:distance/gco:Distance/</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getTopicCategories: lookup ANZLICSearchWords in TopicCategories</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:topicCategory/mri:MD_TopicCategoryCode</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getExtentDescription, concatenate each GeographicNameDataset (space separated)</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent/gex:EX_Extent/gex:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>temporalExtent</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent/gex:EX_Extent/gex:temporalElement/gex:EX_TemporalExtent/gex:extent/gml:TimePeriod/gml:id</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getIndeterminateBeginning, if BeginningDate blank then "not known" else lookup BeginningDate in IndeterminateDates</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent/gex:EX_Extent/gex:temporalElement/gex:EX_TemporalExtent/gex:extent/gml:TimePeriod/gml:beginPosition/@indeterminatePosition</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getBeginningDate, convert BeginningDate to ISO date-time</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent/gex:EX_Extent/gex:temporalElement/gex:EX_TemporalExtent/gex:extent/gml:TimePeriod/gml:beginPosition/</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getIndeterminateEnding, if EndingDate blank then "not known" else lookup EndingDate in IndeterminateDates</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent/gex:EX_Extent/gex:temporalElement/gex:EX_TemporalExtent/gex:extent/gml:TimePeriod/gml:endPosition/@indeterminatePosition</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getEndingDate, convert EndingDate to ISO date-time</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:extent/gex:EX_Extent/gex:temporalElement/gex:EX_TemporalExtent/gex:extent/gml:TimePeriod/gml:endPosition/</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_MaintenanceFrequencyCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceMaintenance/mmi:MD_MaintenanceInformation/mmi:maintenanceAndUpdateFrequency/mmi:MD_MaintenanceFrequencyCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getMaintenanceFrequency, lookup MaintenanceFrequency in MaintenanceFrequencies</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceMaintenance/mmi:MD_MaintenanceInformation/mmi:maintenanceAndUpdateFrequency/mmi:MD_MaintenanceFrequencyCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>inapplicable</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:graphicOverview/mcc:MD_BrowseGraphic/mcc:fileName/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getBrowseGraphicUrl, use BBOX extent and VMDD Object ID to construct URL</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:graphicOverview/mcc:MD_BrowseGraphic/mcc:linkage/cit:CI_OnlineResource/cit:linkage/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>WWW:LINK-1.0-http--related</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:graphicOverview/mcc:MD_BrowseGraphic/mcc:linkage/cit:CI_OnlineResource/cit:protocol/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>Graphic Overview of Data Footprint</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:graphicOverview/mcc:MD_BrowseGraphic/mcc:linkage/cit:CI_OnlineResource/cit:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>StoredDataFormat</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceFormat/mrd:MD_Format/mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getSDMCategory, lookup SDM Category in Categories using ANZLIC_ID</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:keyword/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_KeywordTypeCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:type/mri:MD_KeywordTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>theme</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:type/mri:MD_KeywordTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>theme</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:type/mri:MD_KeywordTypeCode/</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>DELWP SDM Product Categories</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>2019-05-24</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:thesaurusName/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:thesaurusName/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>creation</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:thesaurusName/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>Version 1</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:thesaurusName/cit:CI_Citation/cit:edition/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>2019-05-24T00:00:00</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:thesaurusName/cit:CI_Citation/cit:editionDate/gco:DateTime</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>SDMCategories</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:descriptiveKeywords/mri:MD_Keywords/mri:thesaurusName/cit:CI_Citation/cit:identifier/mcc:MD_Identifier/mcc:code/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getUseLimitation, concatenate AccessConstraint, UseConstraint, SpecialIpDetail (each separated by two blank lines)</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints/mco:MD_SecurityConstraints/mco:useLimitation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_ClassificationCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints/mco:MD_SecurityConstraints/mco:classification/mco:MD_ClassificationCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getResourceConstraint, if AccessId == "R" or "D" then "restricted" else if AccessID == "G" then "unclassified" else "Unknown"</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:resourceConstraints/mco:MD_SecurityConstraints/mco:classification/mco:MD_ClassificationCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#LanguageCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:defaultLocale/lan:PT_Locale/lan:language/lan:LanguageCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>eng</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:defaultLocale/lan:PT_Locale/lan:language/lan:LanguageCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_CharacterSetCode</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:defaultLocale/lan:PT_Locale/lan:characterEncoding/lan:MD_CharacterSetCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>utf8</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:defaultLocale/lan:PT_Locale/lan:characterEncoding/lan:MD_CharacterSetCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getSupplementalInformation, concatenate History, LayerRelationShip, DesignIssuesCurrent, DesignIssuesFuture, (RelatedDocuments - some reformatting here), AdditionalMetadata, AddMdUrl</td>
+            <td>MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:supplementalInformation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>inapplicable</td>
+            <td>MD_Metadata/mdb:contentInfo/mrc:MD_CoverageDescription/mrc:attributeDescription/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_CoverageContentTypeCode</td>
+            <td>MD_Metadata/mdb:contentInfo/mrc:MD_CoverageDescription/mrc:attributeGroup/mrc:MD_AttributeGroup/mrc:contentType/mrc:MD_CoverageContentTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>physicalMeasurement</td>
+            <td>MD_Metadata/mdb:contentInfo/mrc:MD_CoverageDescription/mrc:attributeGroup/mrc:MD_AttributeGroup/mrc:contentType/mrc:MD_CoverageContentTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>DataFormat</td>
+            <td>MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributionFormat/mrd:MD_Format/mrd:formatSpecificationCitation/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>https://www.delwp.vic.gov.au/maps</td>
+            <td>MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>WWW:LINK-1.0-http--related</td>
+            <td>MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:protocol/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>Web page listing describing spatial information in Department of Environment, Land, Water and Planning (DELWP)</td>
+            <td>MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_ScopeCode</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:scope/mcc:MD_Scope/mcc:level/mcc:MD_ScopeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>dataset</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:scope/mcc:MD_Scope/mcc:level/mcc:MD_ScopeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Title</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:scope/mcc:MD_Scope/mcc:levelDescription/mcc:MD_ScopeDescription/mcc:other/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>unknown</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>AttributeAccuracy</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>1</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_NonQuantitativeAttributeCorrectness/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>unknown</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>PositionalAccuracy</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>1</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_AbsoluteExternalPositionalAccuracy/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>unknown</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>LogicalConsistency</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>1</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_ConceptualConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>unknown</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getCompletenessOmission, concatenate Completeness, CompletenessCoverage, CompletenessVerification</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>1</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_CompletenessOmission/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>unknown</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_CompletenessCommission/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>CompletenessClassification</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_CompletenessCommission/mdq:result/mdq:DQ_ConformanceResult/mdq:explanation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>1</td>
+            <td>MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_CompletenessCommission/mdq:result/mdq:DQ_ConformanceResult/mdq:pass/gco:Boolean</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getSourceData, concatenate SourceData and DatasetOriginality</td>
+            <td>MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:statement/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getCollectionMethod, String "Collection Method: " + CollectionMethod</td>
+            <td>MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:source/mrl:LI_Source/mrl:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>ProcessingSteps</td>
+            <td>MD_Metadata/mdb:resourceLineage/mrl:LI_Lineage/mrl:processStep/mrl:LI_ProcessStep/mrl:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getUseLimitation, concatenate AccessConstraint, UseConstraint, SpecialIpDetail</td>
+            <td>MD_Metadata/mdb:metadataConstraints/mco:MD_SecurityConstraints/mco:useLimitation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_ClassificationCode</td>
+            <td>MD_Metadata/mdb:metadataConstraints/mco:MD_SecurityConstraints/mco:classification/mco:MD_ClassificationCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getMetadataAccessClassification, if AccessAdvertScopeId == "1" or "2" then "restricted", otherwise "unclassified"</td>
+            <td>MD_Metadata/mdb:metadataConstraints/mco:MD_SecurityConstraints/mco:classification/mco:MD_ClassificationCode/mdb:codeListValue</td>
+         </tr>
+      </table><br><h1>au.gov.vic.delwp.Extent</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>1</td>
+            <td>gex:EX_GeographicBoundingBox/gex:extentTypeCode/gco:Boolean</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getWestLong, return WestLong if BBOX defined</td>
+            <td>gex:EX_GeographicBoundingBox/gex:westBoundLongitude/gco:Decimal</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getEastLong, return EastLong if BBOX defined</td>
+            <td>gex:EX_GeographicBoundingBox/gex:eastBoundLongitude/gco:Decimal</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getSouthLat, return SouthLat if BBOX defined</td>
+            <td>gex:EX_GeographicBoundingBox/gex:southBoundLatitude/gco:Decimal</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getNorthLat, return NorthLat if BBOX defined</td>
+            <td>gex:EX_GeographicBoundingBox/gex:northBoundLatitude/gco:Decimal</td>
+         </tr>
+      </table><br><h1>au.gov.vic.delwp.Citation</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>Source description not available</td>
+            <td>mrl:LI_Source/mrl:description/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Title</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>YearPublished</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:date/cit:CI_Date/cit:date/gco:Date</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>publication</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:date/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>publisher</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>getCorporateAuthor, CorporateAuthor</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>unknown</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name/gco:nilReason</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>getAuthor, Author</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:citedResponsibleParty/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:individual/cit:CI_Individual/cit:name/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>getOtherCitationDetails, AdditionalDetail</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:otherCitationDetails/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Isbn</td>
+            <td>mrl:LI_Source/mrl:sourceCitation/cit:CI_Citation/cit:ISBN/gco:CharacterString</td>
+         </tr>
+      </table><br><h1>au.gov.vic.delwp.DelwpColumn</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>delwp:MD_Attribute_PropertyType</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/xsi:type</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>name</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:name/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>obligation</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:obligation/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>unique</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:unique/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>dataType</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:dataType/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>dataLength</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:dataLength/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>dataPrecision</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:dataPrecision/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>refTabOwnerName</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:refTabOwnerName/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>refTabTableName</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:refTabTableName/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>refTabCodeColumnName</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:refTabCodeColumnName/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>comments</td>
+            <td>mrc:MD_SampleDimension/mrc:otherProperty/gco:Record/delwp:MD_Attribute/delwp:comments/gco:CharacterString</td>
+         </tr>
+      </table><br><h1>au.gov.vic.delwp.AssociatedResource</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode</td>
+            <td>mri:MD_AssociatedResource/mri:associationType/mri:DS_AssociationTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>isComposedOf</td>
+            <td>mri:MD_AssociatedResource/mri:associationType/mri:DS_AssociationTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>title</td>
+            <td>mri:MD_AssociatedResource/mri:metadataReference/cit:CI_Citation/cit:title/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getMetadataRecordUrl, concatenate hostNameForLinks (parameter passed to the metashare mapping tool) with UUID of dataset record as one component of a product</td>
+            <td>mri:MD_AssociatedResource/mri:metadataReference/cit:CI_Citation/cit:onlineResource/cit:CI_OnlineResource/cit:linkage/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>WWW:LINK-1.0-http--related</td>
+            <td>mri:MD_AssociatedResource/mri:metadataReference/cit:CI_Citation/cit:onlineResource/cit:CI_OnlineResource/cit:protocol/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>Link to Dataset that is part of this product</td>
+            <td>mri:MD_AssociatedResource/mri:metadataReference/cit:CI_Citation/cit:onlineResource/cit:CI_OnlineResource/cit:description/gco:CharacterString</td>
+         </tr>
+      </table><br><h1>au.gov.vic.delwp.XlinkedDatasetContact</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode</td>
+            <td>cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getRole, DatasetContact.role</td>
+            <td>cit:CI_Responsibility/cit:role/cit:CI_RoleCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getContactXlink, generated UUID from DatasetContact.Contact.ID</td>
+            <td>cit:CI_Responsibility/cit:party/xlink:href</td>
+         </tr>
+      </table><br><h1>au.gov.vic.delwp.Contact</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>getUUID</td>
+            <td>CI_Organisation/@uuid</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>getTitle</td>
+            <td>CI_Organisation/@title</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Text</td>
+            <td>CI_Organisation/cit:name/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getPostalAddress, concatenate Mail1 and Mail2</td>
+            <td>CI_Organisation/cit:contactInfo/cit:CI_Contact/cit:address/cit:CI_Address/cit:deliveryPoint/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getCity, Locality</td>
+            <td>CI_Organisation/cit:contactInfo/cit:CI_Contact/cit:address/cit:CI_Address/cit:city/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getState, State</td>
+            <td>CI_Organisation/cit:contactInfo/cit:CI_Contact/cit:address/cit:CI_Address/cit:administrativeArea/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getPostCode, PostCode</td>
+            <td>CI_Organisation/cit:contactInfo/cit:CI_Contact/cit:address/cit:CI_Address/cit:postalCode/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getCountry, Country</td>
+            <td>CI_Organisation/cit:contactInfo/cit:CI_Contact/cit:address/cit:CI_Address/cit:country/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getName, concatenate LastName, FirstName, Salutation</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:name/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getPhone, from Phone, standardise with +61 3 as precursor</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:contactInfo/cit:CI_Contact/cit:phone/cit:CI_Telephone/cit:number/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:contactInfo/cit:CI_Contact/cit:phone/cit:CI_Telephone/cit:numberType/cit:CI_TelephoneTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>voice</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:contactInfo/cit:CI_Contact/cit:phone/cit:CI_Telephone/cit:numberType/cit:CI_TelephoneTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getFax, from Fax, standardise with +61 3 as precursor</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:contactInfo/cit:CI_Contact/cit:phone/cit:CI_Telephone/cit:number/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:contactInfo/cit:CI_Contact/cit:phone/cit:CI_Telephone/cit:numberType/cit:CI_TelephoneTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>facsimile</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:contactInfo/cit:CI_Contact/cit:phone/cit:CI_Telephone/cit:numberType/cit:CI_TelephoneTypeCode/mdb:codeListValue</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getEmail, Email</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:contactInfo/cit:CI_Contact/cit:address/cit:CI_Address/cit:electronicMailAddress/gco:CharacterString</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>Method: getPosition, Position</td>
+            <td>CI_Organisation/cit:individual/cit:CI_Individual/cit:positionName/gco:CharacterString</td>
+         </tr>
+      </table><br><h1>au.gov.vic.delwp.ISODateBlock</h1>
+      <table class="table table-striped">
+         <tr>
+            <th>Type</th>
+            <th>Field</th>
+            <th>XPath</th>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>date</td>
+            <td>cit:CI_Date/cit:date/gco:DateTime</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>date</td>
+            <td>cit:CI_Date/cit:date/gco:Date</td>
+         </tr>
+         <tr>
+            <td>Constant</td>
+            <td>http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_DateTypeCode</td>
+            <td>cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeList</td>
+         </tr>
+         <tr>
+            <td>Field</td>
+            <td>dateType</td>
+            <td>cit:CI_Date/cit:dateType/cit:CI_DateTypeCode/mdb:codeListValue</td>
+         </tr>
+      </table>
+   </body>
+</html>
