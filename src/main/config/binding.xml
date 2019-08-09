@@ -835,7 +835,14 @@
           <value name='codeListValue' constant='isComposedOf' />
         </structure>
       </structure>
+      <structure name='initiativeType' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+        <structure name='DS_InitiativeTypeCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+          <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode' />
+          <value name='codeListValue' constant='collection' />
+        </structure>
+      </structure>
       <structure name='metadataReference' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
+        <value name='uuidref' field='UUID' style="attribute" />
         <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
           <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
             <value name='CharacterString' field='title' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
