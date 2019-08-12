@@ -20,6 +20,7 @@ ANZVI0803002857|Admin & Political Boundaries
 ANZVI0803002858|Admin & Political Boundaries
 ANZVI0803002859|Admin & Political Boundaries
 ANZVI0803005912|Admin & Political Boundaries
+ANZVI0803008477|Admin & Political Boundaries
 ANZVI0803008472|Admin & Political Boundaries
 ANZVI0803003049|Admin & Political Boundaries
 ANZVI0803002780|Admin & Political Boundaries
@@ -357,7 +358,6 @@ ANZVI0803002501|Elevation
 ANZVI0803002499|Elevation
 ANZVI0803003295|Elevation
 ANZVI0803003294|Elevation
-ANZVI0803003601|Elevation
 ANZVI0803004745|Elevation
 ANZVI0803004198|Elevation
 ANZVI0803005921|Environment
@@ -393,7 +393,9 @@ ANZVI0803005610|Environment
 ANZVI0803005611|Environment
 ANZVI0803005075|Environment
 ANZVI0803005228|Environment
+ANZVI0803008493|Environment
 ANZVI0803005920|Environment
+ANZVI0803008492|Environment
 ANZVI0803005383|Environment
 ANZVI0803005382|Environment
 ANZVI0803005377|Environment
@@ -417,6 +419,8 @@ ANZVI0803005639|Environment
 ANZVI0803005640|Environment
 ANZVI0803005601|Environment
 ANZVI0803005898|Environment
+ANZVI0803008491|Environment
+ANZVI0803008494|Environment
 ANZVI0803005346|Environment
 ANZVI0803005422|Environment
 ANZVI0803005423|Environment
@@ -1040,9 +1044,7 @@ ANZVI0803002305|Location & GPS
 ANZVI0803002578|Location & GPS
 ANZVI0803002529|Location & GPS
 ANZVI0803003126|Location & GPS
-ANZVI0803002908_deleted|Location & GPS
 ANZVI0803002905|Location & GPS
-ANZVI0803003028_deleted|Location & GPS
 ANZVI0803003027|Location & GPS
 ANZVI0803003373|Minerals & Petroleum
 ANZVI0803003355|Minerals & Petroleum
@@ -1166,11 +1168,6 @@ ANZVI0803005493|Transportation Networks
 ANZVI0803005519|Transportation Networks
 ANZVI0803005491|Transportation Networks
 ANZVI0803004126|Transportation Networks
-ANZVI0803002873_deleted|Utility Networks
-ANZVI0803002874_deleted|Utility Networks
-ANZVI0803002541_deleted|Utility Networks
-ANZVI0803002540_deleted|Utility Networks
-ANZVI0803002542_deleted|Utility Networks
 ANZVI0803003646|Utility Networks
 ANZVI0803002537|Utility Networks
 ANZVI0803003668|Utility Networks
@@ -1182,13 +1179,11 @@ ANZVI0803003645|Utility Networks
 ANZVI0803003643|Utility Networks
 ANZVI0803003636|Utility Networks
 ANZVI0803003642|Utility Networks
-ANZVI0803003672_deleted|Utility Networks
 ANZVI0803003673|Utility Networks
 ANZVI0803003298|VMPROP map-polygons, Parcel and Property
 ANZVI0803003299|VMPROP map-polygons, Parcel and Property
 ANZVI0803002864|Vicmap Planning
 ANZVI0803005748|Vicmap Planning
-ANZVI0803003443|Vicmap Products
 ANZVI0803005742|Vicmap Products
 ANZVI0803002578|Vicmap Products
 ANZVI0803005618|Vicmap Products
