@@ -97,6 +97,9 @@
             <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
               <value get-method='getTitle' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
             </structure>
+            <structure name='alternateTitle' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <value get-method='getAlternateTitle' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+            </structure>
             <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0' get-method="getDateStamp"/>
             <structure name='date' usage='optional' test-method='hasVMDDMasterPublicationDate' ns='http://standards.iso.org/iso/19115/-3/cit/2.0' field='PublicationDate'/>
             <structure name='identifier' usage='optional' test-method='hasVMDDSchema' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
@@ -290,7 +293,7 @@
             <structure name='formatSpecificationCitation' ns='http://standards.iso.org/iso/19115/-3/mrd/1.0'>
               <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <value field='StoredDataFormat' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                  <value get-method='getStoredDataFormat' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
               </structure>
             </structure>
@@ -429,6 +432,14 @@
           </structure>
         </structure>
 
+        <structure name='resourceConstraints' usage="optional" test-method="addCCByLicense" ns='http://standards.iso.org/iso/19115/-3/mri/1.0' value-style="attribute">
+          <value name='href' ns="http://www.w3.org/1999/xlink" constant="local://srv/api/registries/entries/urn:delwp:metashare:license:cc-by-4"/>
+        </structure>
+
+        <structure name='resourceConstraints' usage="optional" test-method="addDelwpLicense" ns='http://standards.iso.org/iso/19115/-3/mri/1.0' value-style="attribute">
+          <value name='href' ns="http://www.w3.org/1999/xlink" constant="local://srv/api/registries/entries/urn:delwp:metashare:license:delwpdatalicense"/>
+        </structure>
+
         <collection get-method='getAssociatedResources' item-type='au.gov.vic.delwp.AssociatedResource' >
           <structure name='associatedResource' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'/>
         </collection>
@@ -456,7 +467,7 @@
       </structure>
     </structure>
 
-    <structure name='contentInfo' usage='optional' test-method='attributesNotNull' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
+    <structure name='contentInfo' usage='optional' test-method='anzlicIdInVMDD' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name="MD_CoverageDescription" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
         <structure name='attributeDescription' value-style="attribute" ns='http://standards.iso.org/iso/19115/-3/mrc/2.0'> 
           <value name='nilReason' constant='inapplicable' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
@@ -668,13 +679,10 @@
 
     <structure name='metadataConstraints' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name='MD_SecurityConstraints' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
-        <structure name='useLimitation' usage='optional' test-method='isUseLimitationNotNull' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
-          <value name='CharacterString' get-method='getUseLimitation' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
-        </structure>
         <structure name='classification' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
           <structure name='MD_ClassificationCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/mco/1.0'>
             <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#MD_ClassificationCode' />
-            <value name='codeListValue' get-method='getMetadataAccessClassification'/>
+            <value name='codeListValue' get-method='getMetadataConstraint'/>
           </structure>
         </structure>
       </structure>

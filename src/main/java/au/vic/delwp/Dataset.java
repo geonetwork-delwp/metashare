@@ -114,7 +114,7 @@ public class Dataset {
     Columns = MapUtils.PopulateUsingOpenCSV( "column.csv", DelwpColumn.class );
 		}
 
-	public boolean attributesNotNull() { 
+	public boolean anzlicIdInVMDD() { 
     // this could get CPU intensive....
     for (DelwpColumn dc : Columns) {
       if (dc.anzlicId.equals(ANZLIC_ID)) return true;
@@ -143,9 +143,21 @@ public class Dataset {
 		return !Utils.isBlank(UseConstraint);
 		}
 		
+  /* August 12 2019
+     If not in VMDD then keep, otherwise abandon 
+     Concatenate object onto StoredDataFormat */
 	public boolean isStoredDataFormatNotNull( ){
-		return !Utils.isBlank(StoredDataFormat);
+    if (anzlicIdInVMDD()) return false;
+		else return !Utils.isBlank(StoredDataFormat);
 		}
+
+  public String getStoredDataFormat() {
+    if (!StringUtils.isBlank(DataType)) {
+      return StoredDataFormat + " " + DataType;
+    } else {
+      return StoredDataFormat;
+    }
+  }
 
 	public boolean isSpecialIpDetailNotNull( ){
 		return !Utils.isBlank(SpecialIpDetail);
@@ -226,82 +238,39 @@ public class Dataset {
 			resourceConstraint = "restricted";
 			}
 		else if (AccessId.toUpperCase().equals("D")){
-			resourceConstraint = "restricted";
+			resourceConstraint = "limitedDistribution";
 			}
 		else if (AccessId.toUpperCase().equals("G")){
 			resourceConstraint = "unclassified";
 			}
-		return resourceConstraint;
-		}
-	
-	public String getMetadataConstraint( ){
-		String resourceConstraint = "Unknown";
-		if (AccessAdvertScopeId.toUpperCase().equals("1")){
-			resourceConstraint = "restricted";
-			}
-		else if (AccessAdvertScopeId.toUpperCase().equals("2")){
-			resourceConstraint = "restricted";
-			}
-		else if (AccessAdvertScopeId.toUpperCase().equals("3")){
+		else if (AccessId.toUpperCase().equals("V")){
 			resourceConstraint = "unclassified";
 			}
 		return resourceConstraint;
 		}
 
-	public String getMetadataAccessClassification( ){
-		String resourceConstraint = "unknown";
+  /* August 2019, Add CC-BY-4.0 license if AccessId = "V" */
+  public boolean addCCByLicense() {
+    return AccessId.toUpperCase().equals("V");  // VICMAP all CC-BY
+  }
+	
+  /* August 2019, Add DELWP license if AccessId = "G" */
+  public boolean addDelwpLicense() {
+    return AccessId.toUpperCase().equals("G");  // General all DELWP License
+  }
+
+	public String getMetadataConstraint( ){
+		String metadataConstraint = "Unknown";
 		if (AccessAdvertScopeId.toUpperCase().equals("1")){
-			resourceConstraint = "restricted";
+			metadataConstraint = "limitedDistribution";
 			}
 		else if (AccessAdvertScopeId.toUpperCase().equals("2")){
-			resourceConstraint = "restricted";
+			metadataConstraint = "limitedDistribution";
 			}
 		else if (AccessAdvertScopeId.toUpperCase().equals("3")){
-			resourceConstraint = "unclassified";
+			metadataConstraint = "unclassified";
 			}
-		return resourceConstraint;
-		}
-	
-	public String getResourceAccessClassification( ){
-		String resourceConstraint = "unknown";
-		if (AccessId.toUpperCase().equals("R")){
-			resourceConstraint = "restricted";
-			}
-		else if (AccessId.toUpperCase().equals("D")){
-			resourceConstraint = "restricted";
-			}
-		else if (AccessId.toUpperCase().equals("G")){
-			resourceConstraint = "unclassified";
-			}
-		return resourceConstraint;
-		}
-	
-	public String getMetadataAccessClassificationForDB( ){
-		String resourceConstraint = "Unknown";
-		if (AccessAdvertScopeId.toUpperCase().equals("1")){
-			resourceConstraint = "Local";
-			}
-		else if (AccessAdvertScopeId.toUpperCase().equals("2")){
-			resourceConstraint = "Department";
-			}
-		else if (AccessAdvertScopeId.toUpperCase().equals("3")){
-			resourceConstraint = "World";
-			}
-		return resourceConstraint;
-		}
-	
-	public String getResourceAccessClassificationForDB( ){
-		String resourceConstraint = "Unknown";
-		if (AccessId.toUpperCase().equals("R")){
-			resourceConstraint = "Local";
-			}
-		else if (AccessId.toUpperCase().equals("D")){
-			resourceConstraint = "Department";
-			}
-		else if (AccessId.toUpperCase().equals("G")){
-			resourceConstraint = "World";
-			}
-		return resourceConstraint;
+		return metadataConstraint;
 		}
 
   public boolean isUseLimitationNotNull() {
@@ -700,7 +669,11 @@ public class Dataset {
 		
 		
 	public String getTitle( ){
-		return Title + " ( " + Name + " )";
+		return Title;
+		}
+
+	public String getAlternateTitle( ){
+		return Name;
 		}
 
 		
@@ -836,17 +809,23 @@ public class Dataset {
     if (StringUtils.isBlank(EndingDate)) EndingDate = "not known";
 		return (String) IndeterminateDates.get( EndingDate.toLowerCase( ) );
 		}
-	
+
+  /* August 12, 2019 if in ANZLIC_ID in VMDD then use GDA94
+         otherwise use what is in getReferenceSystemID */	
 	public String getReferenceSystemID( ){
 	
 		String s = null;
 		// Choose Projection over Datum if available
-		if( Projection != null && CRSCodes.containsKey( Projection.Text ) )
-			s = (String) CRSCodes.get( Projection.Text );
-		else if( Datum != null )
-			s = (String) CRSCodes.get( Datum.Text );
-		return s;
+    if (anzlicIdInVMDD()) { // all VMDD datasets are GDA94
+      return "GDA94";
+    } else {
+		  if( Projection != null && CRSCodes.containsKey( Projection.Text ) )
+			  s = (String) CRSCodes.get( Projection.Text );
+		  else if( Datum != null )
+			  s = (String) CRSCodes.get( Datum.Text );
+		  return s;
 		}
+  }
 
 	public boolean isRefSysNotNull( ){
 		return getReferenceSystemID( ) != null;
