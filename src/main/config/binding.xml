@@ -108,7 +108,7 @@
                   <value name='CharacterString' get-method='getVMDDSchema' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
                 <structure name='description' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
-                  <value name='CharacterString' constant='VMDD Schema' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                  <value name='CharacterString' constant='Victorian Spatial Data Library (VSDL)' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
               </structure>
             </structure>
