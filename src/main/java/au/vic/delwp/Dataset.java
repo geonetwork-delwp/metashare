@@ -817,14 +817,14 @@ public class Dataset {
 		String s = null;
 		// Choose Projection over Datum if available
     if (anzlicIdInVMDD()) { // all VMDD datasets are GDA94
-      return "GDA94";
+      s = (String) CRSCodes.get( "GDA94" );
     } else {
 		  if( Projection != null && CRSCodes.containsKey( Projection.Text ) )
 			  s = (String) CRSCodes.get( Projection.Text );
 		  else if( Datum != null )
 			  s = (String) CRSCodes.get( Datum.Text );
-		  return s;
 		}
+		return s;
   }
 
 	public boolean isRefSysNotNull( ){
