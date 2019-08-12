@@ -111,6 +111,9 @@ public class FileXMLWriter {
 		ArrayList datasets = (ArrayList) src.createQuery( HQL ).list( );
 		
 		try {
+
+      FileOutputStream foto = new FileOutputStream("transferownership.txt");
+
       for( int i = 0; i < datasets.size(); ++i ){
         Dataset d = (Dataset) datasets.get( i ); 
         d.hostNameForLinks = hostNameForLinks;
@@ -173,28 +176,36 @@ public class FileXMLWriter {
           out.output(result, fo);
           fo.close();
 
+          for (Object o : d.getOtherResponsibleParties()) {
+            XlinkedDatasetContact xdc = (XlinkedDatasetContact)o;
+            if (xdc.getDS().role.Description.equals("Custodian")) {
+              String line = d.UUID + "," + xdc.getDS().contact.Unit.ID + "," + xdc.getDS().contact.Unit.Text + "\n";
+              foto.write(line.getBytes());
+            }
 					}
-				catch( JiBXException e ){
+				} catch( JiBXException e ){
 					/* This usually due to data problems such as unexpected nulls or
 					 * referential integrity failures. Once a JiBXException occurs, JiBX's
 					 * state is corrupted, hence it must be reinitialised */
 					logThrowableMsgStack( e.getRootCause( ), d.Name );
 					mctx = getMarshallingContext( );					
-					}
-				catch( Exception e ){
+				} catch( Exception e ){
 					/* Write exception info to console, then continue processing next dataset record */
 					logThrowableMsgStack( e, d.Name );
-					}
-				finally {
+				} finally {
 					// Have finished with these elements, so purge them from the session
 					//dest.evict( m );
 					src.evict( d );
-					}
+				}
 
          
 			} // for each dataset				
 		} catch( org.hibernate.HibernateException e ) {
 			logger.error( "Hibernate exception occurred" );
+			System.exit( 1 );
+		} catch( Exception e ) {
+			logger.error( "Some other exception occurred" );
+      e.printStackTrace();
 			System.exit( 1 );
 		}
 

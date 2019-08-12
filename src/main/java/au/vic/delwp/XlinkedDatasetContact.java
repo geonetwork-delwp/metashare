@@ -10,6 +10,10 @@ public class XlinkedDatasetContact {
   public XlinkedDatasetContact(DatasetContact ds) { this.ds = ds; }
 
   public String getRole() { return ds.role.getRole(); }
+ 
+  public DatasetContact getDS() {
+    return ds;
+  }
 
 	public String getContactXlink(){
     return "local://srv/api/registries/entries/"+Utils.generateContactUUID(ds.contact.getContactID()); 
