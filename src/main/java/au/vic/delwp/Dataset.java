@@ -60,8 +60,10 @@ public class Dataset {
 	public String ProcessingSteps;
 	public String DataFormat;
 	public String ANZLIC_ID;
+	public String JurisdictionID;
 	public String UUID;
-	public IDnText DatasetOrganisation;
+	public IDnText OwnerOrganisation;
+	public IDnText CustodianOrganisation;
 	public IDnText DatasetOriginality;
   public ISODateBlock PublicationDate;
 	
@@ -128,6 +130,16 @@ public class Dataset {
       if (dc.anzlicId.equals(ANZLIC_ID)) attributes.add(dc);
     }
     return attributes;
+  }
+
+  public String getJurisdictionID() {
+    String j = "Victoria";
+    if (Utils.isBlank(JurisdictionID)) {
+      j = "Unknown";
+    } else if (JurisdictionID.equals("1")) {
+      j = "Australia";
+    }
+    return j;
   }
 
 	public String generateUUID( ){	

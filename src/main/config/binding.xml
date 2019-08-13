@@ -114,6 +114,16 @@
             </structure>
             <structure name='identifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
               <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                  <value name='CharacterString' get-method='getJurisdictionID' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+                <structure name='description' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+                  <value name='CharacterString' constant='Jurisdiction ID' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                </structure>
+              </structure>
+            </structure>
+            <structure name='identifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                 <structure name='authority' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                   <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                     <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
@@ -157,7 +167,7 @@
               </structure>
             </structure>
             <structure name='citedResponsibleParty' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-              <structure name='CI_Responsibility' usage='optional' test-method='hasOtherResponsibleParties' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='CI_Responsibility' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='role'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <structure name='CI_RoleCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                     <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode' />
@@ -167,7 +177,7 @@
                 <structure name='party' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <structure name='CI_Organisation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                     <structure name='name' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                      <structure field='DatasetOrganisation' >
+                      <structure field='OwnerOrganisation' >
                         <value field='Text' name='CharacterString'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                       </structure>
                     </structure>
@@ -175,7 +185,26 @@
                 </structure>
               </structure>
             </structure>
-            <collection get-method='getOtherResponsibleParties' item-type='au.gov.vic.delwp.XlinkedDatasetContact' >
+            <structure name='citedResponsibleParty' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+              <structure name='CI_Responsibility' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                <structure name='role'  ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='CI_RoleCode' value-style='attribute' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                    <value name='codeList' constant='http://standards.iso.org/iso/19115/resources/Codelist/cat/codelists.xml#CI_RoleCode' />
+                    <value name='codeListValue' constant='custodian' />
+                  </structure>
+                </structure>
+                <structure name='party' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                  <structure name='CI_Organisation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                    <structure name='name' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
+                      <structure field='CustodianOrganisation' >
+                        <value field='Text' name='CharacterString'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                      </structure>
+                    </structure>
+                  </structure>
+                </structure>
+              </structure>
+            </structure>
+            <collection get-method='getOtherResponsibleParties' usage="optional" test-method="hasOtherResponsibleParties" item-type='au.gov.vic.delwp.XlinkedDatasetContact' >
               <structure name='citedResponsibleParty' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'/>
             </collection>
           </structure>

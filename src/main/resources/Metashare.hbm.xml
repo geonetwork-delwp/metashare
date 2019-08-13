@@ -54,6 +54,7 @@
 		<property name='CollectionMethod' column='lineage_data_collection_method' />
 		<property name='DataFormat' column='available_format_type' />
 		<property name='SeriesID' column='series_id' />
+		<property name='JurisdictionID' column='jurisdiction_id' />
 		<property name='ANZLIC_ID' column='anzlic_id' />
 		<property name='DataType' column='object_type_id' />
 		<set name='Citations'>
@@ -83,7 +84,8 @@
 		<many-to-one name='Datum' entity-name='Datum' column='datum_id' unique='true' />
 		<many-to-one name='Projection' entity-name='Projection' column='projection_id' unique='true' />
 		<many-to-one name='DatasetOriginality' entity-name='DatasetOriginality' column='lineage_data_originality_id' unique='true' not-found='ignore' />
-		<many-to-one name='DatasetOrganisation' entity-name='Organisation' column='owner_id' unique='true' />
+		<many-to-one name='OwnerOrganisation' entity-name='Organisation' column='owner_id' unique='true' />
+		<many-to-one name='CustodianOrganisation' entity-name='Organisation' column='custodian_id' unique='true' />
 	</class>
 
 	<class name='Citation' table='citation' lazy='false' mutable='false' >

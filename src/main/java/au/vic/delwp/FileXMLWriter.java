@@ -176,6 +176,12 @@ public class FileXMLWriter {
           out.output(result, fo);
           fo.close();
 
+          String line = d.UUID + "," + d.CustodianOrganisation.ID + "," + d.CustodianOrganisation.Text + "\n";
+          foto.write(line.getBytes());
+          
+          /* Custodian is organisation held in custodian_id, contacts with
+             role Custodian are optional and not mandatory so ignore
+ 
           for (Object o : d.getOtherResponsibleParties()) {
             XlinkedDatasetContact xdc = (XlinkedDatasetContact)o;
             if (xdc.getDS().role.Description.equals("Custodian")) {
@@ -183,6 +189,8 @@ public class FileXMLWriter {
               foto.write(line.getBytes());
             }
 					}
+          */
+          
 				} catch( JiBXException e ){
 					/* This usually due to data problems such as unexpected nulls or
 					 * referential integrity failures. Once a JiBXException occurs, JiBX's
