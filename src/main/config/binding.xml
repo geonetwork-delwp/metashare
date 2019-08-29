@@ -835,7 +835,7 @@
             <value name='CharacterString' field='obligation'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
           <structure name='unique' usage='optional' test-method='isUniqueNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
-            <value name='Boolean' field='unique'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+            <value name='CharacterString' field='unique'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
           <structure name='dataType' usage='optional' test-method='isDataTypeNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
             <value name='CharacterString' field='dataType'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>

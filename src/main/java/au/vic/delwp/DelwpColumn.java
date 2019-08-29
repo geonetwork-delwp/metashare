@@ -27,9 +27,9 @@ public class DelwpColumn {
   @CsvBindByPosition(position = 10)
 	public String refTabCodeColumnName;
   @CsvBindByPosition(position = 11)
-	public String shortColumnName;
-  @CsvBindByPosition(position = 12)
 	public String comments;
+  @CsvBindByPosition(position = 12)
+	public String shortColumnName;
 
   boolean isNameNotNull() {
    return name != null;
