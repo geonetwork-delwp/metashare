@@ -835,16 +835,19 @@
             <value name='CharacterString' field='obligation'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
           <structure name='unique' usage='optional' test-method='isUniqueNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
-            <value name='CharacterString' field='unique'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+            <value name='Boolean' field='unique'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
           <structure name='dataType' usage='optional' test-method='isDataTypeNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
             <value name='CharacterString' field='dataType'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
           <structure name='dataLength' usage='optional' test-method='isDataLengthNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
-            <value name='CharacterString' field='dataLength'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+            <value name='Integer' field='dataLength'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
           <structure name='dataPrecision' usage='optional' test-method='isDataPrecisionNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
-            <value name='CharacterString' field='dataPrecision'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+            <value name='Integer' field='dataPrecision'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='dataScale' usage='optional' test-method='isDataScaleNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='Integer' field='dataScale'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
           <structure name='refTabOwnerName' usage='optional' test-method='isRefTabOwnerNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
             <value name='CharacterString' field='refTabOwnerName'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
@@ -855,7 +858,10 @@
           <structure name='refTabCodeColumnName' usage='optional' test-method='isRefTabCodeColumnNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
             <value name='CharacterString' field='refTabCodeColumnName'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
-          <structure name='comments' usage='optional' test-method='isCommentsNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+          <structure name='shortColumnName' usage='optional' test-method='isShortColumnNameNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
+            <value name='CharacterString' field='shortColumnName'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+          </structure>
+          <structure name='definition' usage='optional' test-method='isCommentsNotNull' ns='https://github.com/geonetwork-delwp/iso19115-3.2018'>
             <value name='CharacterString' field='comments'  ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
           </structure>
         </structure>
