@@ -114,6 +114,7 @@ public class FileXMLWriter {
 
       FileOutputStream foto = new FileOutputStream("transferownership.txt");
       FileOutputStream bunit = new FileOutputStream("businessunit.txt");
+      FileOutputStream sdm = new FileOutputStream("sdmcats.txt");
 
       for( int i = 0; i < datasets.size(); ++i ){
         Dataset d = (Dataset) datasets.get( i ); 
@@ -179,9 +180,18 @@ public class FileXMLWriter {
 
           String line = d.UUID + "," + d.CustodianOrganisation.ID + "," + d.CustodianOrganisation.Text + "\n";
           foto.write(line.getBytes());
-          
-          line = d.UUID + "," + d.BusinessUnit.ID + "," + d.BusinessUnit.Text + "\n";
-          bunit.write(line.getBytes());
+         
+          try { 
+            line = d.UUID + "," + d.BusinessUnit.ID + "," + d.BusinessUnit.Text + "\n";
+            bunit.write(line.getBytes());
+          } catch (Exception e) {
+            System.out.println("No Business unit info for "+d.UUID);
+          }
+
+          if (d.hasSDMCategory()) {
+            line = d.UUID + "," + d.getSDMCategory() + "\n";
+            sdm.write(line.getBytes());
+          }
           
           /* Custodian is organisation held in custodian_id, contacts with
              role Custodian are optional and not mandatory so ignore
