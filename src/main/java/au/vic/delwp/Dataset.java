@@ -65,6 +65,7 @@ public class Dataset {
 	public IDnText OwnerOrganisation;
 	public IDnText CustodianOrganisation;
 	public IDnText DatasetOriginality;
+	public IDnText BusinessUnit;
   public ISODateBlock PublicationDate;
 	
 	public String hostNameForLinks;

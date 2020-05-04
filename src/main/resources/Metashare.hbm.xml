@@ -86,6 +86,7 @@
 		<many-to-one name='DatasetOriginality' entity-name='DatasetOriginality' column='lineage_data_originality_id' unique='true' not-found='ignore' />
 		<many-to-one name='OwnerOrganisation' entity-name='Organisation' column='owner_id' unique='true' />
 		<many-to-one name='CustodianOrganisation' entity-name='Organisation' column='custodian_id' unique='true' />
+		<many-to-one name='BusinessUnit' entity-name='BusinessUnit' column='business_unit_owner_id' unique='true' />
 	</class>
 
 	<class name='Citation' table='citation' lazy='false' mutable='false' >
