@@ -14,7 +14,9 @@ import java.util.regex.*;
 import java.text.ParseException;
 import java.util.StringTokenizer;
 
-import org.apache.commons.codec.digest.DigestUtils;
+import com.baeldung.uuid.UUIDGenerator;
+
+//import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +25,11 @@ import org.apache.logging.log4j.Logger;
 public class Dataset {
 
   private static final Logger logger = LogManager.getLogger("dataset");
+
+  // The following uuid is used as the namespace to generate V5 UUIDs by combining it with anzlic ids
+  // WARNING: If you change this, you will change all the uuids of the metashare/rastermeta datasets 
+  //          and you don't want do that!
+  private static final String metashareBaseUUID = "5b7cfc87-1cc2-4164-821b-9275b290a04a";
 
 	public int ID;
 	public String Title;
@@ -143,9 +150,10 @@ public class Dataset {
     return j;
   }
 
-	public String generateUUID( ){	
+	public String generateUUID() throws Exception {	
 		//return java.util.UUID.randomUUID().toString();
-    return DigestUtils.sha1Hex(ANZLIC_ID);
+    //return DigestUtils.sha1Hex(ANZLIC_ID);
+    return UUIDGenerator.generateType5UUID(metashareBaseUUID, ANZLIC_ID).toString();
 		}
 	
 	public boolean isAccessConstraintNotNull( ){
@@ -447,7 +455,8 @@ public class Dataset {
       for (int i = 0; i < resources.size(); i++) {
          AssociatedResource assRes = new AssociatedResource();
          assRes.anzlicId = (String)resources.get(i);
-         assRes.UUID = DigestUtils.sha1Hex(assRes.anzlicId);
+         //assRes.UUID = DigestUtils.sha1Hex(assRes.anzlicId);
+         assRes.UUID = UUIDGenerator.generateType5UUID(metashareBaseUUID, ANZLIC_ID).toString();
          assRes.title = "Component dataset "+assRes.UUID;
          assRes.hostNameForLinks = hostNameForLinks;
          associatedResources.add(assRes);

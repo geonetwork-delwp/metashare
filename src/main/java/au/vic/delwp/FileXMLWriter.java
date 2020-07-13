@@ -126,7 +126,7 @@ public class FileXMLWriter {
            "        ANZLIC_ID " + d.ANZLIC_ID + "\n" +
            "        UUID: " + d.UUID);
         if (uuidSet.contains(d.UUID)) {
-          logger.error("Sha1 CLASH: "+d.ANZLIC_ID);
+          logger.error("UUID CLASH: "+d.ANZLIC_ID);
           System.exit(1);
         } else {
           uuidSet.add(d.UUID);
