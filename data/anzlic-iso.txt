@@ -212,3 +212,5 @@ Areas of cultural heritage sensitivity|society
 Old-growth survey grid centroid|location
 Old-growth forest|environment
 Commercial|economy
+Biomass|environment
+Above Ground Biomass|environment

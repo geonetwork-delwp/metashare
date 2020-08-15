@@ -21,3 +21,4 @@ MS_OBJECT_TYPE_ID|SPATIAL_REPRESENTATION_TYPE
 20|textTable
 21|textTable
 22|vector
+23|vector
