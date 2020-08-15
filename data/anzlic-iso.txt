@@ -204,3 +204,11 @@ SWOOPING MAP|biota
 SWOOPING BIRD|biota
 MAGPIE|biota
 WINTERFILL|environment
+Industrial|economy
+AGB|environment
+MICLUP|economy
+EMERGENCY|transportation
+Areas of cultural heritage sensitivity|society
+Old-growth survey grid centroid|location
+Old-growth forest|environment
+Commercial|economy
