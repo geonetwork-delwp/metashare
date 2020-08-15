@@ -456,7 +456,7 @@ public class Dataset {
          AssociatedResource assRes = new AssociatedResource();
          assRes.anzlicId = (String)resources.get(i);
          //assRes.UUID = DigestUtils.sha1Hex(assRes.anzlicId);
-         assRes.UUID = UUIDGenerator.generateType5UUID(metashareBaseUUID, ANZLIC_ID).toString();
+         assRes.UUID = UUIDGenerator.generateType5UUID(metashareBaseUUID, assRes.anzlicId).toString();
          assRes.title = "Component dataset "+assRes.UUID;
          assRes.hostNameForLinks = hostNameForLinks;
          associatedResources.add(assRes);
