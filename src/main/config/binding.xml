@@ -344,7 +344,7 @@
             <structure name='thesaurusName' ns='http://standards.iso.org/iso/19115/-3/mri/1.0'>
               <structure name='CI_Citation' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                 <structure name='title' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
-                  <value name='CharacterString' constant='DELWP SDM Product Categories' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
+                  <value name='CharacterString' constant='DELWP Categories' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
                 </structure>
                 <structure name='date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <structure name='CI_Date' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
