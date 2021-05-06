@@ -368,7 +368,8 @@
                 <structure name='identifier' ns='http://standards.iso.org/iso/19115/-3/cit/2.0'>
                   <structure name='MD_Identifier' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                     <structure name='code' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
-                      <value name='CharacterString' constant='SDMCategories' ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
+                      <!-- <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/eng/thesaurus.download?ref=local.theme.DELWPCategories">geonetwork.thesaurus.local.theme.DELWPCategories</gcx:Anchor> -->
+                      <value name='CharacterString' constant='geonetwork.thesaurus.local.theme.DELWPCategories`' ns='http://standards.iso.org/iso/19115/-3/gco/1.0'/>
                     </structure>
                   </structure>
                 </structure>
