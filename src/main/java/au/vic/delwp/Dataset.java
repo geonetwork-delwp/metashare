@@ -457,6 +457,7 @@ public class Dataset {
          assRes.anzlicId = (String)resources.get(i);
          //assRes.UUID = DigestUtils.sha1Hex(assRes.anzlicId);
          assRes.UUID = UUIDGenerator.generateType5UUID(metashareBaseUUID, assRes.anzlicId).toString();
+         System.out.println("Component dataset "+assRes.UUID+" generated from "+assRes.anzlicId);
          assRes.title = "Component dataset "+assRes.UUID;
          assRes.hostNameForLinks = hostNameForLinks;
          associatedResources.add(assRes);
@@ -667,7 +668,7 @@ public class Dataset {
 	
 	
 	public String getSourceData( ){
-		return !Utils.isBlank(SourceData) ? "Dataset Source: " + SourceData + "\n\nDataset Originality: " + ((DatasetOriginality != null) ? DatasetOriginality.Text : "") : null;
+		return !Utils.isBlank(SourceData) ? "Dataset Source: " + SourceData + "\n\nDataset Originality: " + ((DatasetOriginality != null) ? DatasetOriginality.Text : "") : "";
 		}
 
 	

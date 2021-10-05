@@ -551,7 +551,9 @@
       </structure>
     </structure>
 
-    <structure name='dataQualityInfo' usage='optional' test-method='isDataQualityInfoNotNull'>
+    <!--<structure name='dataQualityInfo' usage='optional' test-method='isDataQualityInfoNotNull' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>-->
+    <!-- SP: Oct 21, Always create a dataQualityInfo with a level and ScopeCode -->
+    <structure name='dataQualityInfo' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name='DQ_DataQuality' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
         <structure name='scope' ns='http://standards.iso.org/iso/19157/-2/mdq/1.0'>
           <structure name='MD_Scope' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
@@ -561,7 +563,7 @@
                 <value name='codeListValue' constant='dataset' />
               </structure>
             </structure>
-            <structure name='levelDescription' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
+            <structure name='levelDescription' usage='optional' test-method='isDataQualityInfoNotNull' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
               <structure name='MD_ScopeDescription' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                 <structure name='other' ns='http://standards.iso.org/iso/19115/-3/mcc/1.0'>
                   <value name='CharacterString' field='Title' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
@@ -679,7 +681,9 @@
       </structure>
     </structure>
 
-    <structure name='resourceLineage' usage='optional' test-method='isSourceDataNotNull'  ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
+    <!-- <structure name='resourceLineage' usage='optional' test-method='isSourceDataNotNull' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'> -->
+    <!-- SP: Oct 21, Always create a resourceLineage with a statement -->
+    <structure name='resourceLineage' ns='http://standards.iso.org/iso/19115/-3/mdb/2.0'>
       <structure name='LI_Lineage'  ns='http://standards.iso.org/iso/19115/-3/mrl/2.0'>
         <structure name='statement'  ns='http://standards.iso.org/iso/19115/-3/mrl/2.0'>
           <value get-method='getSourceData' name='CharacterString' ns='http://standards.iso.org/iso/19115/-3/gco/1.0' />
