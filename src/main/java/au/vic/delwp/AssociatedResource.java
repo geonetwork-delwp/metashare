@@ -8,7 +8,7 @@ public class AssociatedResource {
 	public String hostNameForLinks;
 
   public String getMetadataRecordUrl() {
-    return hostNameForLinks + "catalog.search?uuid=" + UUID;
+    return hostNameForLinks + "catalog.search#/metadata/" + UUID;
   }
 
 }
