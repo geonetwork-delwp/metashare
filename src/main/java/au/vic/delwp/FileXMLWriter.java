@@ -101,7 +101,7 @@ public class FileXMLWriter {
 	  HashSet uuidSet = new HashSet();
 	
 		/* Fetch list of (or iterator over?) datasets from Oracle DB */
-		String HQL = "FROM Dataset WHERE ( ANZLIC_ID IS NOT NULL AND name IS NOT NULL AND title IS NOT NULL AND NAME NOT LIKE 'CIP%' )"; // Build a HQL query string from command line arguments plus some default
+		String HQL = "FROM Dataset WHERE ( ANZLIC_ID IS NOT NULL AND name IS NOT NULL AND title IS NOT NULL AND (NAME = 'CIP_PROJECT_STATUS' or NAME NOT LIKE 'CIP%' ))"; // Build a HQL query string from command line arguments plus some default
 		if( cmd.hasOption("q")) {
       String query = cmd.getOptionValue("q");
       if (query.matches(".*\\S+.*")) HQL += " AND " + query;
